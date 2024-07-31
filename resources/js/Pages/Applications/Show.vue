@@ -13,6 +13,7 @@ import StatusBadge from '@/Pages/Applications/Partials/StatusBadge.vue';
 
 const props = defineProps({
   application: Object,
+  statusFilters: Array,
 });
 
 const form = useForm({
@@ -64,7 +65,10 @@ const removeApplication = () => {
             </h4>
           </div>
 
-          <StatusBadge :application="application" />
+          <StatusBadge
+            :application="application"
+            :statusFilters="statusFilters"
+          />
         </div>
 
         <div class="flex justify-between items-start gap-8">

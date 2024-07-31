@@ -114,8 +114,56 @@ class ApplicationController extends Controller
 
     public function show(Application $application): Response
     {
+        $statusFilters = [
+            [
+                'value' => null,
+                'label' => 'All',
+            ],
+            [
+                'value' => 'applied',
+                'label' => 'Applied',
+            ],
+            [
+                'value' => 'in_review',
+                'label' => 'In Review',
+            ],
+            [
+                'value' => 'coding_challenge',
+                'label' => 'Coding Challenge',
+            ],
+            [
+                'value' => 'interview_scheduled',
+                'label' => 'Interview Scheduled',
+            ],
+            [
+                'value' => 'interviewed',
+                'label' => 'Interviewed',
+            ],
+            [
+                'value' => 'offer_extended',
+                'label' => 'Offer Extended',
+            ],
+            [
+                'value' => 'offer_accepted',
+                'label' => 'Offer Accepted',
+            ],
+            [
+                'value' => 'offer_declined',
+                'label' => 'Offer Declined',
+            ],
+            [
+                'value' => 'rejected',
+                'label' => 'Rejected',
+            ],
+            [
+                'value' => 'withdrawn',
+                'label' => 'Withdrawn',
+            ],
+        ];
+
         return inertia('Applications/Show', [
             'application' => $application,
+            'statusFilters' => $statusFilters,
         ]);
     }
 

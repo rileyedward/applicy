@@ -1,12 +1,36 @@
 <script setup>
 import Modal from '@/Components/Modal.vue';
 import { ref } from 'vue';
+import { useForm } from '@inertiajs/vue3';
+import TextInput from '@/Components/TextInput.vue';
+import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/InputError.vue';
+import SelectInput from '@/Components/SelectInput.vue';
+import TextArea from '@/Components/TextArea.vue';
+import PrimaryButton from '@/Components/PrimaryButton.vue';
 
-defineProps({
+const props = defineProps({
   application: Object,
+  statusFilters: Array,
 });
 
 const showModal = ref(false);
+
+const form = useForm({
+  title: '',
+  status: props.application.status.toLowerCase(),
+  notes: '',
+});
+
+const submit = () => {
+  form.post(route('application-action.store', props.application.id), {
+    preserveScroll: true,
+    onSuccess: () => {
+      form.reset();
+      showModal.value = false;
+    },
+  });
+};
 </script>
 
 <template>
@@ -18,6 +42,47 @@ const showModal = ref(false);
     </span>
   </button>
   <Modal :show="showModal" @close="showModal = false">
-    <p>Form will go here soon...</p>
+    <form @submit.prevent="submit">
+      <div>
+        <InputLabel for="title" value="Action" />
+        <TextInput
+          id="title"
+          type="text"
+          class="mt-1 block w-full"
+          v-model="form.title"
+          required
+        />
+        <InputError class="mt-2" :message="form.errors.title" />
+      </div>
+      <div class="mt-4">
+        <InputLabel for="status" value="Status" />
+        <SelectInput
+          id="status"
+          class="mt-1 block w-full"
+          v-model="form.status"
+          :options="statusFilters"
+          required
+        />
+        <InputError class="mt-2" :message="form.errors.status" />
+      </div>
+      <div class="mt-4">
+        <InputLabel for="notes" value="Notes" />
+        <TextArea
+          id="notes"
+          type="text"
+          class="mt-1 block w-full"
+          v-model="form.notes"
+        />
+        <InputError class="mt-2" :message="form.errors.notes" />
+      </div>
+      <div class="flex items-center justify-end mt-4">
+        <PrimaryButton
+          :class="{ 'opacity-25': form.processing }"
+          :disabled="form.processing"
+        >
+          Save
+        </PrimaryButton>
+      </div>
+    </form>
   </Modal>
 </template>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationActionController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\PortfolioProjectController;
@@ -61,6 +62,8 @@ Route::middleware('auth')->prefix('applications')->group(function () {
     Route::get('/{application}', [ApplicationController::class, 'show'])->name('application.show');
     Route::put('/{application}', [ApplicationController::class, 'update'])->name('application.update');
     Route::delete('/{application}', [ApplicationController::class, 'destroy'])->name('application.destroy');
+
+    Route::post('/{application}/actions', [ApplicationActionController::class, 'store'])->name('application-action.store');
 });
 
 require __DIR__.'/auth.php';
