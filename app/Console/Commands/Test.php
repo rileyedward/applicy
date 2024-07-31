@@ -18,11 +18,33 @@ class Test extends Command
         logger($user->first_name);
 
         $educationExperiences = $user->educationExperiences;
-
+        $educationOutput = '';
         foreach ($educationExperiences as $educationExperience) {
-
+            $educationOutput .= $educationExperience->institution_name . ', ' . $educationExperience->degree . ', ' . $educationExperience->field_of_study . ', ' . $educationExperience->start_date . ' - ' . $educationExperience->end_date . PHP_EOL;
+            $educationOutput .= $educationExperience->description . PHP_EOL;
+            $educationOutput .= 'Skills: ' . $educationExperience->skills . PHP_EOL;
         }
 
-        logger($educationExperiences);
+        logger($educationOutput);
+
+        $workExperience = $user->workExperiences;
+        $workOutput = '';
+        foreach ($workExperience as $work) {
+            $workOutput .= $work->company_name . ', ' . $work->position . ', ' . $work->start_date . ' - ' . $work->end_date . PHP_EOL;
+            $workOutput .= $work->description . PHP_EOL;
+            $workOutput .= 'Skills: ' . $work->skills . PHP_EOL;
+        }
+
+        logger($workOutput);
+
+        $portfolioProjects = $user->portfolioProjects;
+        $projectsOutput = '';
+        foreach ($portfolioProjects as $portfolioProject) {
+            $projectsOutput .= $portfolioProject->project_name . PHP_EOL;
+            $projectsOutput .= $portfolioProject->description . PHP_EOL;
+            $projectsOutput .= $portfolioProject->skils . PHP_EOL;
+        }
+
+        logger($projectsOutput);
     }
 }
