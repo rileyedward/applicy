@@ -29,7 +29,7 @@ const environments = [
 </script>
 
 <template>
-  <Head title="Job Application - New" />
+  <Head title="Job Application - Settings" />
 
   <AuthenticatedLayout>
     <template #header>
