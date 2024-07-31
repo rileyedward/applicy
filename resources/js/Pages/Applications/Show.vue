@@ -9,6 +9,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectInput from '@/Components/SelectInput.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import ApplicationDetails from '@/Pages/Applications/Partials/ApplicationDetails.vue';
+import StatusBadge from '@/Pages/Applications/Partials/StatusBadge.vue';
 
 const props = defineProps({
   application: Object,
@@ -62,14 +63,8 @@ const removeApplication = () => {
               {{ application.company_name }} - {{ application.location }}
             </h4>
           </div>
-          
-          <button>
-            <span
-              class="inline-flex items-center px-4 py-2 rounded-full text-base font-medium bg-green-300 text-green-900 hover:bg-green-900 hover:text-green-300 cursor-pointer"
-            >
-              {{ application.status }}
-            </span>
-          </button>
+
+          <StatusBadge :application="application" />
         </div>
 
         <div class="flex justify-between items-start gap-8">
