@@ -29,9 +29,11 @@ const environments = [
 
   <AuthenticatedLayout>
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Job Application
-      </h2>
+      <a :href="route('application.index')">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+          Job Applications
+        </h2>
+      </a>
     </template>
 
     <div class="py-12">

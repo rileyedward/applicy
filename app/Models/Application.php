@@ -18,6 +18,9 @@ class Application extends Model
         'environment',
         'description',
         'status',
+        'contact_name',
+        'contact_email',
+        'contact_phone',
     ];
 
     public function getEnvironmentAttribute($value): string
