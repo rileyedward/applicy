@@ -47,6 +47,6 @@ class ApplicationController extends Controller
     {
         $application->delete();
 
-        return back();
+        return to_route('application.index');
     }
 }

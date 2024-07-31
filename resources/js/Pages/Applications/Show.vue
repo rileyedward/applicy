@@ -7,6 +7,7 @@ import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/TextArea.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectInput from '@/Components/SelectInput.vue';
+import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 const props = defineProps({
   application: Object,
@@ -26,6 +27,12 @@ const environments = [
   { value: 'on-site', label: 'On-Site' },
   { value: 'hybrid', label: 'Hybrid' },
 ];
+
+const removeApplication = () => {
+  if (confirm('Are you sure you want to delete this application?')) {
+    useForm({}).delete(route('application.destroy', props.application.id));
+  }
+};
 </script>
 
 <template>
@@ -124,7 +131,14 @@ const environments = [
               <InputError class="mt-2" :message="form.errors.description" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end gap-4 mt-4">
+              <SecondaryButton
+                :class="{ 'opacity-25': form.processing }"
+                :disabled="form.processing"
+                @click.prevent="removeApplication"
+              >
+                Remove
+              </SecondaryButton>
               <PrimaryButton
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"

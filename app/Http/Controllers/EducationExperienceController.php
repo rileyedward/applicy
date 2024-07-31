@@ -52,6 +52,6 @@ class EducationExperienceController extends Controller
     {
         $educationExperience->delete();
 
-        return back();
+        return to_route('education-experience.index');
     }
 }

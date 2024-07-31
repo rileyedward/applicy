@@ -52,6 +52,6 @@ class WorkExperienceController extends Controller
     {
         $workExperience->delete();
 
-        return back();
+        return to_route('work-experience.index');
     }
 }
