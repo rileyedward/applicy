@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('environment', [
                 'remote',
                 'on-site',
-                'hybrid'
+                'hybrid',
             ]);
             $table->text('description');
             $table->enum('status', [
@@ -34,10 +34,8 @@ return new class extends Migration
                 'offer_accepted',
                 'offer_declined',
                 'rejected',
-                'withdrawn'
+                'withdrawn',
             ])->default('applied');
-            $table->string('status')->default('applied');
-            $table->date('submission_date')->default(now());
             $table->timestamps();
         });
     }

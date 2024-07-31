@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\WorkExperienceController;
@@ -50,6 +51,16 @@ Route::middleware('auth')->prefix('portfolio-projects')->group(function () {
     Route::get('/{portfolioProject}', [PortfolioProjectController::class, 'show'])->name('portfolio-project.show');
     Route::put('/{portfolioProject}', [PortfolioProjectController::class, 'update'])->name('portfolio-project.update');
     Route::delete('/{portfolioProject}', [PortfolioProjectController::class, 'destroy'])->name('portfolio-project.destroy');
+});
+
+/** Applications */
+Route::middleware('auth')->prefix('applications')->group(function () {
+    Route::get('/', [ApplicationController::class, 'index'])->name('application.index');
+    Route::get('/create', [ApplicationController::class, 'create'])->name('application.create');
+    Route::post('/', [ApplicationController::class, 'store'])->name('application.store');
+    Route::get('/{application}', [ApplicationController::class, 'show'])->name('application.show');
+    Route::put('/{application}', [ApplicationController::class, 'update'])->name('application.update');
+    Route::delete('/{application}', [ApplicationController::class, 'destroy'])->name('application.destroy');
 });
 
 require __DIR__.'/auth.php';

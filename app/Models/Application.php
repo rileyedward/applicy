@@ -18,15 +18,7 @@ class Application extends Model
         'environment',
         'description',
         'status',
-        'submission_date'
     ];
-
-    public function casts(): array
-    {
-        return [
-            'submission_date' => 'date'
-        ];
-    }
 
     public function user(): BelongsTo
     {

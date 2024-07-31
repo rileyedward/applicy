@@ -15,8 +15,6 @@ class ApplicationRequest extends FormRequest
             'location' => ['required', 'string'],
             'environment' => ['required', 'string', 'in:remote,on-site,hybrid'],
             'description' => ['required', 'string'],
-            'status' => ['required', 'string', 'in:applied,in_review,coding_challenge,interview_scheduled,interviewed,offer_extended,offer_accepted,offer_declined,rejected,withdrawn'],
-            'submission_date' => ['required', 'date']
         ];
     }
 }

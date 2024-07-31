@@ -30,6 +30,13 @@ const showingNavigationDropdown = ref(false);
               <!-- Navigation Links -->
               <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <NavLink
+                  :href="route('application.index')"
+                  :active="route().current('application.index')"
+                >
+                  Applications
+                </NavLink>
+
+                <NavLink
                   :href="route('education-experience.index')"
                   :active="route().current('education-experience.index')"
                 >
