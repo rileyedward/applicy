@@ -13,7 +13,6 @@ class ApplicationController extends Controller
     public function index(Request $request): Response
     {
         $applications = Application::query()
-            ->with('actions')
             ->where('user_id', $request->user()->id)
             ->orderBy('created_at', 'desc')
             ->get();
@@ -116,6 +115,8 @@ class ApplicationController extends Controller
 
     public function show(Application $application): Response
     {
+        $application->load('actions');
+
         $statusFilters = [
             [
                 'value' => null,
