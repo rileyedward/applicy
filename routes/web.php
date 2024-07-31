@@ -61,7 +61,6 @@ Route::middleware('auth')->prefix('applications')->group(function () {
     Route::get('/{application}', [ApplicationController::class, 'show'])->name('application.show');
     Route::put('/{application}', [ApplicationController::class, 'update'])->name('application.update');
     Route::delete('/{application}', [ApplicationController::class, 'destroy'])->name('application.destroy');
-    Route::put('/{application}/contact', [ApplicationController::class, 'updateContact'])->name('application.updateContact');
 });
 
 require __DIR__.'/auth.php';

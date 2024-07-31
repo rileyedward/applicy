@@ -15,6 +15,9 @@ class ApplicationRequest extends FormRequest
             'location' => ['required', 'string'],
             'environment' => ['required', 'string', 'in:remote,on-site,hybrid'],
             'description' => ['required', 'string'],
+            'contact_name' => ['nullable', 'string', 'max:255'],
+            'contact_email' => ['nullable', 'email', 'max:255'],
+            'contact_phone' => ['nullable', 'string', 'max:255'],
         ];
     }
 }

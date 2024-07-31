@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ApplicationContactRequest;
 use App\Http\Requests\ApplicationRequest;
 use App\Models\Application;
 use Illuminate\Http\RedirectResponse;
@@ -132,12 +131,5 @@ class ApplicationController extends Controller
         $application->delete();
 
         return to_route('application.index');
-    }
-
-    public function updateContact(ApplicationContactRequest $request, Application $application): RedirectResponse
-    {
-        $application->update($request->validated());
-
-        return back();
     }
 }
