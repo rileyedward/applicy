@@ -20,6 +20,16 @@ class Application extends Model
         'status',
     ];
 
+    public function getEnvironmentAttribute($value): string
+    {
+        return ucfirst($value);
+    }
+
+    public function getStatusAttribute($value): string
+    {
+        return ucfirst($value);
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
