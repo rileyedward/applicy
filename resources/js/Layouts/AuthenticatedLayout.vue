@@ -35,6 +35,20 @@ const showingNavigationDropdown = ref(false);
                 >
                   Dashboard
                 </NavLink>
+
+                <NavLink
+                  :href="route('education-experience.index')"
+                  :active="route().current('education-experience.index')"
+                >
+                  Education
+                </NavLink>
+
+                <NavLink
+                  :href="route('work-experience.index')"
+                  :active="route().current('work-experience.index')"
+                >
+                  Experience
+                </NavLink>
               </div>
             </div>
 
