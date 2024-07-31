@@ -2,8 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Integrations\LlamaConnector;
-use App\Http\Integrations\Requests\CreateChatRequest;
+use App\Models\User;
 use Illuminate\Console\Command;
 
 class Test extends Command
@@ -14,19 +13,16 @@ class Test extends Command
 
     public function handle(): void
     {
-        /**
-         * Llama API Implementation
-         */
-        try {
-            $connector = new LlamaConnector();
+        $user = User::query()->where('id', 1)->first();
 
-            $request = new CreateChatRequest();
+        logger($user->first_name);
 
-            $response = $connector->send($request);
+        $educationExperiences = $user->educationExperiences;
 
-            logger($response->body());
-        } catch (\Exception $e) {
-            $this->error($e->getMessage());
+        foreach ($educationExperiences as $educationExperience) {
+
         }
+
+        logger($educationExperiences);
     }
 }
