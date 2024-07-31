@@ -12,7 +12,11 @@ class ApplicationController extends Controller
 {
     public function index(Request $request): Response
     {
-        $applications = $request->user()->applications()->get();
+        $applications = Application::query()
+            ->with('actions')
+            ->where('user_id', $request->user()->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         $statusFilters = [
             [
@@ -89,8 +93,6 @@ class ApplicationController extends Controller
             'value' => null,
             'label' => 'All',
         ]);
-
-        logger($locationFilters);
 
         return inertia('Applications/Index', [
             'applications' => $applications,

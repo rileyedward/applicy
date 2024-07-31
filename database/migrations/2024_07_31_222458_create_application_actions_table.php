@@ -28,7 +28,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('application_id')->constrained('applications')->cascadeOnDelete();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->enum('previous_status', $statusEnums);
             $table->enum('new_status', $statusEnums);
             $table->text('notes')->nullable();

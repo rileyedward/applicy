@@ -17,8 +17,8 @@ const props = defineProps({
 const showModal = ref(false);
 
 const form = useForm({
-  title: '',
   status: props.application.status.toLowerCase(),
+  title: '',
   notes: '',
 });
 
@@ -44,26 +44,24 @@ const submit = () => {
   <Modal :show="showModal" @close="showModal = false">
     <form @submit.prevent="submit">
       <div>
-        <InputLabel for="title" value="Action" />
-        <TextInput
-          id="title"
-          type="text"
-          class="mt-1 block w-full"
-          v-model="form.title"
-          required
-        />
-        <InputError class="mt-2" :message="form.errors.title" />
-      </div>
-      <div class="mt-4">
         <InputLabel for="status" value="Status" />
         <SelectInput
           id="status"
           class="mt-1 block w-full"
           v-model="form.status"
           :options="statusFilters"
-          required
         />
         <InputError class="mt-2" :message="form.errors.status" />
+      </div>
+      <div class="mt-4">
+        <InputLabel for="title" value="Action" />
+        <TextInput
+          id="title"
+          type="text"
+          class="mt-1 block w-full"
+          v-model="form.title"
+        />
+        <InputError class="mt-2" :message="form.errors.title" />
       </div>
       <div class="mt-4">
         <InputLabel for="notes" value="Notes" />
