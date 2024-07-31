@@ -18,7 +18,7 @@ const props = defineProps({
   statusFilters: Array,
 });
 
-const showForm = ref(false);
+const showForm = ref(true);
 
 const form = useForm({
   job_url: props.application.job_url,
@@ -69,163 +69,187 @@ const removeApplication = () => {
             </h4>
           </div>
 
-          <StatusBadge
-            :application="application"
-            :statusFilters="statusFilters"
-          />
+          <div class="flex items-center gap-4">
+            <SecondaryButton @click.prevent="showForm = !showForm">
+              {{ showForm ? 'Actions' : 'Edit' }}
+            </SecondaryButton>
+
+            <StatusBadge
+              :application="application"
+              :statusFilters="statusFilters"
+            />
+          </div>
         </div>
 
         <div class="flex justify-between items-start gap-8">
           <ApplicationDetails :application="application" />
 
-          <div
-            v-if="showForm"
-            class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 w-full"
-          >
-            <form
-              @submit.prevent="
-                form.put(route('application.update', application.id))
-              "
+          <div class="w-full">
+            <h3 class="font-semibold text-lg mb-4">
+              {{ showForm ? 'Edit Application' : 'Application Progress' }}
+            </h3>
+
+            <div
+              v-if="showForm"
+              class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6"
             >
-              <div>
-                <InputLabel for="job_url" value="Job URL" />
-                <TextInput
-                  id="job_url"
-                  type="url"
-                  class="mt-1 block w-full"
-                  v-model="form.job_url"
-                  required
-                  autocomplete="job_url"
-                />
-                <InputError class="mt-2" :message="form.errors.job_url" />
-              </div>
+              <form
+                @submit.prevent="
+                  form.put(route('application.update', application.id))
+                "
+              >
+                <div>
+                  <InputLabel for="job_url" value="Job URL" />
+                  <TextInput
+                    id="job_url"
+                    type="url"
+                    class="mt-1 block w-full"
+                    v-model="form.job_url"
+                    required
+                    autocomplete="job_url"
+                  />
+                  <InputError class="mt-2" :message="form.errors.job_url" />
+                </div>
 
-              <div class="mt-4">
-                <InputLabel for="position" value="Position" />
-                <TextInput
-                  id="position"
-                  type="text"
-                  class="mt-1 block w-full"
-                  v-model="form.position"
-                  required
-                  autocomplete="position"
-                />
-                <InputError class="mt-2" :message="form.errors.position" />
-              </div>
+                <div class="mt-4">
+                  <InputLabel for="position" value="Position" />
+                  <TextInput
+                    id="position"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.position"
+                    required
+                    autocomplete="position"
+                  />
+                  <InputError class="mt-2" :message="form.errors.position" />
+                </div>
 
-              <div class="mt-4">
-                <InputLabel for="company_name" value="Company Name" />
-                <TextInput
-                  id="company_name"
-                  type="text"
-                  class="mt-1 block w-full"
-                  v-model="form.company_name"
-                  required
-                  autocomplete="company_name"
-                />
-                <InputError class="mt-2" :message="form.errors.company_name" />
-              </div>
+                <div class="mt-4">
+                  <InputLabel for="company_name" value="Company Name" />
+                  <TextInput
+                    id="company_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.company_name"
+                    required
+                    autocomplete="company_name"
+                  />
+                  <InputError
+                    class="mt-2"
+                    :message="form.errors.company_name"
+                  />
+                </div>
 
-              <div class="mt-4">
-                <InputLabel for="location" value="Location" />
-                <TextInput
-                  id="location"
-                  type="text"
-                  class="mt-1 block w-full"
-                  v-model="form.location"
-                  required
-                  autocomplete="location"
-                />
-                <InputError class="mt-2" :message="form.errors.location" />
-              </div>
+                <div class="mt-4">
+                  <InputLabel for="location" value="Location" />
+                  <TextInput
+                    id="location"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.location"
+                    required
+                    autocomplete="location"
+                  />
+                  <InputError class="mt-2" :message="form.errors.location" />
+                </div>
 
-              <div class="mt-4">
-                <InputLabel for="environment" value="Work Environment" />
-                <SelectInput
-                  id="environment"
-                  type="text"
-                  class="mt-1 block w-full"
-                  v-model="form.environment"
-                  :options="environments"
-                  required
-                  autocomplete="environment"
-                />
-                <InputError class="mt-2" :message="form.errors.environment" />
-              </div>
+                <div class="mt-4">
+                  <InputLabel for="environment" value="Work Environment" />
+                  <SelectInput
+                    id="environment"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.environment"
+                    :options="environments"
+                    required
+                    autocomplete="environment"
+                  />
+                  <InputError class="mt-2" :message="form.errors.environment" />
+                </div>
 
-              <div class="mt-4">
-                <InputLabel for="description" value="Description" />
-                <TextArea
-                  id="description"
-                  class="mt-1 block w-full"
-                  v-model="form.description"
-                  required
-                  autocomplete="description"
-                />
-                <InputError class="mt-2" :message="form.errors.description" />
-              </div>
+                <div class="mt-4">
+                  <InputLabel for="description" value="Description" />
+                  <TextArea
+                    id="description"
+                    class="mt-1 block w-full"
+                    v-model="form.description"
+                    required
+                    autocomplete="description"
+                  />
+                  <InputError class="mt-2" :message="form.errors.description" />
+                </div>
 
-              <hr class="my-8" />
-              <h3 class="font-semibold text-lg mt-8">Contact Information</h3>
+                <hr class="my-8" />
+                <h3 class="font-semibold text-lg mt-8">Contact Information</h3>
 
-              <div class="mt-4">
-                <InputLabel for="contact_name" value="Contact Name" />
-                <TextInput
-                  id="contact_name"
-                  type="text"
-                  class="mt-1 block w-full"
-                  v-model="form.contact_name"
-                  required
-                  autocomplete="contact_name"
-                />
-                <InputError class="mt-2" :message="form.errors.contact_name" />
-              </div>
+                <div class="mt-4">
+                  <InputLabel for="contact_name" value="Contact Name" />
+                  <TextInput
+                    id="contact_name"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.contact_name"
+                    required
+                    autocomplete="contact_name"
+                  />
+                  <InputError
+                    class="mt-2"
+                    :message="form.errors.contact_name"
+                  />
+                </div>
 
-              <div class="mt-4">
-                <InputLabel for="contact_email" value="Contact Email" />
-                <TextInput
-                  id="contact_email"
-                  type="email"
-                  class="mt-1 block w-full"
-                  v-model="form.contact_email"
-                  required
-                  autocomplete="contact_email"
-                />
-                <InputError class="mt-2" :message="form.errors.contact_email" />
-              </div>
+                <div class="mt-4">
+                  <InputLabel for="contact_email" value="Contact Email" />
+                  <TextInput
+                    id="contact_email"
+                    type="email"
+                    class="mt-1 block w-full"
+                    v-model="form.contact_email"
+                    required
+                    autocomplete="contact_email"
+                  />
+                  <InputError
+                    class="mt-2"
+                    :message="form.errors.contact_email"
+                  />
+                </div>
 
-              <div class="mt-4">
-                <InputLabel for="contact_phone" value="Contact Phone" />
-                <TextInput
-                  id="contact_phone"
-                  type="tel"
-                  class="mt-1 block w-full"
-                  v-model="form.contact_phone"
-                  required
-                  autocomplete="contact_phone"
-                />
-                <InputError class="mt-2" :message="form.errors.contact_phone" />
-              </div>
+                <div class="mt-4">
+                  <InputLabel for="contact_phone" value="Contact Phone" />
+                  <TextInput
+                    id="contact_phone"
+                    type="tel"
+                    class="mt-1 block w-full"
+                    v-model="form.contact_phone"
+                    required
+                    autocomplete="contact_phone"
+                  />
+                  <InputError
+                    class="mt-2"
+                    :message="form.errors.contact_phone"
+                  />
+                </div>
 
-              <div class="flex items-center justify-end gap-4 mt-4">
-                <SecondaryButton
-                  :class="{ 'opacity-25': form.processing }"
-                  :disabled="form.processing"
-                  @click.prevent="removeApplication"
-                >
-                  Remove
-                </SecondaryButton>
-                <PrimaryButton
-                  :class="{ 'opacity-25': form.processing }"
-                  :disabled="form.processing"
-                >
-                  Save
-                </PrimaryButton>
-              </div>
-            </form>
+                <div class="flex items-center justify-end gap-4 mt-4">
+                  <SecondaryButton
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                    @click.prevent="removeApplication"
+                  >
+                    Remove
+                  </SecondaryButton>
+                  <PrimaryButton
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                  >
+                    Save
+                  </PrimaryButton>
+                </div>
+              </form>
+            </div>
+
+            <ApplicationProgress v-else :application="application" />
           </div>
-
-          <ApplicationProgress v-else :application="application" />
         </div>
       </div>
     </div>
