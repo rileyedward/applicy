@@ -7,89 +7,35 @@ import InputLabel from '@/Components/InputLabel.vue';
 
 const props = defineProps({
   applications: Array,
+  statusFilters: Array,
+  environmentFilters: Array,
+  locationFilters: Array,
 });
-
-const statusFilters = [
-  {
-    value: null,
-    label: 'All',
-  },
-  {
-    value: 'applied',
-    label: 'Applied',
-  },
-  {
-    value: 'in_review',
-    label: 'In Review',
-  },
-  {
-    value: 'coding_challenge',
-    label: 'Coding Challenge',
-  },
-  {
-    value: 'interview_scheduled',
-    label: 'Interview Scheduled',
-  },
-  {
-    value: 'interviewed',
-    label: 'Interviewed',
-  },
-  {
-    value: 'offer_extended',
-    label: 'Offer Extended',
-  },
-  {
-    value: 'offer_accepted',
-    label: 'Offer Accepted',
-  },
-  {
-    value: 'offer_declined',
-    label: 'Offer Declined',
-  },
-  {
-    value: 'rejected',
-    label: 'Rejected',
-  },
-  {
-    value: 'withdrawn',
-    label: 'Withdrawn',
-  },
-];
-
-const environmentFilters = [
-  {
-    value: null,
-    label: 'All',
-  },
-  {
-    value: 'remote',
-    label: 'Remote',
-  },
-  {
-    value: 'on-site',
-    label: 'On-Site',
-  },
-  {
-    value: 'hybrid',
-    label: 'Hybrid',
-  },
-];
 
 const statusSelection = ref(null);
 const environmentSelection = ref(null);
+const locationSelection = ref(null);
 
 const filteredApplications = computed(() => {
   let applications = props.applications;
 
   if (statusSelection.value !== null) {
     applications = applications.filter(
-      (application) => application.status === statusSelection.value
+      (application) =>
+        application.status.toLowerCase() === statusSelection.value
     );
   }
 
   if (environmentSelection.value !== null) {
     applications = applications.filter(
-      (application) => application.environment === environmentSelection.value
+      (application) =>
+        application.environment.toLowerCase() === environmentSelection.value
+    );
+  }
+
+  if (locationSelection.value !== null) {
+    applications = applications.filter(
+      (application) => application.location === locationSelection.value
     );
   }
 
@@ -126,6 +72,14 @@ const filteredApplications = computed(() => {
                   id="environment"
                   v-model="environmentSelection"
                   :options="environmentFilters"
+                />
+              </div>
+              <div>
+                <InputLabel for="location" value="Location" />
+                <SelectInput
+                  id="location"
+                  v-model="locationSelection"
+                  :options="locationFilters"
                 />
               </div>
             </div>
