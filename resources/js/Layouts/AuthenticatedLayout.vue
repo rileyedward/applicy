@@ -49,6 +49,13 @@ const showingNavigationDropdown = ref(false);
                 >
                   Experience
                 </NavLink>
+
+                <NavLink
+                  :href="route('portfolio-project.index')"
+                  :active="route().current('portfolio-project.index')"
+                >
+                  Projects
+                </NavLink>
               </div>
             </div>
 

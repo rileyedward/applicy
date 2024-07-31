@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EducationExperienceController;
+use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\WorkExperienceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +40,16 @@ Route::middleware('auth')->prefix('education-experiences')->group(function () {
     Route::get('/{educationExperience}', [EducationExperienceController::class, 'show'])->name('education-experience.show');
     Route::put('/{educationExperience}', [EducationExperienceController::class, 'update'])->name('education-experience.update');
     Route::delete('/{educationExperience}', [EducationExperienceController::class, 'destroy'])->name('education-experience.destroy');
+});
+
+/** Portfolio Projects */
+Route::middleware('auth')->prefix('portfolio-projects')->group(function () {
+    Route::get('/', [PortfolioProjectController::class, 'index'])->name('portfolio-project.index');
+    Route::get('/create', [PortfolioProjectController::class, 'create'])->name('portfolio-project.create');
+    Route::post('/', [PortfolioProjectController::class, 'store'])->name('portfolio-project.store');
+    Route::get('/{portfolioProject}', [PortfolioProjectController::class, 'show'])->name('portfolio-project.show');
+    Route::put('/{portfolioProject}', [PortfolioProjectController::class, 'update'])->name('portfolio-project.update');
+    Route::delete('/{portfolioProject}', [PortfolioProjectController::class, 'destroy'])->name('portfolio-project.destroy');
 });
 
 require __DIR__.'/auth.php';

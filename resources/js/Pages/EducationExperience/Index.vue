@@ -8,18 +8,28 @@ defineProps({
 </script>
 
 <template>
-  <Head title="Dashboard" />
+  <Head title="Education - All" />
 
   <AuthenticatedLayout>
     <template #header>
       <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Education Experience
+        Education
       </h2>
     </template>
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
+          <div class="flex justify-end mb-4">
+            <button
+              @click.prevent="
+                $inertia.visit(route('education-experience.create'))
+              "
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            >
+              Add +
+            </button>
+          </div>
           <div class="overflow-x-auto">
             <table class="min-w-full bg-white border border-gray-200">
               <thead>

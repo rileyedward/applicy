@@ -18,7 +18,7 @@ class EducationExperienceController extends Controller
             ->get();
 
         return inertia('EducationExperience/Index', [
-            'educationExperiences' => $educationExperiences
+            'educationExperiences' => $educationExperiences,
         ]);
     }
 

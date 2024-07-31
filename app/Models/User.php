@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(WorkExperience::class);
     }
+
+    public function portfolioProjects(): HasMany
+    {
+        return $this->hasMany(PortfolioProject::class);
+    }
 }
