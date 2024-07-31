@@ -41,6 +41,6 @@ class Application extends Model
 
     public function actions(): HasMany
     {
-        return $this->hasMany(ApplicationAction::class);
+        return $this->hasMany(ApplicationAction::class)->orderBy('created_at', 'desc');
     }
 }

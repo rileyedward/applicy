@@ -10,11 +10,15 @@ import SelectInput from '@/Components/SelectInput.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import ApplicationDetails from '@/Pages/Applications/Partials/ApplicationDetails.vue';
 import StatusBadge from '@/Pages/Applications/Partials/StatusBadge.vue';
+import { ref } from 'vue';
+import ApplicationProgress from '@/Pages/Applications/Partials/ApplicationProgress.vue';
 
 const props = defineProps({
   application: Object,
   statusFilters: Array,
 });
+
+const showForm = ref(false);
 
 const form = useForm({
   job_url: props.application.job_url,
@@ -75,6 +79,7 @@ const removeApplication = () => {
           <ApplicationDetails :application="application" />
 
           <div
+            v-if="showForm"
             class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 w-full"
           >
             <form
@@ -219,6 +224,8 @@ const removeApplication = () => {
               </div>
             </form>
           </div>
+
+          <ApplicationProgress v-else :application="application" />
         </div>
       </div>
     </div>
