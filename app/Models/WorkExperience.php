@@ -13,6 +13,7 @@ class WorkExperience extends Model
         'user_id',
         'position',
         'company_name',
+        'location',
         'start_date',
         'end_date',
         'description',

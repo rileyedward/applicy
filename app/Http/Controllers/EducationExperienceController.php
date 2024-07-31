@@ -24,7 +24,7 @@ class EducationExperienceController extends Controller
 
     public function store(EducationExperienceRequest $request): RedirectResponse
     {
-        $educationExperience = EducationExperience::query()->create($request->validated());
+        $educationExperience = $request->user()->educationExperiences()->create($request->validated());
 
         return to_route('education-experience.show', $educationExperience);
     }

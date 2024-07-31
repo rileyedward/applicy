@@ -14,7 +14,7 @@ class EducationExperienceRequest extends FormRequest
             'institution_name' => ['required', 'string'],
             'location' => ['required', 'string'],
             'start_date' => ['required', 'date'],
-            'end_date' => ['nullable', 'date'],
+            'end_date' => ['nullable', 'date', 'after:start_date'],
             'description' => ['nullable', 'string'],
             'skills' => ['nullable', 'string'],
         ];

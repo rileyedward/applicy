@@ -24,7 +24,7 @@ class WorkExperienceController extends Controller
 
     public function store(WorkExperienceRequest $request): RedirectResponse
     {
-        $workExperience = WorkExperience::query()->create($request->validated());
+        $workExperience = $request->user()->workExperiences()->create($request->validated());
 
         return to_route('work-experience.show', $workExperience);
     }

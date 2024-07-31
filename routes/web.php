@@ -24,6 +24,7 @@ Route::get('/dashboard', function () {
 /** Work Experiences */
 Route::middleware('auth')->prefix('work-experiences')->group(function () {
     Route::get('/', [WorkExperienceController::class, 'index'])->name('work-experience.index');
+    Route::get('/create', [WorkExperienceController::class, 'create'])->name('work-experience.create');
     Route::post('/', [WorkExperienceController::class, 'store'])->name('work-experience.store');
     Route::get('/{workExperience}', [WorkExperienceController::class, 'show'])->name('work-experience.show');
     Route::put('/{workExperience}', [WorkExperienceController::class, 'update'])->name('work-experience.update');
@@ -33,6 +34,7 @@ Route::middleware('auth')->prefix('work-experiences')->group(function () {
 /** Education Experiences */
 Route::middleware('auth')->prefix('education-experiences')->group(function () {
     Route::get('/', [EducationExperienceController::class, 'index'])->name('education-experience.index');
+    Route::get('/create', [EducationExperienceController::class, 'create'])->name('education-experience.create');
     Route::post('/', [EducationExperienceController::class, 'store'])->name('education-experience.store');
     Route::get('/{educationExperience}', [EducationExperienceController::class, 'show'])->name('education-experience.show');
     Route::put('/{educationExperience}', [EducationExperienceController::class, 'update'])->name('education-experience.update');
