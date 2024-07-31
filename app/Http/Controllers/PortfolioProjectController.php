@@ -51,6 +51,6 @@ class PortfolioProjectController extends Controller
     {
         $portfolioProject->delete();
 
-        return back();
+        return to_route('portfolio-project.index');
     }
 }
