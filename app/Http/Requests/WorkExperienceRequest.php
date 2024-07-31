@@ -13,7 +13,7 @@ class WorkExperienceRequest extends FormRequest
             'company_name' => ['required', 'string'],
             'location' => ['required', 'string'],
             'start_date' => ['required', 'date'],
-            'end_date' => ['required', 'date'],
+            'end_date' => ['nullable', 'date'],
             'description' => ['nullable', 'string'],
             'skills' => ['nullable', 'string'],
         ];
