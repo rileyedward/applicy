@@ -18,7 +18,7 @@ const props = defineProps({
   statusFilters: Array,
 });
 
-const showForm = ref(true);
+const showForm = ref(false);
 
 const form = useForm({
   job_url: props.application.job_url,
