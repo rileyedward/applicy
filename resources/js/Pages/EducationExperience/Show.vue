@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/TextArea.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 const props = defineProps({
   educationExperience: Object,
@@ -21,6 +22,14 @@ const form = useForm({
   description: props.educationExperience.description,
   skills: props.educationExperience.skills,
 });
+
+const removeEducationExperience = () => {
+  if (confirm('Are you sure you want to delete this education experience?')) {
+    useForm({}).delete(
+      route('education-experience.destroy', props.educationExperience.id)
+    );
+  }
+};
 </script>
 
 <template>
@@ -177,7 +186,14 @@ const form = useForm({
               <InputError class="mt-2" :message="form.errors.skills" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end gap-4 mt-4">
+              <SecondaryButton
+                :class="{ 'opacity-25': form.processing }"
+                :disabled="form.processing"
+                @click.prevent="removeEducationExperience"
+              >
+                Remove
+              </SecondaryButton>
               <PrimaryButton
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"

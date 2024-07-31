@@ -7,7 +7,7 @@ import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/TextArea.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectInput from '@/Components/SelectInput.vue';
-import SecondaryButton from "@/Components/SecondaryButton.vue";
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 const props = defineProps({
   application: Object,

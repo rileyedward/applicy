@@ -6,6 +6,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/TextArea.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 const props = defineProps({
   workExperience: Object,
@@ -20,6 +21,14 @@ const form = useForm({
   description: props.workExperience.description,
   skills: props.workExperience.skills,
 });
+
+const removeWorkExperience = () => {
+  if (confirm('Are you sure you want to delete this work experience?')) {
+    useForm({}).delete(
+      route('work-experience.destroy', props.workExperience.id)
+    );
+  }
+};
 </script>
 
 <template>
@@ -152,7 +161,14 @@ const form = useForm({
               <InputError class="mt-2" :message="form.errors.skills" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex items-center justify-end gap-4 mt-4">
+              <SecondaryButton
+                :class="{ 'opacity-25': form.processing }"
+                :disabled="form.processing"
+                @click.prevent="removeWorkExperience"
+              >
+                Remove
+              </SecondaryButton>
               <PrimaryButton
                 :class="{ 'opacity-25': form.processing }"
                 :disabled="form.processing"
