@@ -24,9 +24,9 @@ class CreateChatRequest extends Request implements HasBody
             'messages' => [
                 [
                     'role' => 'system',
-                    'content' => 'Hello, how can I help you today?'
-                ]
-            ]
+                    'content' => 'Hello, how can I help you today?',
+                ],
+            ],
         ];
     }
 }

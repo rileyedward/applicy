@@ -14,7 +14,7 @@ class LlamaConnector extends Connector
     protected function defaultHeaders(): array
     {
         return [
-            'Authorization' => 'Bearer ' . config('services.llama.token'),
+            'Authorization' => 'Bearer '.config('services.llama.token'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ];
