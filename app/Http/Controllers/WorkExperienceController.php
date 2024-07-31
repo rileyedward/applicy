@@ -12,8 +12,13 @@ class WorkExperienceController extends Controller
 {
     public function index(Request $request): Response
     {
+        $workExperiences = $request->user()
+            ->workExperiences()
+            ->orderBy('end_date', 'desc')
+            ->get();
+
         return inertia('WorkExperience/Index', [
-            'workExperiences' => $request->user()->workExperiences,
+            'workExperiences' => $workExperiences,
         ]);
     }
 

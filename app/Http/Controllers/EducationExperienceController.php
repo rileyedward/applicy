@@ -12,8 +12,13 @@ class EducationExperienceController extends Controller
 {
     public function index(Request $request): Response
     {
+        $educationExperiences = $request->user()
+            ->educationExperiences()
+            ->orderBy('end_date', 'desc')
+            ->get();
+
         return inertia('EducationExperience/Index', [
-            'educationExperiences' => $request->user()->educationExperiences,
+            'educationExperiences' => $educationExperiences
         ]);
     }
 
