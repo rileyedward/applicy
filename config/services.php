@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'llama' => [
+        'token' => env('LLAMA_API_TOKEN')
+    ]
 ];
