@@ -94,7 +94,6 @@ const environments = [
               <InputLabel for="environment" value="Work Environment" />
               <SelectInput
                 id="environment"
-                type="text"
                 class="mt-1 block w-full"
                 v-model="form.environment"
                 :options="environments"
