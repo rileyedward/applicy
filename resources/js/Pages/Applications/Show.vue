@@ -239,7 +239,11 @@ const removeApplication = () => {
               </form>
             </div>
 
-            <ApplicationProgress v-else :application="application" />
+            <ApplicationProgress
+              v-else
+              :application="application"
+              :statusFilters="statusFilters"
+            />
           </div>
         </div>
       </div>

@@ -1,15 +1,35 @@
 <script setup>
+import { ref } from 'vue';
+import UpdateApplicationAction from '@/Pages/Applications/Partials/UpdateApplicationAction.vue';
+
 defineProps({
   application: Object,
+  statusFilters: Array,
 });
+
+const updateModalOpen = ref(false);
+const selectedAction = ref(null);
+
+const openUpdateModal = (action) => {
+  selectedAction.value = action;
+  updateModalOpen.value = true;
+};
 </script>
 
 <template>
+  <UpdateApplicationAction
+    :updateModalOpen="updateModalOpen"
+    :application="application"
+    :action="selectedAction"
+    :statusFilters="statusFilters"
+    @closeModal="updateModalOpen = false"
+  />
   <div class="w-full flex flex-col gap-4">
     <div
       v-for="action in application.actions"
       :key="action.id"
-      class="p-6 bg-white shadow-sm sm:rounded-lg"
+      class="p-6 bg-white shadow-sm sm:rounded-lg cursor-pointer hover:bg-gray-50 hover:shadow-2xl"
+      @click.prevent="openUpdateModal(action)"
     >
       <div class="flex justify-between items-center">
         <div class="mb-4">
