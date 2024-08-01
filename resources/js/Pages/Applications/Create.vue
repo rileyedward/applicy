@@ -111,7 +111,6 @@ const environments = [
                 id="description"
                 class="mt-1 block w-full"
                 v-model="form.description"
-                required
                 autocomplete="description"
               />
               <InputError class="mt-2" :message="form.errors.description" />
