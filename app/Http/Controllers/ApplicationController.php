@@ -14,6 +14,7 @@ class ApplicationController extends Controller
     {
         $applications = Application::query()
             ->where('user_id', $request->user()->id)
+            ->orderBy('updated_at', 'desc')
             ->orderBy('status', 'desc')
             ->get();
 
