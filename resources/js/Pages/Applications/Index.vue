@@ -78,7 +78,7 @@ const filteredApplications = computed(() => {
                 <InputLabel for="search" value="Search" />
                 <TextInput id="search" type="text" v-model="search" />
               </div>
-              <div>
+              <div class="hidden md:inline-block">
                 <InputLabel for="status" value="Status" />
                 <SelectInput
                   id="status"
@@ -86,7 +86,7 @@ const filteredApplications = computed(() => {
                   :options="statusFilters"
                 />
               </div>
-              <div>
+              <div class="hidden md:inline-block">
                 <InputLabel for="environment" value="Environment" />
                 <SelectInput
                   id="environment"
@@ -94,7 +94,7 @@ const filteredApplications = computed(() => {
                   :options="environmentFilters"
                 />
               </div>
-              <div>
+              <div class="hidden md:inline-block">
                 <InputLabel for="location" value="Location" />
                 <SelectInput
                   id="location"

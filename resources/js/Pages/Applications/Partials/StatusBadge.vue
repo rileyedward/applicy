@@ -44,6 +44,10 @@ const submit = () => {
     </span>
   </button>
   <Modal :show="showModal" @close="showModal = false">
+    <h4 class="text-lg font-medium text-gray-900 mb-4">
+      Update Application Status
+    </h4>
+
     <form @submit.prevent="submit">
       <div>
         <InputLabel for="status" value="Status" />

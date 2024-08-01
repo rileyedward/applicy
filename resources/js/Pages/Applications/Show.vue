@@ -58,7 +58,7 @@ const removeApplication = () => {
     </template>
 
     <div class="py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-8 flex justify-between items-center">
           <a :href="application.job_url">
             <h3 class="font-semibold text-2xl">
@@ -69,7 +69,7 @@ const removeApplication = () => {
             </h4>
           </a>
 
-          <div class="flex items-center gap-4">
+          <div class="flex flex-col md:flex-row items-center gap-4">
             <SecondaryButton @click.prevent="showForm = !showForm">
               {{ showForm ? 'Actions' : 'Edit' }}
             </SecondaryButton>
@@ -81,7 +81,9 @@ const removeApplication = () => {
           </div>
         </div>
 
-        <div class="flex justify-between items-start gap-8">
+        <div
+          class="flex flex-col md:flex-row justify-between items-start gap-8"
+        >
           <ApplicationDetails :application="application" />
 
           <div class="w-full">

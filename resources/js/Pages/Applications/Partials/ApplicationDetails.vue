@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg">
+  <div class="w-full md:w-1/4 mx-auto p-4 bg-white shadow-md rounded-lg">
     <div class="mb-4">
       <label class="block text-gray-700 font-bold">Contact Name:</label>
       <p>{{ application.contact_name }}</p>

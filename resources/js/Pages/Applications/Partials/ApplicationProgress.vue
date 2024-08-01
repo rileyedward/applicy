@@ -31,7 +31,9 @@ const openUpdateModal = (action) => {
       class="p-6 bg-white shadow-sm sm:rounded-lg cursor-pointer hover:bg-gray-50 hover:shadow-2xl"
       @click.prevent="openUpdateModal(action)"
     >
-      <div class="flex justify-between items-center">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center text-center md:text-left"
+      >
         <div class="mb-4">
           <p class="text-gray-800">
             {{ new Date(action.created_at).toLocaleDateString() }}
@@ -55,7 +57,10 @@ const openUpdateModal = (action) => {
           </span>
         </div>
       </div>
-      <p v-if="action.notes" class="text-gray-600 mt-2">
+      <p
+        v-if="action.notes"
+        class="text-gray-600 mt-2 text-center md:text-left"
+      >
         {{ action.notes }}
       </p>
     </div>

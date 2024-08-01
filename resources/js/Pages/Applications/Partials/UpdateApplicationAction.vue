@@ -70,6 +70,10 @@ const removeAction = () => {
 
 <template>
   <Modal :show="updateModalOpen" @close="$emit('closeModal')">
+    <h4 class="text-lg font-medium text-gray-900 mb-4">
+      Update Application Action
+    </h4>
+
     <form @submit.prevent="submit">
       <div>
         <InputLabel for="status" value="Status" />
