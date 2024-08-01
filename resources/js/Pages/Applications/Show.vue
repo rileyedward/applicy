@@ -60,14 +60,14 @@ const removeApplication = () => {
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="mb-8 flex justify-between items-center">
-          <div>
+          <a :href="application.job_url">
             <h3 class="font-semibold text-2xl">
               {{ application.position }}
             </h3>
             <h4 class="text-lg text-slate-500">
               {{ application.company_name }} - {{ application.location }}
             </h4>
-          </div>
+          </a>
 
           <div class="flex items-center gap-4">
             <SecondaryButton @click.prevent="showForm = !showForm">
@@ -105,7 +105,6 @@ const removeApplication = () => {
                     type="url"
                     class="mt-1 block w-full"
                     v-model="form.job_url"
-                    required
                     autocomplete="job_url"
                   />
                   <InputError class="mt-2" :message="form.errors.job_url" />
@@ -118,7 +117,6 @@ const removeApplication = () => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.position"
-                    required
                     autocomplete="position"
                   />
                   <InputError class="mt-2" :message="form.errors.position" />
@@ -131,7 +129,6 @@ const removeApplication = () => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.company_name"
-                    required
                     autocomplete="company_name"
                   />
                   <InputError
@@ -147,7 +144,6 @@ const removeApplication = () => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.location"
-                    required
                     autocomplete="location"
                   />
                   <InputError class="mt-2" :message="form.errors.location" />
@@ -161,7 +157,6 @@ const removeApplication = () => {
                     class="mt-1 block w-full"
                     v-model="form.environment"
                     :options="environments"
-                    required
                     autocomplete="environment"
                   />
                   <InputError class="mt-2" :message="form.errors.environment" />

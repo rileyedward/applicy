@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('application_actions', function (Blueprint $table) {
             $statusEnums = [
+                'need_to_apply',
                 'applied',
                 'in_review',
                 'coding_challenge',

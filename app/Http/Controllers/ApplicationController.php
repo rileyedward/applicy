@@ -23,6 +23,10 @@ class ApplicationController extends Controller
                 'label' => 'All',
             ],
             [
+                'value' => 'need_to_apply',
+                'label' => 'Need to Apply',
+            ],
+            [
                 'value' => 'applied',
                 'label' => 'Applied',
             ],
@@ -103,7 +107,56 @@ class ApplicationController extends Controller
 
     public function create(): Response
     {
-        return inertia('Applications/Create');
+        $statusFilters = [
+            [
+                'value' => 'applied',
+                'label' => 'Applied',
+            ],
+            [
+                'value' => 'need_to_apply',
+                'label' => 'Need to Apply',
+            ],
+            [
+                'value' => 'in_review',
+                'label' => 'In Review',
+            ],
+            [
+                'value' => 'coding_challenge',
+                'label' => 'Coding Challenge',
+            ],
+            [
+                'value' => 'interview_scheduled',
+                'label' => 'Interview Scheduled',
+            ],
+            [
+                'value' => 'interviewed',
+                'label' => 'Interviewed',
+            ],
+            [
+                'value' => 'offer_extended',
+                'label' => 'Offer Extended',
+            ],
+            [
+                'value' => 'offer_accepted',
+                'label' => 'Offer Accepted',
+            ],
+            [
+                'value' => 'offer_declined',
+                'label' => 'Offer Declined',
+            ],
+            [
+                'value' => 'rejected',
+                'label' => 'Rejected',
+            ],
+            [
+                'value' => 'withdrawn',
+                'label' => 'Withdrawn',
+            ],
+        ];
+
+        return inertia('Applications/Create', [
+            'statusFilters' => $statusFilters,
+        ]);
     }
 
     public function store(ApplicationRequest $request): RedirectResponse
@@ -121,6 +174,10 @@ class ApplicationController extends Controller
             [
                 'value' => null,
                 'label' => 'All',
+            ],
+            [
+                'value' => 'need_to_apply',
+                'label' => 'Need to Apply',
             ],
             [
                 'value' => 'applied',

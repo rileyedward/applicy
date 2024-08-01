@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string('job_url');
+            $table->string('job_url')->nullable();
             $table->string('position');
             $table->string('company_name');
             $table->string('location');
@@ -23,8 +23,9 @@ return new class extends Migration
                 'on-site',
                 'hybrid',
             ]);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->enum('status', [
+                'need_to_apply',
                 'applied',
                 'in_review',
                 'coding_challenge',
@@ -35,7 +36,7 @@ return new class extends Migration
                 'offer_declined',
                 'rejected',
                 'withdrawn',
-            ])->default('applied');
+            ])->default('need_to_apply');
             $table->timestamps();
         });
     }

@@ -8,8 +8,13 @@ import TextArea from '@/Components/TextArea.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectInput from '@/Components/SelectInput.vue';
 
+const props = defineProps({
+  statusFilters: Array,
+});
+
 const form = useForm({
   job_url: '',
+  status: props.statusFilters[0].value,
   position: '',
   company_name: '',
   location: '',
@@ -47,10 +52,20 @@ const environments = [
                 type="url"
                 class="mt-1 block w-full"
                 v-model="form.job_url"
-                required
                 autocomplete="job_url"
               />
               <InputError class="mt-2" :message="form.errors.job_url" />
+            </div>
+
+            <div class="mt-4">
+              <InputLabel for="status" value="Status" />
+              <SelectInput
+                id="status"
+                class="mt-1 block w-full"
+                v-model="form.status"
+                :options="statusFilters"
+              />
+              <InputError class="mt-2" :message="form.errors.status" />
             </div>
 
             <div class="mt-4">
@@ -60,7 +75,6 @@ const environments = [
                 type="text"
                 class="mt-1 block w-full"
                 v-model="form.position"
-                required
                 autocomplete="position"
               />
               <InputError class="mt-2" :message="form.errors.position" />
@@ -73,7 +87,6 @@ const environments = [
                 type="text"
                 class="mt-1 block w-full"
                 v-model="form.company_name"
-                required
                 autocomplete="company_name"
               />
               <InputError class="mt-2" :message="form.errors.company_name" />
@@ -86,7 +99,6 @@ const environments = [
                 type="text"
                 class="mt-1 block w-full"
                 v-model="form.location"
-                required
                 autocomplete="location"
               />
               <InputError class="mt-2" :message="form.errors.location" />
@@ -99,7 +111,6 @@ const environments = [
                 class="mt-1 block w-full"
                 v-model="form.environment"
                 :options="environments"
-                required
                 autocomplete="environment"
               />
               <InputError class="mt-2" :message="form.errors.environment" />
