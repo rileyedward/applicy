@@ -4,6 +4,8 @@ import { Head } from '@inertiajs/vue3';
 import SelectInput from '@/Components/SelectInput.vue';
 import { ref, computed } from 'vue';
 import InputLabel from '@/Components/InputLabel.vue';
+import TextInput from '@/Components/TextInput.vue';
+import Fuse from 'fuse.js';
 
 const props = defineProps({
   applications: Array,
@@ -15,6 +17,12 @@ const props = defineProps({
 const statusSelection = ref(null);
 const environmentSelection = ref(null);
 const locationSelection = ref(null);
+const search = ref(null);
+
+const fuseOptions = {
+  keys: ['position', 'company_name', 'location', 'environment', 'status'],
+  threshold: 0.3,
+};
 
 const filteredApplications = computed(() => {
   let applications = props.applications;
@@ -39,6 +47,12 @@ const filteredApplications = computed(() => {
     );
   }
 
+  if (search.value !== null && search.value !== '') {
+    const fuse = new Fuse(applications, fuseOptions);
+
+    applications = fuse.search(search.value).map((result) => result.item);
+  }
+
   return applications;
 });
 </script>
@@ -60,6 +74,10 @@ const filteredApplications = computed(() => {
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
           <div class="flex justify-between items-center mb-4">
             <div class="flex items-start gap-4">
+              <div>
+                <InputLabel for="search" value="Search" />
+                <TextInput id="search" type="text" v-model="search" />
+              </div>
               <div>
                 <InputLabel for="status" value="Status" />
                 <SelectInput
