@@ -188,7 +188,6 @@ const removeApplication = () => {
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.contact_name"
-                    required
                     autocomplete="contact_name"
                   />
                   <InputError
@@ -204,7 +203,6 @@ const removeApplication = () => {
                     type="email"
                     class="mt-1 block w-full"
                     v-model="form.contact_email"
-                    required
                     autocomplete="contact_email"
                   />
                   <InputError
