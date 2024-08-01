@@ -14,7 +14,7 @@ class ApplicationController extends Controller
     {
         $applications = Application::query()
             ->where('user_id', $request->user()->id)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('status', 'desc')
             ->get();
 
         $statusFilters = [

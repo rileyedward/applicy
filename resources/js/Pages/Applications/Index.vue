@@ -121,6 +121,11 @@ const filteredApplications = computed(() => {
                   >
                     Status
                   </th>
+                  <th
+                    class="px-6 py-3 border-b text-sm font-medium text-gray-600"
+                  >
+                    Interview Date
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -146,6 +151,15 @@ const filteredApplications = computed(() => {
                   </td>
                   <td class="px-6 py-4 border-b text-sm text-gray-700">
                     {{ application.status }}
+                  </td>
+                  <td class="px-6 py-4 border-b text-sm text-gray-700">
+                    {{
+                      application.interview_date
+                        ? new Date(
+                            application.interview_date
+                          ).toLocaleDateString()
+                        : null
+                    }}
                   </td>
                 </tr>
               </tbody>

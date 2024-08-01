@@ -20,6 +20,8 @@ const form = useForm({
   status: props.application.status.toLowerCase(),
   title: '',
   notes: '',
+  interview_date: '',
+  interview_time: '',
 });
 
 const submit = () => {
@@ -52,6 +54,26 @@ const submit = () => {
           :options="statusFilters"
         />
         <InputError class="mt-2" :message="form.errors.status" />
+      </div>
+      <div v-if="form.status === 'interview_scheduled'" class="mt-4">
+        <InputLabel for="interview_date" value="Interview Date" />
+        <TextInput
+          id="interview_date"
+          type="date"
+          class="mt-1 block w-full"
+          v-model="form.interview_date"
+        />
+        <InputError class="mt-2" :message="form.errors.interview_date" />
+      </div>
+      <div v-if="form.status === 'interview_scheduled'" class="mt-4">
+        <InputLabel for="interview_time" value="Interview Time" />
+        <TextInput
+          id="interview_time"
+          type="time"
+          class="mt-1 block w-full"
+          v-model="form.interview_time"
+        />
+        <InputError class="mt-2" :message="form.errors.interview_time" />
       </div>
       <div class="mt-4">
         <InputLabel for="title" value="Action" />

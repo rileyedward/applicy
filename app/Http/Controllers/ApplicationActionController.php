@@ -20,6 +20,13 @@ class ApplicationActionController extends Controller
             $application->refresh();
         }
 
+        if ($request->has('interview_date')) {
+            $application->update([
+                'interview_date' => $request->input('interview_date'),
+                'interview_time' => $request->input('interview_time'),
+            ]);
+        }
+
         ApplicationAction::query()->create([
             'user_id' => $request->user()->id,
             'application_id' => $application->id,

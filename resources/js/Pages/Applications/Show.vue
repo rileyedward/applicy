@@ -220,7 +220,6 @@ const removeApplication = () => {
                     type="tel"
                     class="mt-1 block w-full"
                     v-model="form.contact_phone"
-                    required
                     autocomplete="contact_phone"
                   />
                   <InputError
