@@ -35,27 +35,6 @@ const showingNavigationDropdown = ref(false);
                 >
                   Applications
                 </NavLink>
-
-                <NavLink
-                  :href="route('education-experience.index')"
-                  :active="route().current('education-experience.index')"
-                >
-                  Education
-                </NavLink>
-
-                <NavLink
-                  :href="route('work-experience.index')"
-                  :active="route().current('work-experience.index')"
-                >
-                  Experience
-                </NavLink>
-
-                <NavLink
-                  :href="route('portfolio-project.index')"
-                  :active="route().current('portfolio-project.index')"
-                >
-                  Projects
-                </NavLink>
               </div>
             </div>
 
@@ -90,6 +69,15 @@ const showingNavigationDropdown = ref(false);
                   <template #content>
                     <DropdownLink :href="route('profile.edit')">
                       Profile
+                    </DropdownLink>
+                    <DropdownLink :href="route('work-experience.index')">
+                      Experience
+                    </DropdownLink>
+                    <DropdownLink :href="route('education-experience.index')">
+                      Education
+                    </DropdownLink>
+                    <DropdownLink :href="route('portfolio-project.index')">
+                      Projects
                     </DropdownLink>
                     <DropdownLink
                       :href="route('logout')"
@@ -151,10 +139,10 @@ const showingNavigationDropdown = ref(false);
         >
           <div class="pt-2 pb-3 space-y-1">
             <ResponsiveNavLink
-              :href="route('dashboard')"
-              :active="route().current('dashboard')"
+              :href="route('application.index')"
+              :active="route().current('application.index')"
             >
-              Dashboard
+              Applications
             </ResponsiveNavLink>
           </div>
 
@@ -172,6 +160,15 @@ const showingNavigationDropdown = ref(false);
             <div class="mt-3 space-y-1">
               <ResponsiveNavLink :href="route('profile.edit')">
                 Profile
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('work-experience.index')">
+                Experience
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('education-experience.index')">
+                Education
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('portfolio-project.index')">
+                Projects
               </ResponsiveNavLink>
               <ResponsiveNavLink
                 :href="route('logout')"
