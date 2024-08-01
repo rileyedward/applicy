@@ -5,7 +5,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="w-full">
+  <div class="w-full flex flex-col gap-4">
     <div
       v-for="action in application.actions"
       :key="action.id"
