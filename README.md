@@ -1,6 +1,6 @@
-# Job Hunt
+# Applicy
 
-Description will go here
+Applicy is an online platform designed to streamline your job application journey. Build a profile and effortlessly track your submitted applications and monitor their progress over time. Easily manage your job applications and stay organized with Applicy.
 
 <div>
 	<img width="50" src="https://user-images.githubusercontent.com/25181517/183570228-6a040b9f-3ddf-47a2-a201-743121dac664.png" alt="php" title="php"/>
