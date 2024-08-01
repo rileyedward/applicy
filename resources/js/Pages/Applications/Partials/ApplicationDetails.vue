@@ -12,7 +12,7 @@ defineProps({
         :href="application.job_url"
         class="text-blue-500 underline"
         target="_blank"
-        >{{ application.job_url }}</a
+        >Click Here</a
       >
     </div>
     <div class="mb-4">
