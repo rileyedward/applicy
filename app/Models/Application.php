@@ -24,6 +24,7 @@ class Application extends Model
         'contact_phone',
         'interview_date',
         'interview_time',
+        'favorite',
     ];
 
     public function getEnvironmentAttribute($value): string

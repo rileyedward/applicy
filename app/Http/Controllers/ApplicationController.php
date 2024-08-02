@@ -265,4 +265,13 @@ class ApplicationController extends Controller
 
         return to_route('application.index');
     }
+
+    public function favorite(Application $application): RedirectResponse
+    {
+        $application->update([
+            'favorite' => ! $application->favorite,
+        ]);
+
+        return back();
+    }
 }
