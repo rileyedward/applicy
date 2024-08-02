@@ -50,12 +50,7 @@ const openUpdateModal = (action) => {
           >
             {{ action.previous_status }}
           </span>
-          <span
-            v-if="action.previous_status"
-            class="text-gray-500"
-          >
-            →
-          </span>
+          <span v-if="action.previous_status" class="text-gray-500"> → </span>
           <span
             class="inline-flex items-center px-4 py-2 rounded-full text-base font-medium bg-orange-300 text-orange-900"
           >
