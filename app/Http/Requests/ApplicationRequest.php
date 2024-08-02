@@ -10,7 +10,7 @@ class ApplicationRequest extends FormRequest
     {
         return [
             'job_url' => ['nullable', 'url'],
-            'status' => ['required', 'string', 'in:need_to_apply,applied,in_review,coding_challenge,interview_scheduled,interviewed,offer_extended,offer_accepted,offer_declined,rejected,withdrawn'],
+            'status' => ['nullable', 'string', 'in:need_to_apply,applied,in_review,coding_challenge,interview_scheduled,interviewed,offer_extended,offer_accepted,offer_declined,rejected,withdrawn'],
             'position' => ['required', 'string'],
             'company_name' => ['required', 'string'],
             'location' => ['required', 'string'],

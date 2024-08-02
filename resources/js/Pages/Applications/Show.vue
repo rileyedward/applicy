@@ -21,15 +21,15 @@ const props = defineProps({
 const showForm = ref(false);
 
 const form = useForm({
-  job_url: props.application.job_url,
-  position: props.application.position,
-  company_name: props.application.company_name,
-  location: props.application.location,
-  environment: props.application.environment.toLowerCase(),
-  description: props.application.description,
-  contact_name: props.application.contact_name,
-  contact_email: props.application.contact_email,
-  contact_phone: props.application.contact_phone,
+  job_url: props.application?.job_url ?? '',
+  position: props.application?.position ?? '',
+  company_name: props.application?.company_name ?? '',
+  location: props.application?.location ?? '',
+  environment: props.application?.environment.toLowerCase() ?? '',
+  description: props.application?.description ?? '',
+  contact_name: props.application?.contact_name ?? '',
+  contact_email: props.application?.contact_email ?? '',
+  contact_phone: props.application?.contact_phone ?? '',
 });
 
 const environments = [
@@ -155,11 +155,9 @@ const removeApplication = () => {
                   <InputLabel for="environment" value="Work Environment" />
                   <SelectInput
                     id="environment"
-                    type="text"
                     class="mt-1 block w-full"
                     v-model="form.environment"
                     :options="environments"
-                    autocomplete="environment"
                   />
                   <InputError class="mt-2" :message="form.errors.environment" />
                 </div>

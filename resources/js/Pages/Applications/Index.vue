@@ -14,10 +14,10 @@ const props = defineProps({
   locationFilters: Array,
 });
 
-const statusSelection = ref(null);
-const environmentSelection = ref(null);
-const locationSelection = ref(null);
-const search = ref(null);
+const statusSelection = ref('');
+const environmentSelection = ref('');
+const locationSelection = ref('');
+const search = ref('');
 
 const fuseOptions = {
   keys: ['position', 'company_name', 'location', 'environment', 'status'],
@@ -27,21 +27,24 @@ const fuseOptions = {
 const filteredApplications = computed(() => {
   let applications = props.applications;
 
-  if (statusSelection.value !== null) {
+  if (statusSelection.value !== null && statusSelection.value !== '') {
     applications = applications.filter(
       (application) =>
         application.status.toLowerCase() === statusSelection.value
     );
   }
 
-  if (environmentSelection.value !== null) {
+  if (
+    environmentSelection.value !== null &&
+    environmentSelection.value !== ''
+  ) {
     applications = applications.filter(
       (application) =>
         application.environment.toLowerCase() === environmentSelection.value
     );
   }
 
-  if (locationSelection.value !== null) {
+  if (locationSelection.value !== null && locationSelection.value !== '') {
     applications = applications.filter(
       (application) => application.location === locationSelection.value
     );

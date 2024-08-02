@@ -21,7 +21,7 @@ class ApplicationController extends Controller
 
         $statusFilters = [
             [
-                'value' => null,
+                'value' => '',
                 'label' => 'All',
             ],
             [
@@ -72,7 +72,7 @@ class ApplicationController extends Controller
 
         $environmentFilters = [
             [
-                'value' => null,
+                'value' => '',
                 'label' => 'All',
             ],
             [
@@ -95,7 +95,7 @@ class ApplicationController extends Controller
                 'label' => $location,
             ];
         })->prepend([
-            'value' => null,
+            'value' => '',
             'label' => 'All',
         ]);
 
@@ -181,7 +181,7 @@ class ApplicationController extends Controller
 
         $statusFilters = [
             [
-                'value' => null,
+                'value' => '',
                 'label' => 'All',
             ],
             [
