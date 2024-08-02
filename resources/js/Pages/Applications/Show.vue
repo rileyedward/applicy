@@ -60,7 +60,9 @@ const removeApplication = () => {
     <div class="py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-8 flex justify-between items-center">
-          <div class="flex items-center gap-4">
+          <div
+            class="flex flex-col md:flex-row items-start md:items-center gap-4 w-full"
+          >
             <div
               class="inline-flex items-center px-4 py-2 rounded-full text-base font-medium bg-green-300 text-green-900 hover:bg-green-900 hover:text-green-300 cursor-pointer"
             >
@@ -76,7 +78,9 @@ const removeApplication = () => {
             </a>
           </div>
 
-          <div class="flex flex-col md:flex-row items-center gap-4">
+          <div
+            class="flex flex-col md:flex-row items-center justify-end gap-4 w-full md:w-1/4"
+          >
             <SecondaryButton @click.prevent="showForm = !showForm">
               {{ showForm ? 'Progress' : 'Edit' }}
             </SecondaryButton>
