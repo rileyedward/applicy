@@ -5,6 +5,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\WorkExperienceController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,9 +21,9 @@ Route::get('/', function () {
 });
 
 /** Dashboard */
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', DashboardController::class)->name('dashboard');
+});
 
 /** Work Experiences */
 Route::middleware('auth')->prefix('work-experiences')->group(function () {
