@@ -17,6 +17,7 @@ class ChatRequestService
     public function buildChatRequestPayload(): array
     {
         $applicationChatMessage = $this->buildApplicationChatMessage();
+        $contactInfoChatMessage = $this->buildContactInfoChatMessages();
         $resumeChatMessages = $this->buildResumeChatMessages();
 
         $messages = [
@@ -28,6 +29,10 @@ class ChatRequestService
                 'role' => 'user',
                 'content' => $applicationChatMessage,
             ],
+            [
+                'role' => 'user',
+                'content' => $contactInfoChatMessage
+            ]
         ];
 
         foreach ($resumeChatMessages as $chatMessage) {
@@ -49,6 +54,11 @@ class ChatRequestService
         $output .= $this->application->description;
 
         return 'Job Posting - '.$output;
+    }
+
+    protected function buildContactInfoChatMessages(): string
+    {
+        return 'Contact Information - Name: ' . $this->application->contact_name . ' Email: ' . $this->application->contact_email . ' Phone: ' . $this->application->contact_phone;
     }
 
     protected function buildResumeChatMessages(): array
