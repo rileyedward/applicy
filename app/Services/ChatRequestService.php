@@ -38,6 +38,7 @@ class ChatRequestService
         }
 
         return [
+            "model" => "gpt-4o-mini-2024-07-18",
             'messages' => $messages,
         ];
     }

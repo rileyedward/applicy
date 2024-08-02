@@ -38,4 +38,8 @@ return [
     'llama' => [
         'token' => env('LLAMA_API_TOKEN'),
     ],
+
+    'openai' => [
+        'token' => env('OPEN_AI_API_KEY'),
+    ]
 ];

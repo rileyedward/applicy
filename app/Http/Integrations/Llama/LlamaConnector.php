@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Integrations;
+namespace App\Http\Integrations\Llama;
 
 use Saloon\Http\Connector;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Integrations\Requests;
+namespace App\Http\Integrations\OpenAI\Requests;
 
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
@@ -17,7 +17,7 @@ class CreateChatRequest extends Request implements HasBody
 
     public function resolveEndpoint(): string
     {
-        return '/completions';
+        return '/chat/completions';
     }
 
     protected function defaultBody(): array

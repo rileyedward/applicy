@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Integrations\LlamaConnector;
-use App\Http\Integrations\Requests\CreateChatRequest;
+use App\Http\Integrations\Llama\LlamaConnector;
+use App\Http\Integrations\Llama\Requests\CreateChatRequest;
 use App\Models\Application;
 use App\Models\User;
 use App\Services\ChatRequestService;
