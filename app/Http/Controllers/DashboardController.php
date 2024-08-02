@@ -16,8 +16,6 @@ class DashboardController extends Controller
             ->where('status', 'need_to_apply')
             ->get();
 
-        logger($needToApply);
-
         $interviewsScheduled = Application::query()
             ->where('user_id', $user->id)
             ->where('status', 'interview_scheduled')
