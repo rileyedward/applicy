@@ -2,11 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Integrations\LlamaConnector;
-use App\Http\Integrations\Requests\CreateChatRequest;
 use App\Models\Application;
+use App\Models\ApplicationAction;
 use App\Models\User;
-use App\Services\ChatRequestService;
 use Illuminate\Console\Command;
 
 class Test extends Command
@@ -17,29 +15,20 @@ class Test extends Command
 
     public function handle(): void
     {
-        /**
-         * This code below grabs a user and an application submitted by the user.
-         * Using those values and the ChatRequestService class, we can build out
-         * the messages payload required for the Llama API to create a chat request.
-         * Using that built payload, we can utilize the Llama Connector to send the
-         * request to the Llama API and log the response.
-         */
         $user = User::query()->where('id', 1)->first();
-        $application = Application::query()->where('id', 1)->first();
 
-        $chatRequestService = new ChatRequestService($user, $application);
-        $payload = $chatRequestService->buildChatRequestPayload();
+        $applications = Application::query()
+            ->where('user_id', $user->id)
+            ->whereDoesntHave('actions')
+            ->get();
 
-        try {
-            $connector = new LlamaConnector;
-            $request = new CreateChatRequest($payload);
-            $response = $connector->send($request);
-
-            $content = json_decode($response->body(), true);
-
-            logger($content['choices'][0]['message']['content']);
-        } catch (\Exception $e) {
-            logger($e->getMessage());
+        foreach ($applications as $application) {
+            ApplicationAction::query()->create([
+                'user_id' => $user->id,
+                'application_id' => $application->id,
+                'title' => $application->status === 'need_to_apply' ? 'Needs to Apply' : 'Applied',
+                'new_status' => $application->status,
+            ]);
         }
     }
 }
