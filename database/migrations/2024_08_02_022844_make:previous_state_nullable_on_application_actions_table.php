@@ -26,7 +26,7 @@ return new class extends Migration
                 'withdrawn',
             ];
 
-            $table->enum('previous_state', $statusEnums)->nullable()->change();
+            $table->enum('previous_status', $statusEnums)->nullable()->change();
         });
     }
 
@@ -50,7 +50,7 @@ return new class extends Migration
                 'withdrawn',
             ];
 
-            $table->enum('previous_state', $statusEnums)->change();
+            $table->enum('previous_status', $statusEnums)->change();
         });
     }
 };
