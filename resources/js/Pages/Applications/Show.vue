@@ -68,7 +68,7 @@ const removeApplication = () => {
             >
               {{ application.status }}
             </div>
-            <a :href="application.job_url">
+            <a :href="application.job_url" target="_blank">
               <h3 class="font-semibold text-2xl">
                 {{ application.position }}
               </h3>
