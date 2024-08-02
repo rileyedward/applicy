@@ -1,47 +1,9 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
-import { computed, ref } from 'vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import SelectInput from '@/Components/SelectInput.vue';
 
 const props = defineProps({
-  needToApply: Array,
-  interviewsScheduled: Array,
-  offersExtended: Array,
-});
-
-const applicationTypes = [
-  {
-    label: 'Need to Apply',
-    value: 'needToApply',
-  },
-  {
-    label: 'Interviews Scheduled',
-    value: 'interviewsScheduled',
-  },
-  {
-    label: 'Offers Extended',
-    value: 'offersExtended',
-  },
-];
-
-const applicationTypeSelected = ref('interviewsScheduled');
-
-const applications = computed(() => {
-  if (applicationTypeSelected.value === 'needToApply') {
-    return props.needToApply;
-  }
-
-  if (applicationTypeSelected.value === 'interviewsScheduled') {
-    return props.interviewsScheduled;
-  }
-
-  if (applicationTypeSelected.value === 'offersExtended') {
-    return props.offersExtended;
-  }
-
-  return [];
+  applications: Array,
 });
 </script>
 
@@ -58,18 +20,10 @@ const applications = computed(() => {
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-          <div class="flex justify-between items-center mb-4">
-            <div class="flex items-start gap-4">
-              <div>
-                <InputLabel for="status" value="Status" />
-                <SelectInput
-                  id="status"
-                  v-model="applicationTypeSelected"
-                  :options="applicationTypes"
-                />
-              </div>
-            </div>
-          </div>
+          <h4 class="text-lg font-semibold text-gray-800 mb-4 pb-2">
+            Applications with Actions Required
+          </h4>
+
           <div class="overflow-x-auto">
             <table
               v-if="applications.length > 0"

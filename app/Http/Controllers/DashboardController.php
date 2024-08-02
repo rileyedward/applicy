@@ -9,27 +9,25 @@ class DashboardController extends Controller
 {
     public function __invoke(Request $request)
     {
-        $user = $request->user();
+        $statusRankings = [
+            'offer_accepted',
+            'offer_extended',
+            'interview_scheduled',
+            'coding_challenge',
+            'need_to_apply',
+        ];
 
-        $needToApply = Application::query()
-            ->where('user_id', $user->id)
-            ->where('status', 'need_to_apply')
-            ->get();
-
-        $interviewsScheduled = Application::query()
-            ->where('user_id', $user->id)
-            ->where('status', 'interview_scheduled')
-            ->get();
-
-        $offersExtended = Application::query()
-            ->where('user_id', $user->id)
-            ->where('status', 'offer_extended')
+        $applications = Application::query()
+            ->where('user_id', $request->user()->id)
+            ->whereIn('status', $statusRankings)
+            ->orderByRaw('FIELD(status, '.implode(',', array_map(function ($status) {
+                return "'$status'";
+            }, $statusRankings)).')')
+            ->orderBy('updated_at', 'asc')
             ->get();
 
         return inertia('Dashboard/Index', [
-            'needToApply' => $needToApply,
-            'interviewsScheduled' => $interviewsScheduled,
-            'offersExtended' => $offersExtended,
+            'applications' => $applications,
         ]);
     }
 }
