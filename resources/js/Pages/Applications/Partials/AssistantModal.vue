@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import SecondaryButton from '@/Components/SecondaryButton.vue';
 
 const props = defineProps({
   application: Object,
@@ -28,6 +29,10 @@ const actions = [
 const returnContentLines = computed(() => {
   return returnContent.value.split('\n');
 });
+
+const resetContent = () => {
+  returnContent.value = '';
+};
 
 const handleAction = () => {
   switch (selectedAction.value) {
@@ -97,7 +102,10 @@ const coverLetter = () => {
       </div>
 
       <div v-if="selectedAction" class="flex justify-end mt-4">
-        <PrimaryButton @click.prevent="handleAction">
+        <SecondaryButton v-if="returnContent" @click.prevent="resetContent">
+          Reset
+        </SecondaryButton>
+        <PrimaryButton v-else @click.prevent="handleAction">
           Generate Content
         </PrimaryButton>
       </div>
