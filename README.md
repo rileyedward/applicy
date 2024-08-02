@@ -1,6 +1,6 @@
 # Applicy
 
-Applicy is an online platform designed to streamline your job application journey. Build a profile and effortlessly track your submitted applications and monitor their progress over time. Easily manage your job applications and stay organized with Applicy.
+Applicy is a comprehensive online platform that simplifies your job application process. Create a personalized profile to seamlessly track all your job applications and monitor their progress in real time. With Applicy, you can easily organize your job search efforts, making it simpler to stay on top of your applications and secure your next opportunity.
 
 <div>
 	<img width="50" src="https://user-images.githubusercontent.com/25181517/183570228-6a040b9f-3ddf-47a2-a201-743121dac664.png" alt="php" title="php"/>
@@ -81,4 +81,19 @@ Ensure you have the following prerequisites installed on your system. You can ve
    ```bash
    npm run dev
    ```
+## Usage
 
+### Applications
+
+With our application management system, you can effortlessly store and organize all your job applications in one convenient location. Simply add a new application by filling in essential details such as the job title, company name, and job URL. You can also include an overview of the job description to better understand the role’s requirements.
+
+Once you’ve created an application, you can easily update its progress to track its lifecycle over time. This feature allows you to stay organized and monitor the status of your applications throughout your job search.
+
+
+### AI Assistant
+
+Harness the power of our AI Assistant, powered by OpenAI, to generate a variety of resources and messages designed to enhance your job search experience. Currently, the AI Assistant can create cover letters and follow-up messages, but the possibilities for future resources are endless. Stay tuned for even more features that will further streamline and support your job hunt!
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE.txt) file for more details.
