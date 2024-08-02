@@ -12,6 +12,7 @@ import ApplicationDetails from '@/Pages/Applications/Partials/ApplicationDetails
 import AddApplicationAction from '@/Pages/Applications/Partials/AddApplicationAction.vue';
 import { computed, ref } from 'vue';
 import ApplicationProgress from '@/Pages/Applications/Partials/ApplicationProgress.vue';
+import AssistantModal from '@/Pages/Applications/Partials/AssistantModal.vue';
 
 const props = defineProps({
   application: Object,
@@ -71,7 +72,7 @@ const favoriteApplication = () => {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-8 flex justify-between items-center">
           <div
-            class="flex flex-col md:flex-row items-start md:items-center gap-4 w-full"
+            class="flex flex-col md:flex-row items-start md:items-center gap-4"
           >
             <div
               class="inline-flex items-center px-4 py-2 rounded-full text-base font-medium bg-green-300 text-green-900 hover:bg-green-900 hover:text-green-300 cursor-pointer"
@@ -88,12 +89,12 @@ const favoriteApplication = () => {
             </a>
           </div>
 
-          <div
-            class="flex flex-col md:flex-row items-center justify-end gap-4 w-full md:w-1/4"
-          >
+          <div class="flex flex-col md:flex-row items-center justify-end gap-4">
             <SecondaryButton @click.prevent="showForm = !showForm">
               {{ showForm ? 'Progress' : 'Edit' }}
             </SecondaryButton>
+
+            <AssistantModal :application="application" />
 
             <AddApplicationAction
               :application="application"

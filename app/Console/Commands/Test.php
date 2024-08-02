@@ -29,7 +29,7 @@ class Test extends Command
         $payload = $chatRequestService->buildChatRequestPayload();
 
         try {
-            $connector = new OpenAIConnector();
+            $connector = new OpenAIConnector;
             $request = new CreateChatRequest($payload);
             $response = $connector->send($request);
 

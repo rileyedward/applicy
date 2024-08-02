@@ -41,5 +41,5 @@ return [
 
     'openai' => [
         'token' => env('OPEN_AI_API_KEY'),
-    ]
+    ],
 ];

@@ -31,8 +31,8 @@ class ChatRequestService
             ],
             [
                 'role' => 'user',
-                'content' => $contactInfoChatMessage
-            ]
+                'content' => $contactInfoChatMessage,
+            ],
         ];
 
         foreach ($resumeChatMessages as $chatMessage) {
@@ -43,7 +43,7 @@ class ChatRequestService
         }
 
         return [
-            "model" => "gpt-4o-mini-2024-07-18",
+            'model' => 'gpt-4o-mini-2024-07-18',
             'messages' => $messages,
         ];
     }
@@ -58,7 +58,7 @@ class ChatRequestService
 
     protected function buildContactInfoChatMessages(): string
     {
-        return 'Contact Information - Name: ' . $this->application->contact_name . ' Email: ' . $this->application->contact_email . ' Phone: ' . $this->application->contact_phone;
+        return 'Contact Information - Name: '.$this->application->contact_name.' Email: '.$this->application->contact_email.' Phone: '.$this->application->contact_phone;
     }
 
     protected function buildResumeChatMessages(): array
