@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ApplicationRequest;
 use App\Models\Application;
+use App\Models\ApplicationAction;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
@@ -163,6 +164,13 @@ class ApplicationController extends Controller
     public function store(ApplicationRequest $request): RedirectResponse
     {
         $application = $request->user()->applications()->create($request->all());
+
+        ApplicationAction::query()->create([
+            'user_id' => $request->user()->id,
+            'application_id' => $application->id,
+            'title' => $request->input('status') === 'need_to_apply' ? 'Needs to Apply' : 'Applied',
+            'new_status' => $request->input('status'),
+        ]);
 
         return redirect()->route('application.show', $application);
     }

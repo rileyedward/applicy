@@ -39,7 +39,7 @@ const openUpdateModal = (action) => {
             {{ new Date(action.created_at).toLocaleDateString() }}
           </p>
           <h4 class="text-2xl font-semibold">
-            {{ action.title ?? `Application is now ${action.new_status}` }}
+            {{ action.title ?? action?.new_status ?? 'Application Updated' }}
           </h4>
         </div>
 
