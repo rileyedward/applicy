@@ -59,7 +59,7 @@ const applications = computed(() => {
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
           <div class="flex justify-between items-center mb-4">
             <div class="flex items-start gap-4">
-              <div class="hidden md:inline-block">
+              <div>
                 <InputLabel for="status" value="Status" />
                 <SelectInput
                   id="status"
