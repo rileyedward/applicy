@@ -8,7 +8,7 @@ const props = defineProps({
   favorites: Array,
 });
 
-const showFavorites = ref(false);
+const showFavorites = ref(props.applications.length <= 0);
 
 const filteredApplications = computed(() => {
   return showFavorites.value ? props.favorites : props.applications;
