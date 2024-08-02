@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicationActionController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\PortfolioProjectController;
@@ -64,8 +65,11 @@ Route::middleware('auth')->prefix('applications')->group(function () {
     Route::put('/{application}', [ApplicationController::class, 'update'])->name('application.update');
     Route::delete('/{application}', [ApplicationController::class, 'destroy'])->name('application.destroy');
 
+    /** Actions */
     Route::post('/{application}/favorite', [ApplicationController::class, 'favorite'])->name('application.favorite');
+    Route::get('/{application}/cover-letter', CoverLetterController::class)->name('application.cover-letter');
 
+    /** Progress Actions */
     Route::post('/{application}/actions', [ApplicationActionController::class, 'store'])->name('application-action.store');
     Route::put('/{application}/actions/{applicationAction}', [ApplicationActionController::class, 'update'])->name('application-action.update');
     Route::delete('/{application}/actions/{applicationAction}', [ApplicationActionController::class, 'destroy'])->name('application-action.destroy');
