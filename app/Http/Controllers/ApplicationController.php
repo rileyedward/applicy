@@ -41,6 +41,10 @@ class ApplicationController extends Controller
                 'label' => 'All',
             ],
             [
+                'value' => 'favorites',
+                'label' => 'Favorites',
+            ],
+            [
                 'value' => 'offer_accepted',
                 'label' => 'Offer Accepted',
             ],
