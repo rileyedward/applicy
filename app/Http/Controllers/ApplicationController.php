@@ -195,7 +195,7 @@ class ApplicationController extends Controller
         return redirect()->route('application.show', $application);
     }
 
-    public function show(Application $application): Response
+    public function show(Request $request, Application $application): Response
     {
         $application->load('actions');
 
@@ -251,6 +251,7 @@ class ApplicationController extends Controller
         ];
 
         return inertia('Applications/Show', [
+            'canUseAi' => $request->user()->is_admin,
             'application' => $application,
             'statusFilters' => $statusFilters,
         ]);

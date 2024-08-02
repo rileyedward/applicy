@@ -24,6 +24,7 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
+        'is_admin',
         'initials',
     ];
 
@@ -31,6 +32,11 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function getIsAdminAttribute(): bool
+    {
+        return $this->email === config('app.admin_email');
+    }
 
     public function getInitialsAttribute(): string
     {

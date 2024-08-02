@@ -15,6 +15,7 @@ import ApplicationProgress from '@/Pages/Applications/Partials/ApplicationProgre
 import AssistantModal from '@/Pages/Applications/Partials/AssistantModal.vue';
 
 const props = defineProps({
+  canUseAi: Boolean,
   application: Object,
   statusFilters: Array,
 });
@@ -94,7 +95,7 @@ const favoriteApplication = () => {
               {{ showForm ? 'Progress' : 'Edit' }}
             </SecondaryButton>
 
-            <AssistantModal :application="application" />
+            <AssistantModal v-if="canUseAi" :application="application" />
 
             <AddApplicationAction
               :application="application"
