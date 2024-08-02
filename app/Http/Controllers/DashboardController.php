@@ -26,8 +26,15 @@ class DashboardController extends Controller
             ->orderBy('updated_at', 'asc')
             ->get();
 
+        $favorites = Application::query()
+            ->where('user_id', $request->user()->id)
+            ->where('favorite', true)
+            ->orderBy('updated_at', 'asc')
+            ->get();
+
         return inertia('Dashboard/Index', [
             'applications' => $applications,
+            'favorites' => $favorites,
         ]);
     }
 }
