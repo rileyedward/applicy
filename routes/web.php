@@ -5,6 +5,7 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationExperienceController;
+use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\WorkExperienceController;
 use Illuminate\Foundation\Application;
@@ -68,6 +69,8 @@ Route::middleware('auth')->prefix('applications')->group(function () {
     /** Actions */
     Route::post('/{application}/favorite', [ApplicationController::class, 'favorite'])->name('application.favorite');
     Route::get('/{application}/cover-letter', CoverLetterController::class)->name('application.cover-letter');
+    Route::get('/{application}/application-follow-up', [FollowUpController::class, 'application'])->name('application.application-follow-up');
+    Route::get('/{application}/interview-follow-up', [FollowUpController::class, 'interview'])->name('application.interview-follow-up');
 
     /** Progress Actions */
     Route::post('/{application}/actions', [ApplicationActionController::class, 'store'])->name('application-action.store');

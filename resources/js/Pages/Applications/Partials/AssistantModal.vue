@@ -20,8 +20,13 @@ const actions = [
     description: 'Generate a cover letter for this application.',
   },
   {
-    name: 'Send Follow-Up Message',
-    value: 'followUp',
+    name: 'Send Application Follow-Up Message',
+    value: 'applicationFollowUp',
+    description: 'Generate a follow-up message for this application.',
+  },
+  {
+    name: 'Send Interview Follow-Up Message',
+    value: 'interviewFollowUp',
     description: 'Generate a follow-up message for this application.',
   },
 ];
@@ -39,8 +44,11 @@ const handleAction = () => {
     case 'coverLetter':
       coverLetter();
       break;
-    case 'followUp':
-      // followUp();
+    case 'applicationFollowUp':
+      applicationFollowUp();
+      break;
+    case 'interviewFollowUp':
+      interviewFollowUp();
       break;
     default:
       break;
@@ -56,6 +64,42 @@ const coverLetter = () => {
     )
     .then((response) => {
       returnContent.value = response.data.cover_letter;
+      isProcessing.value = false;
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+};
+
+const applicationFollowUp = () => {
+  returnContent.value = '';
+  isProcessing.value = true;
+  axios
+    .get(
+      route('application.application-follow-up', {
+        application: props.application.id,
+      })
+    )
+    .then((response) => {
+      returnContent.value = response.data.follow_up;
+      isProcessing.value = false;
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+};
+
+const interviewFollowUp = () => {
+  returnContent.value = '';
+  isProcessing.value = true;
+  axios
+    .get(
+      route('application.interview-follow-up', {
+        application: props.application.id,
+      })
+    )
+    .then((response) => {
+      returnContent.value = response.data.follow_up;
       isProcessing.value = false;
     })
     .catch((error) => {

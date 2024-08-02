@@ -14,7 +14,7 @@ class CoverLetterController extends Controller
     public function __invoke(Request $request, Application $application): JsonResponse
     {
         $chatRequestService = new ChatRequestService($request->user(), $application);
-        $payload = $chatRequestService->buildChatRequestPayload();
+        $payload = $chatRequestService->buildCoverLetterChatRequestPayload();
 
         try {
             $connector = new OpenAIConnector;
@@ -22,8 +22,6 @@ class CoverLetterController extends Controller
             $response = $connector->send($request);
 
             $content = json_decode($response->body(), true);
-
-            logger($content['choices'][0]['message']['content']);
 
             return response()->json([
                 'cover_letter' => $content['choices'][0]['message']['content'],

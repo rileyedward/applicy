@@ -14,7 +14,75 @@ class ChatRequestService
         //
     }
 
-    public function buildChatRequestPayload(): array
+    public function buildApplicationFollowUpChatRequestPayload(): array
+    {
+        $applicationChatMessage = $this->buildApplicationChatMessage();
+        $contactInfoChatMessage = $this->buildContactInfoChatMessages();
+        $resumeChatMessages = $this->buildResumeChatMessages();
+
+        $messages = [
+            [
+                'role' => 'system',
+                'content' => 'Hello! I will provide you with detailed information about a user on this platform, including their personal details, education, work experience, and portfolio projects. Additionally, I will include a brief description of a job they have applied for. Based on this information, please write a follow-up message to the hiring manager regarding the application status. I only want you to output the contents of the follow-up message, no intro text or anything about it. Just pure follow-up content. Thank you!',
+            ],
+            [
+                'role' => 'user',
+                'content' => $applicationChatMessage,
+            ],
+            [
+                'role' => 'user',
+                'content' => $contactInfoChatMessage,
+            ],
+        ];
+
+        foreach ($resumeChatMessages as $chatMessage) {
+            $messages[] = [
+                'role' => 'user',
+                'content' => $chatMessage,
+            ];
+        }
+
+        return [
+            'model' => 'gpt-4o-mini-2024-07-18',
+            'messages' => $messages,
+        ];
+    }
+
+    public function buildInterviewFollowUpChatRequestPayload(): array
+    {
+        $applicationChatMessage = $this->buildApplicationChatMessage();
+        $contactInfoChatMessage = $this->buildContactInfoChatMessages();
+        $resumeChatMessages = $this->buildResumeChatMessages();
+
+        $messages = [
+            [
+                'role' => 'system',
+                'content' => 'Hello! I will provide you with detailed information about a user on this platform, including their personal details, education, work experience, and portfolio projects. Additionally, I will include a brief description of the interview they attended. Based on this information, please write a follow-up message to the hiring manager expressing gratitude and reiterating interest in the position. I only want you to output the contents of the follow-up message, no intro text or anything about it. Just pure follow-up content. Thank you!',
+            ],
+            [
+                'role' => 'user',
+                'content' => $applicationChatMessage,
+            ],
+            [
+                'role' => 'user',
+                'content' => $contactInfoChatMessage,
+            ],
+        ];
+
+        foreach ($resumeChatMessages as $chatMessage) {
+            $messages[] = [
+                'role' => 'user',
+                'content' => $chatMessage,
+            ];
+        }
+
+        return [
+            'model' => 'gpt-4o-mini-2024-07-18',
+            'messages' => $messages,
+        ];
+    }
+
+    public function buildCoverLetterChatRequestPayload(): array
     {
         $applicationChatMessage = $this->buildApplicationChatMessage();
         $contactInfoChatMessage = $this->buildContactInfoChatMessages();
