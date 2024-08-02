@@ -13,10 +13,26 @@ class ApplicationController extends Controller
 {
     public function index(Request $request): Response
     {
+        $statusRankings = [
+            'offer_accepted',
+            'offer_extended',
+            'interview_scheduled',
+            'coding_challenge',
+            'need_to_apply',
+            'interviewed',
+            'in_review',
+            'applied',
+            'offer_declined',
+            'rejected',
+            'withdrawn',
+        ];
+
         $applications = Application::query()
             ->where('user_id', $request->user()->id)
+            ->orderByRaw('FIELD(status, '.implode(',', array_map(function ($status) {
+                return "'$status'";
+            }, $statusRankings)).')')
             ->orderBy('updated_at', 'desc')
-            ->orderBy('status', 'desc')
             ->get();
 
         $statusFilters = [
@@ -25,36 +41,36 @@ class ApplicationController extends Controller
                 'label' => 'All',
             ],
             [
-                'value' => 'need_to_apply',
-                'label' => 'Need to Apply',
-            ],
-            [
-                'value' => 'applied',
-                'label' => 'Applied',
-            ],
-            [
-                'value' => 'in_review',
-                'label' => 'In Review',
-            ],
-            [
-                'value' => 'coding_challenge',
-                'label' => 'Coding Challenge',
-            ],
-            [
-                'value' => 'interview_scheduled',
-                'label' => 'Interview Scheduled',
-            ],
-            [
-                'value' => 'interviewed',
-                'label' => 'Interviewed',
+                'value' => 'offer_accepted',
+                'label' => 'Offer Accepted',
             ],
             [
                 'value' => 'offer_extended',
                 'label' => 'Offer Extended',
             ],
             [
-                'value' => 'offer_accepted',
-                'label' => 'Offer Accepted',
+                'value' => 'interview_scheduled',
+                'label' => 'Interview Scheduled',
+            ],
+            [
+                'value' => 'coding_challenge',
+                'label' => 'Coding Challenge',
+            ],
+            [
+                'value' => 'need_to_apply',
+                'label' => 'Need to Apply',
+            ],
+            [
+                'value' => 'interviewed',
+                'label' => 'Interviewed',
+            ],
+            [
+                'value' => 'in_review',
+                'label' => 'In Review',
+            ],
+            [
+                'value' => 'applied',
+                'label' => 'Applied',
             ],
             [
                 'value' => 'offer_declined',
