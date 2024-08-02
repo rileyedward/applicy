@@ -11,10 +11,12 @@ class DashboardController extends Controller
     {
         $user = $request->user();
 
-        $needtoApply = Application::query()
+        $needToApply = Application::query()
             ->where('user_id', $user->id)
             ->where('status', 'need_to_apply')
             ->get();
+
+        logger($needToApply);
 
         $interviewsScheduled = Application::query()
             ->where('user_id', $user->id)
@@ -27,7 +29,7 @@ class DashboardController extends Controller
             ->get();
 
         return inertia('Dashboard/Index', [
-            'needToApply' => $needtoApply,
+            'needToApply' => $needToApply,
             'interviewsScheduled' => $interviewsScheduled,
             'interviewScheduled' => $offeredExtended,
         ]);

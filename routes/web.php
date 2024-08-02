@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\ApplicationActionController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\WorkExperienceController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
