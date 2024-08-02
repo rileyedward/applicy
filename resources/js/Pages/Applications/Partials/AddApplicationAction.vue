@@ -38,9 +38,9 @@ const submit = () => {
 <template>
   <button @click.prevent="showModal = true">
     <span
-      class="inline-flex items-center px-4 py-2 rounded-full text-base font-medium bg-green-300 text-green-900 hover:bg-green-900 hover:text-green-300 cursor-pointer"
+      class="inline-flex items-center px-4 py-2 rounded-full text-base font-medium bg-blue-300 text-blue-900 hover:bg-blue-900 hover:text-blue-300 cursor-pointer"
     >
-      {{ application.status }}
+      + Action
     </span>
   </button>
   <Modal :show="showModal" @close="showModal = false">

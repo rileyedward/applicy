@@ -9,7 +9,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SelectInput from '@/Components/SelectInput.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import ApplicationDetails from '@/Pages/Applications/Partials/ApplicationDetails.vue';
-import StatusBadge from '@/Pages/Applications/Partials/StatusBadge.vue';
+import AddApplicationAction from '@/Pages/Applications/Partials/AddApplicationAction.vue';
 import { ref } from 'vue';
 import ApplicationProgress from '@/Pages/Applications/Partials/ApplicationProgress.vue';
 
@@ -60,21 +60,28 @@ const removeApplication = () => {
     <div class="py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-8 flex justify-between items-center">
-          <a :href="application.job_url">
-            <h3 class="font-semibold text-2xl">
-              {{ application.position }}
-            </h3>
-            <h4 class="text-lg text-slate-500">
-              {{ application.company_name }} - {{ application.location }}
-            </h4>
-          </a>
+          <div class="flex items-center gap-4">
+            <div
+              class="inline-flex items-center px-4 py-2 rounded-full text-base font-medium bg-green-300 text-green-900 hover:bg-green-900 hover:text-green-300 cursor-pointer"
+            >
+              {{ application.status }}
+            </div>
+            <a :href="application.job_url">
+              <h3 class="font-semibold text-2xl">
+                {{ application.position }}
+              </h3>
+              <h4 class="text-lg text-slate-500">
+                {{ application.company_name }} - {{ application.location }}
+              </h4>
+            </a>
+          </div>
 
           <div class="flex flex-col md:flex-row items-center gap-4">
             <SecondaryButton @click.prevent="showForm = !showForm">
-              {{ showForm ? 'Actions' : 'Edit' }}
+              {{ showForm ? 'Progress' : 'Edit' }}
             </SecondaryButton>
 
-            <StatusBadge
+            <AddApplicationAction
               :application="application"
               :statusFilters="statusFilters"
             />
