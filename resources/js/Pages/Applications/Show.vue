@@ -10,12 +10,16 @@ import SelectInput from '@/Components/SelectInput.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import ApplicationDetails from '@/Pages/Applications/Partials/ApplicationDetails.vue';
 import AddApplicationAction from '@/Pages/Applications/Partials/AddApplicationAction.vue';
-import { ref } from 'vue';
+import {computed, ref} from 'vue';
 import ApplicationProgress from '@/Pages/Applications/Partials/ApplicationProgress.vue';
 
 const props = defineProps({
   application: Object,
   statusFilters: Array,
+});
+
+const isFavorited = computed(() => {
+  return props.application.favorite;
 });
 
 const showForm = ref(false);
@@ -42,6 +46,12 @@ const removeApplication = () => {
   if (confirm('Are you sure you want to delete this application?')) {
     useForm({}).delete(route('application.destroy', props.application.id));
   }
+};
+
+const favoriteApplication = () => {
+  useForm({}).post(route('application.favorite', props.application.id), {
+    preserveScroll: true,
+  });
 };
 </script>
 
@@ -98,9 +108,38 @@ const removeApplication = () => {
           <ApplicationDetails :application="application" />
 
           <div class="w-full">
-            <h3 class="font-semibold text-lg mb-4">
-              {{ showForm ? 'Edit Application' : 'Application Progress' }}
-            </h3>
+            <div class="flex justify-between items-center">
+              <h3 class="font-semibold text-lg mb-4">
+                {{ showForm ? 'Edit Application' : 'Application Progress' }}
+              </h3>
+
+              <button
+                @click="favoriteApplication"
+                :class="isFavorited ? 'text-yellow-500' : 'text-gray-400'"
+                class="focus:outline-none"
+              >
+                <svg
+                  v-if="isFavorited"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.13 6.564a1 1 0 00.95.69h6.905c.969 0 1.371 1.24.588 1.81l-5.6 4.073a1 1 0 00-.364 1.118l2.13 6.564c.3.921-.755 1.688-1.54 1.118l-5.6-4.073a1 1 0 00-1.175 0l-5.6 4.073c-.785.57-1.84-.197-1.54-1.118l2.13-6.564a1 1 0 00-.364-1.118l-5.6-4.073c-.783-.57-.381-1.81.588-1.81h6.905a1 1 0 00.95-.69l2.13-6.564z"/>
+                </svg>
+                <svg
+                  v-else
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l2.13 6.564a1 1 0 00.95.69h6.905c.969 0 1.371 1.24.588 1.81l-5.6 4.073a1 1 0 00-.364 1.118l2.13 6.564c.3.921-.755 1.688-1.54 1.118l-5.6-4.073a1 1 0 00-1.175 0l-5.6 4.073c-.785.57-1.84-.197-1.54-1.118l2.13-6.564a1 1 0 00-.364-1.118l-5.6-4.073c-.783-.57-.381-1.81.588-1.81h6.905a1 1 0 00.95-.69l2.13-6.564z"/>
+                </svg>
+              </button>
+            </div>
 
             <div
               v-if="showForm"
