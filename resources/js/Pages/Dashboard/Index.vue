@@ -4,12 +4,11 @@ import { Head } from '@inertiajs/vue3';
 import { computed, ref } from 'vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import SelectInput from '@/Components/SelectInput.vue';
-import TextInput from '@/Components/TextInput.vue';
 
 const props = defineProps({
   needToApply: Array,
-  interviewScheduled: Array,
-  offeredExtended: Array,
+  interviewsScheduled: Array,
+  offersExtended: Array,
 });
 
 const applicationTypes = [
@@ -18,29 +17,31 @@ const applicationTypes = [
     value: 'needToApply',
   },
   {
-    label: 'Interview Scheduled',
-    value: 'interviewScheduled',
+    label: 'Interviews Scheduled',
+    value: 'interviewsScheduled',
   },
   {
-    label: 'Offered Extended',
-    value: 'offeredExtended',
+    label: 'Offers Extended',
+    value: 'offersExtended',
   },
 ];
 
-const applicationTypeSelected = ref('interviewScheduled');
+const applicationTypeSelected = ref('interviewsScheduled');
 
 const applications = computed(() => {
   if (applicationTypeSelected.value === 'needToApply') {
     return props.needToApply;
   }
 
-  if (applicationTypeSelected.value === 'interviewScheduled') {
-    return props.interviewScheduled;
+  if (applicationTypeSelected.value === 'interviewsScheduled') {
+    return props.interviewsScheduled;
   }
 
-  if (applicationTypeSelected.value === 'offeredExtended') {
-    return props.offeredExtended;
+  if (applicationTypeSelected.value === 'offersExtended') {
+    return props.offersExtended;
   }
+
+  return [];
 });
 </script>
 
