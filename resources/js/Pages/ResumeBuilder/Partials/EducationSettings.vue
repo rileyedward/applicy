@@ -2,40 +2,68 @@
 import { useForm } from '@inertiajs/vue3';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
 import Modal from '@/Components/Modal.vue';
-import { ref } from 'vue';
+import { watch } from 'vue';
 import InputError from '@/Components/InputError.vue';
 import TextArea from '@/Components/TextArea.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import TextInput from '@/Components/TextInput.vue';
 
-const showModal = ref(false);
-
-const form = useForm({
-  degree: '',
-  field_of_study: '',
-  institution_name: '',
-  location: '',
-  start_date: '',
-  end_date: '',
-  description: '',
-  skills: '',
+const props = defineProps({
+  modalOpen: Boolean,
+  experience: Array,
 });
 
+const emits = defineEmits(['close']);
+
+const form = useForm({
+  degree: props.experience?.degree ?? '',
+  field_of_study: props.experience?.field_of_study ?? '',
+  institution_name: props.experience?.institution_name ?? '',
+  location: props.experience?.location ?? '',
+  start_date: props.experience?.start_date ?? '',
+  end_date: props.experience?.end_date ?? '',
+  description: props.experience?.description ?? '',
+  skills: props.experience?.skills ?? '',
+});
+
+watch(
+  () => props.experience,
+  (value) => {
+    form.degree = value?.degree ?? '';
+    form.field_of_study = value?.field_of_study ?? '';
+    form.institution_name = value?.institution_name ?? '';
+    form.location = value?.location ?? '';
+    form.start_date = value?.start_date ?? '';
+    form.end_date = value?.end_date ?? '';
+    form.description = value?.description ?? '';
+    form.skills = value?.skills ?? '';
+  }
+);
+
 const submit = () => {
-  form.post(route('education-experience.store'), {
+  form.put(route('education-experience.update', props.experience.id), {
     onSuccess: () => {
-      showModal.value = false;
+      emits('close');
       form.reset();
     },
   });
 };
+
+const removeEducation = () => {
+  if (confirm('Are you sure you want to delete this education experience?')) {
+    form.delete(route('education-experience.destroy', props.experience.id), {
+      onSuccess: () => {
+        emits('close');
+        form.reset();
+      },
+    });
+  }
+};
 </script>
 
 <template>
-  <SecondaryButton @click.prevent="showModal = true"> + New </SecondaryButton>
-
-  <Modal :show="showModal" @close="showModal = false">
+  <Modal :show="modalOpen" @close="$emit('close')">
     <div>
       <h2 class="text-lg font-medium text-gray-900 mb-1">Add Education</h2>
 
@@ -178,7 +206,15 @@ const submit = () => {
           <InputError class="mt-2" :message="form.errors.skills" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <div class="flex justify-end items-center gap-4 mt-4">
+          <SecondaryButton
+            @click.prevent="removeEducation"
+            :class="{ 'opacity-25': form.processing }"
+            :disabled="form.processing"
+          >
+            Delete
+          </SecondaryButton>
+
           <PrimaryButton
             :class="{ 'opacity-25': form.processing }"
             :disabled="form.processing"
