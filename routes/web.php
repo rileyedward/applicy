@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\FollowUpController;
 use App\Http\Controllers\PortfolioProjectController;
+use App\Http\Controllers\ResumeBuilderController;
 use App\Http\Controllers\WorkExperienceController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,8 @@ Route::get('/', function () {
 /** Dashboard */
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
+
+    Route::get('/resume-builder', [ResumeBuilderController::class, 'index'])->name('resume-builder.index');
 });
 
 /** Work Experiences */
