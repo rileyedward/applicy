@@ -119,7 +119,12 @@ const interviewFollowUp = () => {
     </button>
 
     <Modal :show="showModal" maxWidth="4xl" @close="showModal = false">
-      <h4 class="text-lg font-medium text-gray-900 mb-4">AI Assistant</h4>
+      <h4 class="text-lg font-medium text-gray-900 mb-1">AI Assistant</h4>
+      <p class="max-w-xl text-sm text-gray-800 mb-4">
+        Select an action to generate content for your application. The AI
+        Assistant will generate content based on the information provided in
+        your application.
+      </p>
       <div class="space-y-2">
         <div v-for="action in actions" :key="action.value">
           <button

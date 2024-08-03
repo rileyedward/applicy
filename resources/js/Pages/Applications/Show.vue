@@ -71,7 +71,9 @@ const favoriteApplication = () => {
 
     <div class="py-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="mb-8 flex justify-between items-center">
+        <div
+          class="mb-8 flex flex-col md:flex-row justify-between items-center"
+        >
           <div
             class="flex flex-col md:flex-row items-start md:items-center gap-4"
           >
@@ -90,7 +92,7 @@ const favoriteApplication = () => {
             </a>
           </div>
 
-          <div class="flex flex-col md:flex-row items-center justify-end gap-4">
+          <div class="flex items-center justify-end gap-4 mt-4 md:mt-0">
             <SecondaryButton @click.prevent="showForm = !showForm">
               {{ showForm ? 'Progress' : 'Edit' }}
             </SecondaryButton>

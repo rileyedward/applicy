@@ -201,10 +201,6 @@ class ApplicationController extends Controller
 
         $statusFilters = [
             [
-                'value' => '',
-                'label' => 'All',
-            ],
-            [
                 'value' => 'need_to_apply',
                 'label' => 'Need to Apply',
             ],
