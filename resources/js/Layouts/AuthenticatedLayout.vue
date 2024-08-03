@@ -155,14 +155,8 @@ const showingNavigationDropdown = ref(false);
               <ResponsiveNavLink :href="route('profile.edit')">
                 Profile
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('work-experience.index')">
-                Experience
-              </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('education-experience.index')">
-                Education
-              </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('portfolio-project.index')">
-                Projects
+              <ResponsiveNavLink :href="route('resume-builder.index')">
+                Resume
               </ResponsiveNavLink>
               <ResponsiveNavLink
                 :href="route('logout')"
