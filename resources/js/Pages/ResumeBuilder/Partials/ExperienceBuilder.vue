@@ -1,3 +1,9 @@
+<script setup>
+defineProps({
+  workExperiences: Array,
+});
+</script>
+
 <template>
   <section>
     <header>

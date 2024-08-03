@@ -1,3 +1,9 @@
+<script setup>
+defineProps({
+  educationExperiences: Array,
+});
+</script>
+
 <template>
   <section>
     <header>

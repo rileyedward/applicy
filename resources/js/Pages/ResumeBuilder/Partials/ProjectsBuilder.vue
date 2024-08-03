@@ -1,3 +1,9 @@
+<script setup>
+defineProps({
+  portfolioProjects: Array,
+});
+</script>
+
 <template>
   <section>
     <header>

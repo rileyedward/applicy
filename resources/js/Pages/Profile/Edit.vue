@@ -28,7 +28,7 @@ defineProps({
         </a>
 
         <a :href="route('resume-builder.index')">
-          <PrimaryButton> Resume Builder </PrimaryButton>
+          <PrimaryButton> Manage Resume </PrimaryButton>
         </a>
       </div>
     </template>
