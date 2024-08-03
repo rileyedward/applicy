@@ -32,30 +32,21 @@ Route::middleware('auth')->group(function () {
 
 /** Work Experiences */
 Route::middleware('auth')->prefix('work-experiences')->group(function () {
-    Route::get('/', [WorkExperienceController::class, 'index'])->name('work-experience.index');
-    Route::get('/create', [WorkExperienceController::class, 'create'])->name('work-experience.create');
     Route::post('/', [WorkExperienceController::class, 'store'])->name('work-experience.store');
-    Route::get('/{workExperience}', [WorkExperienceController::class, 'show'])->name('work-experience.show');
     Route::put('/{workExperience}', [WorkExperienceController::class, 'update'])->name('work-experience.update');
     Route::delete('/{workExperience}', [WorkExperienceController::class, 'destroy'])->name('work-experience.destroy');
 });
 
 /** Education Experiences */
 Route::middleware('auth')->prefix('education-experiences')->group(function () {
-    Route::get('/', [EducationExperienceController::class, 'index'])->name('education-experience.index');
-    Route::get('/create', [EducationExperienceController::class, 'create'])->name('education-experience.create');
     Route::post('/', [EducationExperienceController::class, 'store'])->name('education-experience.store');
-    Route::get('/{educationExperience}', [EducationExperienceController::class, 'show'])->name('education-experience.show');
     Route::put('/{educationExperience}', [EducationExperienceController::class, 'update'])->name('education-experience.update');
     Route::delete('/{educationExperience}', [EducationExperienceController::class, 'destroy'])->name('education-experience.destroy');
 });
 
 /** Portfolio Projects */
 Route::middleware('auth')->prefix('portfolio-projects')->group(function () {
-    Route::get('/', [PortfolioProjectController::class, 'index'])->name('portfolio-project.index');
-    Route::get('/create', [PortfolioProjectController::class, 'create'])->name('portfolio-project.create');
     Route::post('/', [PortfolioProjectController::class, 'store'])->name('portfolio-project.store');
-    Route::get('/{portfolioProject}', [PortfolioProjectController::class, 'show'])->name('portfolio-project.show');
     Route::put('/{portfolioProject}', [PortfolioProjectController::class, 'update'])->name('portfolio-project.update');
     Route::delete('/{portfolioProject}', [PortfolioProjectController::class, 'destroy'])->name('portfolio-project.destroy');
 });
