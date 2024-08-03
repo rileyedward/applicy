@@ -3,6 +3,7 @@ import { computed, ref } from 'vue';
 import Modal from '@/Components/Modal.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SecondaryButton from '@/Components/SecondaryButton.vue';
+import TextArea from '@/Components/TextArea.vue';
 
 const props = defineProps({
   application: Object,
@@ -11,6 +12,7 @@ const props = defineProps({
 const showModal = ref(false);
 const selectedAction = ref(null);
 const isProcessing = ref(false);
+const message = ref('');
 const returnContent = ref('');
 
 const actions = [
@@ -28,6 +30,11 @@ const actions = [
     name: 'Send Interview Follow-Up Message',
     value: 'interviewFollowUp',
     description: 'Generate a follow-up message for this application.',
+  },
+  {
+    name: 'Custom Question',
+    value: 'customQuestion',
+    description: 'Generate a custom question for this application.',
   },
 ];
 
@@ -49,6 +56,9 @@ const handleAction = () => {
       break;
     case 'interviewFollowUp':
       interviewFollowUp();
+      break;
+    case 'customQuestion':
+      customQuestion();
       break;
     default:
       break;
@@ -106,6 +116,27 @@ const interviewFollowUp = () => {
       console.log(error.response.data);
     });
 };
+
+const customQuestion = () => {
+  returnContent.value = '';
+  isProcessing.value = true;
+  axios
+    .post(
+      route('application.question', {
+        application: props.application.id,
+      }),
+      {
+        message: message.value,
+      }
+    )
+    .then((response) => {
+      returnContent.value = response.data.answer;
+      isProcessing.value = false;
+    })
+    .catch((error) => {
+      console.log(error.response.data);
+    });
+};
 </script>
 
 <template>
@@ -148,6 +179,16 @@ const interviewFollowUp = () => {
             }}
           </p>
         </div>
+
+        <p v-if="selectedAction === 'customQuestion'" class="mt-2">
+          <textarea
+            v-model="message"
+            id="customQuestion"
+            rows="3"
+            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full mt-1"
+            ref="textarea"
+          />
+        </p>
       </div>
 
       <div v-if="selectedAction" class="flex justify-end mt-4">

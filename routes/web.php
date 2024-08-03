@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicationActionController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\ApplicationQuestionController;
 use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationExperienceController;
@@ -65,6 +66,7 @@ Route::middleware('auth')->prefix('applications')->group(function () {
     Route::get('/{application}/cover-letter', CoverLetterController::class)->name('application.cover-letter');
     Route::get('/{application}/application-follow-up', [FollowUpController::class, 'application'])->name('application.application-follow-up');
     Route::get('/{application}/interview-follow-up', [FollowUpController::class, 'interview'])->name('application.interview-follow-up');
+    Route::post('/{application}/question', ApplicationQuestionController::class)->name('application.question');
 
     /** Progress Actions */
     Route::post('/{application}/actions', [ApplicationActionController::class, 'store'])->name('application-action.store');

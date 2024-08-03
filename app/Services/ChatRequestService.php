@@ -14,6 +14,40 @@ class ChatRequestService
         //
     }
 
+    public function buildApplicationQuestionChatRequestPayload(string $message): array
+    {
+        $applicationChatMessage = $this->buildApplicationChatMessage();
+        $contactInfoChatMessage = $this->buildContactInfoChatMessages();
+        $resumeChatMessages = $this->buildResumeChatMessages();
+
+        $messages = [
+            [
+                'role' => 'system',
+                'content' => 'Hello! I will provide you with detailed information about a user on this platform, including their personal details, education, work experience, and portfolio projects. Additionally, I will include a brief description of a job they have applied for. Based on this information, please answer the following question for me: '.$message.'. Thank you!',
+            ],
+            [
+                'role' => 'user',
+                'content' => $applicationChatMessage,
+            ],
+            [
+                'role' => 'user',
+                'content' => $contactInfoChatMessage,
+            ],
+        ];
+
+        foreach ($resumeChatMessages as $chatMessage) {
+            $messages[] = [
+                'role' => 'user',
+                'content' => $chatMessage,
+            ];
+        }
+
+        return [
+            'model' => 'gpt-4o-mini-2024-07-18',
+            'messages' => $messages,
+        ];
+    }
+
     public function buildApplicationFollowUpChatRequestPayload(): array
     {
         $applicationChatMessage = $this->buildApplicationChatMessage();
