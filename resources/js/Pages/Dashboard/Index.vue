@@ -28,8 +28,8 @@ const filteredApplications = computed(() => {
     <div class="py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
-          <div class="flex justify-between items-center">
-            <h4 class="text-lg font-semibold text-gray-800 mb-4 pb-2">
+          <div class="flex justify-between items-center mb-1">
+            <h4 class="text-lg font-semibold text-gray-800">
               {{ showFavorites ? 'Favorites' : 'Actions Required' }}
             </h4>
 
@@ -40,7 +40,7 @@ const filteredApplications = computed(() => {
               <span
                 class="mr-2 text-sm font-medium text-gray-600 hidden md:inline-block"
               >
-                {{ showFavorites ? 'Show All' : 'Show Favorites' }}
+                {{ showFavorites ? 'Show All' : 'Show ToDo' }}
               </span>
               <div
                 class="relative w-12 h-6 bg-blue-500 rounded-full transition-colors duration-300"
@@ -53,6 +53,14 @@ const filteredApplications = computed(() => {
               </div>
             </div>
           </div>
+
+          <p class="text-sm text-gray-500 mb-4">
+            {{
+              showFavorites
+                ? 'These are all of the applications that you have marked as favorites.'
+                : 'These are all of the applications that require your attention.'
+            }}
+          </p>
 
           <div class="overflow-x-auto">
             <table
