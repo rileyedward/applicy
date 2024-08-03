@@ -29,98 +29,104 @@ const submit = () => {
     <Head title="Register" />
 
     <form @submit.prevent="submit">
-      <div>
-        <InputLabel for="first_name" value="First Name" />
+      <div class="w-full flex flex-col md:flex-row items-center gap-4">
+        <div class="w-full">
+          <InputLabel for="first_name" value="First Name" />
 
-        <TextInput
-          id="first_name"
-          type="text"
-          class="mt-1 block w-full"
-          v-model="form.first_name"
-          required
-          autofocus
-          autocomplete="first_name"
-        />
+          <TextInput
+            id="first_name"
+            type="text"
+            class="mt-1 block w-full"
+            v-model="form.first_name"
+            required
+            autofocus
+            autocomplete="first_name"
+          />
 
-        <InputError class="mt-2" :message="form.errors.first_name" />
+          <InputError class="mt-2" :message="form.errors.first_name" />
+        </div>
+
+        <div class="w-full">
+          <InputLabel for="middle_name" value="Middle Name" />
+
+          <TextInput
+            id="middle_name"
+            type="text"
+            class="mt-1 block w-full"
+            v-model="form.middle_name"
+            autofocus
+            autocomplete="middle_name"
+          />
+
+          <InputError class="mt-2" :message="form.errors.middle_name" />
+        </div>
       </div>
 
-      <div class="mt-4">
-        <InputLabel for="middle_name" value="Middle Name" />
+      <div class="w-full flex flex-col md:flex-row items-center gap-4 mt-4">
+        <div class="w-full">
+          <InputLabel for="last_name" value="Last Name" />
 
-        <TextInput
-          id="middle_name"
-          type="text"
-          class="mt-1 block w-full"
-          v-model="form.middle_name"
-          autofocus
-          autocomplete="middle_name"
-        />
+          <TextInput
+            id="last_name"
+            type="text"
+            class="mt-1 block w-full"
+            v-model="form.last_name"
+            required
+            autofocus
+            autocomplete="last_name"
+          />
 
-        <InputError class="mt-2" :message="form.errors.middle_name" />
+          <InputError class="mt-2" :message="form.errors.last_name" />
+        </div>
+
+        <div class="w-full">
+          <InputLabel for="email" value="Email" />
+
+          <TextInput
+            id="email"
+            type="email"
+            class="mt-1 block w-full"
+            v-model="form.email"
+            required
+            autocomplete="username"
+          />
+
+          <InputError class="mt-2" :message="form.errors.email" />
+        </div>
       </div>
 
-      <div class="mt-4">
-        <InputLabel for="last_name" value="Last Name" />
+      <div class="w-full flex flex-col md:flex-row items-center gap-4 mt-4">
+        <div class="w-full">
+          <InputLabel for="phone_number" value="Phone Number" />
 
-        <TextInput
-          id="last_name"
-          type="text"
-          class="mt-1 block w-full"
-          v-model="form.last_name"
-          required
-          autofocus
-          autocomplete="last_name"
-        />
+          <TextInput
+            id="phone_number"
+            type="text"
+            class="mt-1 block w-full"
+            v-model="form.phone_number"
+            required
+            autofocus
+            autocomplete="phone_number"
+          />
 
-        <InputError class="mt-2" :message="form.errors.last_name" />
-      </div>
+          <InputError class="mt-2" :message="form.errors.phone_number" />
+        </div>
 
-      <div class="mt-4">
-        <InputLabel for="email" value="Email" />
+        <div class="w-full">
+          <InputLabel for="location" value="Location" />
 
-        <TextInput
-          id="email"
-          type="email"
-          class="mt-1 block w-full"
-          v-model="form.email"
-          required
-          autocomplete="username"
-        />
+          <TextInput
+            id="location"
+            type="text"
+            class="mt-1 block w-full"
+            v-model="form.location"
+            required
+            autofocus
+            autocomplete="location"
+          />
 
-        <InputError class="mt-2" :message="form.errors.email" />
-      </div>
-
-      <div class="mt-4">
-        <InputLabel for="phone_number" value="Phone Number" />
-
-        <TextInput
-          id="phone_number"
-          type="text"
-          class="mt-1 block w-full"
-          v-model="form.phone_number"
-          required
-          autofocus
-          autocomplete="phone_number"
-        />
-
-        <InputError class="mt-2" :message="form.errors.phone_number" />
-      </div>
-
-      <div class="mt-4">
-        <InputLabel for="location" value="Location" />
-
-        <TextInput
-          id="location"
-          type="text"
-          class="mt-1 block w-full"
-          v-model="form.location"
-          required
-          autofocus
-          autocomplete="location"
-        />
-
-        <InputError class="mt-2" :message="form.errors.location" />
+          <InputError class="mt-2" :message="form.errors.location" />
+        </div>
       </div>
 
       <div class="mt-4">
