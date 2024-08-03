@@ -11,13 +11,29 @@ defineProps({
     <header class="flex justify-between items-center">
       <div>
         <h2 class="text-lg font-medium text-gray-900">Education</h2>
-
         <p class="mt-1 text-sm text-gray-600">
           Add your educational background.
         </p>
       </div>
-
       <AddEducation />
     </header>
+
+    <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        v-for="experience in educationExperiences"
+        :key="experience.id"
+        class="p-4 bg-gray-100 rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg cursor-pointer"
+      >
+        <h3 class="text-lg font-medium text-gray-900">
+          {{ experience.degree }}
+        </h3>
+        <p class="mt-1 text-sm text-gray-600">
+          {{ experience.field_of_study }}
+        </p>
+        <p class="mt-1 text-sm text-gray-600">
+          {{ experience.institution_name }} - {{ experience.location }}
+        </p>
+      </div>
+    </div>
   </section>
 </template>
