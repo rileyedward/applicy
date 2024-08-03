@@ -31,7 +31,7 @@ class WorkExperienceController extends Controller
     {
         $workExperience = $request->user()->workExperiences()->create($request->validated());
 
-        return to_route('work-experience.show', $workExperience);
+        return back();
     }
 
     public function show(WorkExperience $workExperience): Response
@@ -52,6 +52,6 @@ class WorkExperienceController extends Controller
     {
         $workExperience->delete();
 
-        return to_route('work-experience.index');
+        return back();
     }
 }

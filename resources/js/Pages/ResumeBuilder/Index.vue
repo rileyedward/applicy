@@ -1,10 +1,10 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import EducationBuilder from '@/Pages/ResumeBuilder/Partials/EducationBuilder.vue';
-import ExperienceBuilder from '@/Pages/ResumeBuilder/Partials/ExperienceBuilder.vue';
 import ProjectsBuilder from '@/Pages/ResumeBuilder/Partials/ProjectsBuilder.vue';
-import { Head } from '@inertiajs/vue3';
+import WorkBuilder from '@/Pages/ResumeBuilder/Partials/WorkBuilder.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { Head } from '@inertiajs/vue3';
 
 defineProps({
   educationExperiences: Array,
@@ -38,7 +38,7 @@ defineProps({
         </div>
 
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-          <ExperienceBuilder :workExperiences="workExperiences" />
+          <WorkBuilder :workExperiences="workExperiences" />
         </div>
 
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
