@@ -70,14 +70,8 @@ const showingNavigationDropdown = ref(false);
                     <DropdownLink :href="route('profile.edit')">
                       Profile
                     </DropdownLink>
-                    <DropdownLink :href="route('work-experience.index')">
-                      Experience
-                    </DropdownLink>
-                    <DropdownLink :href="route('education-experience.index')">
-                      Education
-                    </DropdownLink>
-                    <DropdownLink :href="route('portfolio-project.index')">
-                      Projects
+                    <DropdownLink :href="route('resume-builder.index')">
+                      Resume
                     </DropdownLink>
                     <DropdownLink
                       :href="route('logout')"
