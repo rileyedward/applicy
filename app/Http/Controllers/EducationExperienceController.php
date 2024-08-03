@@ -31,7 +31,7 @@ class EducationExperienceController extends Controller
     {
         $educationExperience = $request->user()->educationExperiences()->create($request->validated());
 
-        return to_route('education-experience.show', $educationExperience);
+        return back();
     }
 
     public function show(EducationExperience $educationExperience): Response
