@@ -30,7 +30,7 @@ class PortfolioProjectController extends Controller
     {
         $portfolioProject = $request->user()->portfolioProjects()->create($request->all());
 
-        return redirect()->route('portfolio-project.show', $portfolioProject);
+        return back();
     }
 
     public function show(PortfolioProject $portfolioProject): Response
@@ -51,6 +51,6 @@ class PortfolioProjectController extends Controller
     {
         $portfolioProject->delete();
 
-        return to_route('portfolio-project.index');
+        return back();
     }
 }
