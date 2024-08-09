@@ -35,7 +35,7 @@ const logout = () => {
     >
       <div class="py-1">
         <a
-          href="#"
+          :href="route('profile.index')"
           class="w-full block px-4 py-2 text-sm text-gray-300 hover:bg-orange-600 hover:text-white text-left"
           >Profile</a
         >
