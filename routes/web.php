@@ -16,7 +16,7 @@ Route::prefix('/register')->group(function () {
 });
 
 Route::prefix('/login')->group(function () {
-    Route::get('/', [LoginController::class, 'index'])->name('login.index');
+    Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/', [LoginController::class, 'store'])->name('login.store');
 });
 

@@ -125,7 +125,7 @@ const submit = () => {
     </div>
 
     <div class="flex items-center gap-4 justify-end">
-      <a :href="route('login.index')">
+      <a :href="route('login')">
         <SecondaryButton class="text-neutral-400 hover:text-neutral-100">
           Already registered?
         </SecondaryButton>
