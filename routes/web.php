@@ -4,9 +4,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return inertia('Welcome');
-})->name('index');
+Route::get('/', fn () => inertia('Landing/Index'))->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
