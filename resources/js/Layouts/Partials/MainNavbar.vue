@@ -7,7 +7,10 @@ import UserMenuDropdown from '@/Layouts/Partials/UserMenuDropdown.vue';
     <div class="max-w-6xl mx-auto flex justify-between items-center px-8 py-6">
       <div class="flex items-center gap-24">
         <h1 class="text-2xl font-bold">
-          <a :href="route('dashboard')"> Applicy. </a>
+          <a :href="route('dashboard')">
+            Applicy
+            <span class="text-orange-600">.</span>
+          </a>
         </h1>
 
         <ul class="flex items-center gap-12">
