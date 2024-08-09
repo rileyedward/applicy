@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(ProfessionalExperience::class);
     }
+
+    public function portfolioProjects(): HasMany
+    {
+        return $this->hasMany(PortfolioProject::class);
+    }
 }
