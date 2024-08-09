@@ -26,7 +26,7 @@ class User extends Authenticatable
         'pm_type',
         'pm_last_four',
         'trial_ends_at',
-        'tokens'
+        'tokens',
     ];
 
     protected $hidden = [

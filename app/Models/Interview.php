@@ -19,7 +19,7 @@ class Interview extends Model
         'interview_time',
         'interview_url',
         'is_completed',
-        'notes'
+        'notes',
     ];
 
     public function user(): BelongsTo

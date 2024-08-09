@@ -15,7 +15,7 @@ class Transaction extends Model
     protected $fillable = [
         'user_id',
         'stripe_id',
-        'amount'
+        'amount',
     ];
 
     public function user(): BelongsTo
