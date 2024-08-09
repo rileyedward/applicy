@@ -8,7 +8,7 @@ const props = defineProps({
   },
   maxWidth: {
     type: String,
-    default: '2xl',
+    default: '5xl',
   },
   closeable: {
     type: Boolean,
@@ -55,6 +55,10 @@ const maxWidthClass = computed(() => {
     lg: 'sm:max-w-lg',
     xl: 'sm:max-w-xl',
     '2xl': 'sm:max-w-2xl',
+    '3xl': 'sm:max-w-3xl',
+    '4xl': 'sm:max-w-4xl',
+    '5xl': 'sm:max-w-5xl',
+    '6xl': 'sm:max-w-6xl',
   }[props.maxWidth];
 });
 </script>
@@ -80,7 +84,7 @@ const maxWidthClass = computed(() => {
             class="fixed inset-0 transform transition-all"
             @click="close"
           >
-            <div class="absolute inset-0 bg-gray-500 opacity-75" />
+            <div class="absolute inset-0 bg-[#18181B] opacity-75" />
           </div>
         </Transition>
 
@@ -94,7 +98,7 @@ const maxWidthClass = computed(() => {
         >
           <div
             v-show="show"
-            class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto"
+            class="mb-6 bg-neutral-800 rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto"
             :class="maxWidthClass"
           >
             <slot v-if="show" />
