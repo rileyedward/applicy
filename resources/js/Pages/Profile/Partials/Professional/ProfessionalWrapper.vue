@@ -29,7 +29,7 @@ const close = () => {
     @close="close"
   />
 
-  <div class="max-w-6xl mx-auto flex justify-between items-center px-8 py-12">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-8 py-8">
     <div class="w-full bg-neutral-800 rounded-2xl p-6">
       <div class="w-full flex justify-between items-start">
         <div class="max-w-[225px] md:max-w-full">

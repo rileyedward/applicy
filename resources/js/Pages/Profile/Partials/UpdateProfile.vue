@@ -24,7 +24,7 @@ const submit = () => {
 </script>
 
 <template>
-  <div class="max-w-6xl mx-auto flex justify-between items-center px-8 py-12">
+  <div class="max-w-6xl mx-auto flex justify-between items-center px-8 py-8">
     <div class="w-full bg-neutral-800 rounded-2xl p-6">
       <h3 class="text-lg font-medium">Profile Information</h3>
       <p class="mt-1 text-sm text-neutral-400 mb-6">
