@@ -20,7 +20,7 @@ const selectEducationExperience = (educationExperience) => {
 <template>
   <EducationModal
     :show="showModal"
-    :educationExperience="selectedEducationExperience"
+    :selectedEducationExperience="selectedEducationExperience"
     @close="showModal = false"
   />
 
