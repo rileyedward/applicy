@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
@@ -37,6 +38,13 @@ Route::prefix('/professional')->middleware('auth')->group(function () {
     Route::post('/', [ProfessionalExperienceController::class, 'store'])->name('professional.store');
     Route::put('/{professionalExperience}', [ProfessionalExperienceController::class, 'update'])->name('professional.update');
     Route::delete('/{professionalExperience}', [ProfessionalExperienceController::class, 'destroy'])->name('professional.destroy');
+});
+
+/** Portfolio Projects */
+Route::prefix('/portfolio')->middleware('auth')->group(function () {
+    Route::post('/', [PortfolioProjectController::class, 'store'])->name('portfolio.store');
+    Route::put('/{portfolioProject}', [PortfolioProjectController::class, 'update'])->name('portfolio.update');
+    Route::delete('/{portfolioProject}', [PortfolioProjectController::class, 'destroy'])->name('portfolio.destroy');
 });
 
 /** Profile */
