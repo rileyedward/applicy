@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,13 @@ Route::prefix('/education')->middleware('auth')->group(function () {
     Route::post('/', [EducationExperienceController::class, 'store'])->name('education.store');
     Route::put('/{educationExperience}', [EducationExperienceController::class, 'update'])->name('education.update');
     Route::delete('/{educationExperience}', [EducationExperienceController::class, 'destroy'])->name('education.destroy');
+});
+
+/** Professional Experience */
+Route::prefix('/professional')->middleware('auth')->group(function () {
+    Route::post('/', [ProfessionalExperienceController::class, 'store'])->name('professional.store');
+    Route::put('/{professionalExperience}', [ProfessionalExperienceController::class, 'update'])->name('professional.update');
+    Route::delete('/{professionalExperience}', [ProfessionalExperienceController::class, 'destroy'])->name('professional.destroy');
 });
 
 /** Profile */
