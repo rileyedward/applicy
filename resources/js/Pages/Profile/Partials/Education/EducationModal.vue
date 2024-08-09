@@ -7,7 +7,7 @@ import InputError from '@/Components/Breeze/InputError.vue';
 import TextArea from '@/Components/Breeze/TextArea.vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
-import { watch } from 'vue';
+import { computed, watch } from 'vue';
 
 const props = defineProps({
   show: Boolean,
@@ -31,6 +31,14 @@ watch(
     form.description = value?.description ?? '';
   }
 );
+
+const formTitle = computed(() => {
+  if (props.selectedEducationExperience) {
+    return 'Manage Education Experience';
+  }
+
+  return 'Add Education Experience';
+});
 
 const form = useForm({
   institution_name: props.selectedEducationExperience?.institution_name ?? '',
@@ -78,6 +86,8 @@ const removeEducationExperience = () => {
 <template>
   <Modal :show="show" @close="$emit('close')">
     <div class="p-6">
+      <h3 class="text-lg font-medium text-neutral-100 mb-4">{{ formTitle }}</h3>
+
       <form class="space-y-6">
         <div class="flex flex-col lg:flex-row gap-4">
           <div class="flex-1">
