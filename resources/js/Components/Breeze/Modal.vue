@@ -8,7 +8,7 @@ const props = defineProps({
   },
   maxWidth: {
     type: String,
-    default: '5xl',
+    default: '4xl',
   },
   closeable: {
     type: Boolean,

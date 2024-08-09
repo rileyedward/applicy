@@ -15,13 +15,18 @@ const selectEducationExperience = (educationExperience) => {
   selectedEducationExperience.value = educationExperience;
   showModal.value = true;
 };
+
+const close = () => {
+  selectedEducationExperience.value = null;
+  showModal.value = false;
+};
 </script>
 
 <template>
   <EducationModal
     :show="showModal"
     :selectedEducationExperience="selectedEducationExperience"
-    @close="showModal = false"
+    @close="close"
   />
 
   <div class="max-w-6xl mx-auto flex justify-between items-center px-8 py-12">
