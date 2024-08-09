@@ -12,8 +12,8 @@ import JobHuntSketch from '@/Components/Sketches/JobHuntSketch.vue';
         hunt journey.
       </h1>
       <p class="mb-4">
-        Create a personalized profile to seamlessly track all your job
-        applications and monitor their progress in real time.
+        Build your personalized profile to effortlessly track job applications
+        in real time and leverage AI-powered tools to land your dream job.
       </p>
       <a
         :href="route('register.index')"
