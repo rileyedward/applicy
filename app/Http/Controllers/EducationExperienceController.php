@@ -7,6 +7,7 @@ use App\Models\EducationExperience;
 use App\Services\EducationService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class EducationExperienceController extends Controller
 {
@@ -30,6 +31,8 @@ class EducationExperienceController extends Controller
 
     public function update(EducationExperienceRequest $request, EducationExperience $educationExperience): RedirectResponse
     {
+        Gate::authorize('isOwner', $educationExperience);
+
         $this->educationService->updateEducationExperience(
             $educationExperience,
             $request->input('institution_name'),
