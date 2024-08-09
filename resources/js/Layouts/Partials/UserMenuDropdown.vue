@@ -33,14 +33,14 @@ const logout = () => {
       v-if="dropdownOpen"
       class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-neutral-800 ring-1 ring-gray-600"
     >
-      <div class="py-1">
+      <div>
         <a
           :href="route('profile.index')"
-          class="w-full block px-4 py-2 text-sm text-gray-300 hover:bg-orange-600 hover:text-white text-left"
+          class="w-full block px-4 py-2 text-sm text-gray-300 hover:bg-orange-600 hover:text-white text-left rounded-t-md"
           >Profile</a
         >
         <button
-          class="w-full block px-4 py-2 text-sm text-gray-300 hover:bg-orange-600 hover:text-white text-left"
+          class="w-full block px-4 py-2 text-sm text-gray-300 hover:bg-orange-600 hover:text-white text-left rounded-b-md"
           @click.prevent="logout"
         >
           Logout
