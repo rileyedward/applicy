@@ -5,7 +5,6 @@ import TextInput from '@/Components/Breeze/TextInput.vue';
 import InputError from '@/Components/Breeze/InputError.vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
-import { computed } from 'vue';
 
 const form = useForm({
   first_name: '',
@@ -33,6 +32,7 @@ const submit = () => {
           id="first_name"
           type="text"
           class="mt-1 block w-full bg-neutral-700 border-none"
+          placeholder="Master"
         />
         <InputError :message="form.errors.first_name" class="mt-1" />
       </div>
@@ -43,6 +43,7 @@ const submit = () => {
           id="middle_name"
           type="text"
           class="mt-1 block w-full bg-neutral-700 border-none"
+          placeholder="Optional..."
         />
         <InputError :message="form.errors.middle_name" class="mt-1" />
       </div>
@@ -56,6 +57,7 @@ const submit = () => {
           id="last_name"
           type="text"
           class="mt-1 block w-full bg-neutral-700 border-none"
+          placeholder="Chief"
         />
         <InputError :message="form.errors.last_name" class="mt-1" />
       </div>
@@ -66,6 +68,7 @@ const submit = () => {
           id="email"
           type="email"
           class="mt-1 block w-full bg-neutral-700 border-none"
+          placeholder="masterchief@cortana.com"
         />
         <InputError :message="form.errors.email" class="mt-1" />
       </div>
@@ -79,6 +82,7 @@ const submit = () => {
           id="phone_number"
           type="text"
           class="mt-1 block w-full bg-neutral-700 border-none"
+          placeholder="1171176969"
         />
         <InputError :message="form.errors.phone_number" class="mt-1" />
       </div>
@@ -89,6 +93,7 @@ const submit = () => {
           id="location"
           type="text"
           class="mt-1 block w-full bg-neutral-700 border-none"
+          placeholder="Eridanus II"
         />
         <InputError :message="form.errors.location" class="mt-1" />
       </div>
@@ -102,6 +107,7 @@ const submit = () => {
           id="password"
           type="password"
           class="mt-1 block w-full bg-neutral-700 border-none"
+          placeholder="********"
         />
         <InputError :message="form.errors.password" class="mt-1" />
       </div>
@@ -112,6 +118,7 @@ const submit = () => {
           id="password_confirmation"
           type="password"
           class="mt-1 block w-full bg-neutral-700 border-none"
+          placeholder="********"
         />
         <InputError :message="form.errors.password_confirmation" class="mt-1" />
       </div>
@@ -127,7 +134,7 @@ const submit = () => {
       <PrimaryButton
         type="submit"
         :disabled="form.processing"
-        class="bg-blue-600 hover:bg-blue-500"
+        class="bg-orange-600 hover:bg-orange-500"
       >
         Register
       </PrimaryButton>
