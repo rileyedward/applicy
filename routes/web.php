@@ -19,3 +19,5 @@ Route::prefix('/login')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login.index');
     Route::post('/', [LoginController::class, 'store'])->name('login.store');
 });
+
+Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout');

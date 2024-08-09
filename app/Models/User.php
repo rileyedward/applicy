@@ -34,11 +34,18 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    protected $appends = ['initials'];
+
     protected function casts(): array
     {
         return [
             'password' => 'hashed',
         ];
+    }
+
+    public function getInitialsAttribute(): string
+    {
+        return ucfirst($this->first_name[0].$this->last_name[0]);
     }
 
     public function skills(): HasMany

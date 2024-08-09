@@ -1,5 +1,9 @@
+<script setup>
+import MainLayout from '@/Layouts/MainLayout.vue';
+</script>
+
 <template>
-  <div>
+  <MainLayout>
     <h1>Dashboard</h1>
-  </div>
+  </MainLayout>
 </template>

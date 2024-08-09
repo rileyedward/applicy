@@ -5,6 +5,7 @@ import GuestNavbar from '@/Layouts/Partials/GuestNavbar.vue';
 <template>
   <div>
     <GuestNavbar />
+
     <main>
       <slot />
     </main>
