@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return inertia('Welcome');
-});
+})->name('index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', function () {
