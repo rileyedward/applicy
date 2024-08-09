@@ -18,6 +18,7 @@ class ProfileController extends Controller
 
         return inertia('Profile/Index', [
             'educationExperiences' => $user->educationExperiences,
+            'professionalExperiences' => $user->professionalExperiences,
         ]);
     }
 
