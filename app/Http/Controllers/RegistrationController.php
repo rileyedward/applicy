@@ -32,6 +32,8 @@ class RegistrationController extends Controller
         event(new Registered($user));
         auth()->login($user);
 
+        $this->authenticationService->createStripeCustomer($user);
+
         return to_route('dashboard');
     }
 }

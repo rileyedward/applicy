@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Laravel\Cashier\Exceptions\CustomerAlreadyCreated;
 
 class AuthenticationService
 {
@@ -24,5 +25,14 @@ class AuthenticationService
             'location' => $location,
             'password' => bcrypt($password),
         ]);
+    }
+
+    public function createStripeCustomer(User $user): void
+    {
+        try {
+            $user->createAsStripeCustomer();
+        } catch (CustomerAlreadyCreated $exception) {
+            // Do nothing...
+        }
     }
 }
