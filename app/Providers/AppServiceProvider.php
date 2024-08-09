@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\CoverLetterTemplate;
 use App\Models\EducationExperience;
 use App\Models\PortfolioProject;
 use App\Models\ProfessionalExperience;
+use App\Policies\CoverLetterTemplatePolicy;
 use App\Policies\EducationExperiencePolicy;
 use App\Policies\PortfolioProjectPolicy;
 use App\Policies\ProfessionalExperiencePolicy;
@@ -24,5 +26,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(EducationExperience::class, EducationExperiencePolicy::class);
         Gate::policy(ProfessionalExperience::class, ProfessionalExperiencePolicy::class);
         Gate::policy(PortfolioProject::class, PortfolioProjectPolicy::class);
+        Gate::policy(CoverLetterTemplate::class, CoverLetterTemplatePolicy::class);
     }
 }

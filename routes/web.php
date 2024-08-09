@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
@@ -45,6 +46,13 @@ Route::prefix('/portfolio')->middleware('auth')->group(function () {
     Route::post('/', [PortfolioProjectController::class, 'store'])->name('portfolio.store');
     Route::put('/{portfolioProject}', [PortfolioProjectController::class, 'update'])->name('portfolio.update');
     Route::delete('/{portfolioProject}', [PortfolioProjectController::class, 'destroy'])->name('portfolio.destroy');
+});
+
+/** Cover Letter Templates */
+Route::prefix('/cover-letter')->middleware('auth')->group(function () {
+    Route::post('/', [CoverLetterController::class, 'store'])->name('cover-letter.store');
+    Route::put('/{coverLetterTemplate}', [CoverLetterController::class, 'update'])->name('cover-letter.update');
+    Route::delete('/{coverLetterTemplate}', [CoverLetterController::class, 'destroy'])->name('cover-letter.destroy');
 });
 
 /** Profile */
