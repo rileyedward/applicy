@@ -12,6 +12,7 @@ class EducationExperienceFactory extends Factory
         return [
             'user_id' => User::factory(),
             'institution_name' => $this->faker->company,
+            'location' => $this->faker->city,
             'degree' => $this->faker->word,
             'field_of_study' => $this->faker->word,
             'start_date' => $this->faker->date,

@@ -16,6 +16,7 @@ class EducationExperience extends Model
     protected $fillable = [
         'user_id',
         'institution_name',
+        'location',
         'degree',
         'field_of_study',
         'start_date',

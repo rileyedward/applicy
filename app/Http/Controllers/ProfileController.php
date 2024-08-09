@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Services\ProfileService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Inertia\Response;
 
 class ProfileController extends Controller
 {
     public function __construct(protected ProfileService $profileService) {}
 
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return inertia('Profile/Index');
+        $user = $request->user();
+
+        return inertia('Profile/Index', [
+            'educationExperiences' => $user->educationExperiences,
+        ]);
     }
 
     public function update(UpdateProfileRequest $request): RedirectResponse
