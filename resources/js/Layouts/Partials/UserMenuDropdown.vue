@@ -25,22 +25,22 @@ const logout = () => {
   <div class="relative inline-block text-left">
     <div
       @click="dropdownOpen = !dropdownOpen"
-      class="bg-white p-2 rounded-full font-bold text-orange-700 cursor-pointer"
+      class="bg-neutral-800 p-2 rounded-full font-bold text-white cursor-pointer"
     >
       {{ initials }}
     </div>
     <div
       v-if="dropdownOpen"
-      class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
+      class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-neutral-800 ring-1 ring-gray-600"
     >
       <div class="py-1">
         <a
           href="#"
-          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+          class="w-full block px-4 py-2 text-sm text-gray-300 hover:bg-orange-600 hover:text-white text-left"
           >Profile</a
         >
         <button
-          class="w-full block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left"
+          class="w-full block px-4 py-2 text-sm text-gray-300 hover:bg-orange-600 hover:text-white text-left"
           @click.prevent="logout"
         >
           Logout
