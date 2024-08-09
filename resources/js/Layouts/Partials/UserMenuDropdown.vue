@@ -25,7 +25,7 @@ const logout = () => {
   <div class="relative inline-block text-left">
     <div
       @click="dropdownOpen = !dropdownOpen"
-      class="bg-neutral-800 p-2 rounded-full font-bold text-white cursor-pointer"
+      class="bg-neutral-800 hover:bg-orange-500 p-2 rounded-full font-bold text-white cursor-pointer"
     >
       {{ initials }}
     </div>
