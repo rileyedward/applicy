@@ -16,6 +16,7 @@ class Transaction extends Model
         'user_id',
         'stripe_id',
         'amount',
+        'tokens_purchased',
     ];
 
     public function user(): BelongsTo

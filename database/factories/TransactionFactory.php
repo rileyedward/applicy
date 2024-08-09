@@ -13,6 +13,7 @@ class TransactionFactory extends Factory
             'user_id' => User::factory(),
             'stripe_id' => $this->faker->uuid,
             'amount' => $this->faker->randomFloat(2, 1, 1000),
+            'tokens_purchased' => $this->faker->numberBetween(1, 1000),
         ];
     }
 }

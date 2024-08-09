@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('stripe_id');
             $table->decimal('amount', 10, 2);
+            $table->integer('tokens_purchased');
             $table->timestamps();
         });
     }
