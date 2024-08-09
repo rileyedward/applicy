@@ -32,4 +32,24 @@ class Skill extends Model
             'education_experience_id'
         )->withPivot('id');
     }
+
+    public function professionalExperiences(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            ProfessionalExperience::class,
+            'professional_skill',
+            'skill_id',
+            'professional_experience_id'
+        )->withPivot('id');
+    }
+
+    public function portfolioProjects(): BelongsToMany
+    {
+        return $this->belongsToMany(
+            PortfolioProject::class,
+            'project_skill',
+            'skill_id',
+            'portfolio_project_id'
+        )->withPivot('id');
+    }
 }
