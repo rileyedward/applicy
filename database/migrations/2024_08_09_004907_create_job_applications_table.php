@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        $environmentEnums = config('applications.environments')->map(fn ($environment) => $environment['value'])->toArray();
-        $statusEnums = config('applications.statuses')->map(fn ($status) => $status['value'])->toArray();
+        $environments = config('applications.environments');
+        $environmentEnums = array_map(fn ($env) => $env['value'], $environments);
+
+        $statuses = config('applications.statuses');
+        $statusEnums = array_map(fn ($status) => $status['value'], $statuses);
 
         Schema::create('job_applications', function (Blueprint $table) use ($environmentEnums, $statusEnums) {
             $table->id();
