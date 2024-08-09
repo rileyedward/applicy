@@ -10,9 +10,7 @@ use Inertia\Response;
 
 class RegistrationController extends Controller
 {
-    public function __construct(protected AuthenticationService $authenticationService)
-    {
-    }
+    public function __construct(protected AuthenticationService $authenticationService) {}
 
     public function index(): Response
     {
