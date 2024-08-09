@@ -6,7 +6,7 @@
       </h1>
 
       <a
-        class="bg-orange-700 text-white text-sm px-6 py-1 rounded-md font-semibold hover:bg-orange-500"
+        class="bg-orange-600 text-white text-sm px-6 py-1 rounded-md font-semibold hover:bg-orange-700"
         :href="route('dashboard')"
       >
         Dashboard
