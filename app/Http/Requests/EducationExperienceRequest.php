@@ -14,8 +14,8 @@ class EducationExperienceRequest extends FormRequest
             'degree' => ['required', 'string'],
             'field_of_study' => ['required', 'string'],
             'start_date' => ['required', 'date'],
-            'end_date' => ['required', 'date', 'after:start_date'],
-            'description' => ['required', 'string'],
+            'end_date' => ['nullable', 'date', 'after:start_date'],
+            'description' => ['nullable', 'string'],
         ];
     }
 }

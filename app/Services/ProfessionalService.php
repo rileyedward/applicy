@@ -13,8 +13,8 @@ class ProfessionalService
         string $companyName,
         string $location,
         string $startDate,
-        string $endDate,
-        string $description
+        ?string $endDate,
+        ?string $description
     ): ProfessionalExperience {
         return ProfessionalExperience::query()->create([
             'user_id' => $user->id,
@@ -33,7 +33,7 @@ class ProfessionalService
         string $companyName,
         string $location,
         string $startDate,
-        string $endDate,
+        ?string $endDate,
         string $description
     ): ProfessionalExperience {
         $professionalExperience->update([

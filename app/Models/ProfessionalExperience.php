@@ -14,6 +14,7 @@ class ProfessionalExperience extends Model
     protected $table = 'professional_experiences';
 
     protected $fillable = [
+        'user_id',
         'position',
         'company_name',
         'location',

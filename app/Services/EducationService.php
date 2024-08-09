@@ -14,7 +14,7 @@ class EducationService
         string $degree,
         string $fieldOfStudy,
         string $startDate,
-        string $endDate,
+        ?string $endDate,
         string $description
     ): EducationExperience {
         return EducationExperience::query()->create([
@@ -36,8 +36,8 @@ class EducationService
         string $degree,
         string $fieldOfStudy,
         string $startDate,
-        string $endDate,
-        string $description
+        ?string $endDate,
+        ?string $description
     ): EducationExperience {
         $educationExperience->update([
             'institution_name' => $institutionName,

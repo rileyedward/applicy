@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('degree');
             $table->string('field_of_study');
             $table->date('start_date');
-            $table->date('end_date');
+            $table->date('end_date')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

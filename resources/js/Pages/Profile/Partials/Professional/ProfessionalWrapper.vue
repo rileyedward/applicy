@@ -2,6 +2,7 @@
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
 import { ref } from 'vue';
 import ProfessionalCard from '@/Pages/Profile/Partials/Professional/ProfessionalCard.vue';
+import ProfessionalModal from '@/Pages/Profile/Partials/Professional/ProfessionalModal.vue';
 
 defineProps({
   professionalExperiences: Array,
@@ -22,6 +23,12 @@ const close = () => {
 </script>
 
 <template>
+  <ProfessionalModal
+    :show="showModal"
+    :selectedProfessionalExperience="selectedProfessionalExperience"
+    @close="close"
+  />
+
   <div class="max-w-6xl mx-auto flex justify-between items-center px-8 py-12">
     <div class="w-full bg-neutral-800 rounded-2xl p-6">
       <div class="w-full flex justify-between items-center">
