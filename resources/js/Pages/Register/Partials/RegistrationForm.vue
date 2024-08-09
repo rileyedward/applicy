@@ -127,7 +127,7 @@ const submit = () => {
     <div class="flex items-center gap-4 justify-end">
       <a :href="route('login.index')">
         <SecondaryButton class="text-neutral-400 hover:text-neutral-100">
-          Already Registered
+          Already registered?
         </SecondaryButton>
       </a>
 
