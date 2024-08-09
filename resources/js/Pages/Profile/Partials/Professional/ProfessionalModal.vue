@@ -92,7 +92,10 @@ const removeProfessionalExperience = () => {
 <template>
   <Modal :show="show" @close="$emit('close')">
     <div class="p-6">
-      <h3 class="text-lg font-medium text-neutral-100 mb-4">{{ formTitle }}</h3>
+      <h3 class="text-lg font-medium text-neutral-100 mb-1">{{ formTitle }}</h3>
+      <p class="text-sm text-neutral-300 mb-6">
+        Add your professional experience to showcase your work history.
+      </p>
 
       <form class="space-y-6">
         <div class="flex flex-col lg:flex-row gap-4">
