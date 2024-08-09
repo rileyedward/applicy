@@ -170,7 +170,7 @@ const removeProfessionalExperience = () => {
 
         <div class="flex justify-end gap-4">
           <SecondaryButton
-            v-if="props.selectedProfessionalExperience"
+            v-if="selectedProfessionalExperience"
             @click.prevent="removeProfessionalExperience"
           >
             Remove
