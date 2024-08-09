@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(PortfolioProject::class);
     }
+
+    public function coverLetterTemplates(): HasMany
+    {
+        return $this->hasMany(CoverLetterTemplate::class);
+    }
 }
