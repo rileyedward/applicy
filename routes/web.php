@@ -7,9 +7,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', fn () => inertia('Landing/Index'))->name('index');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return inertia('Welcome');
-    })->name('dashboard');
+    Route::get('/dashboard', fn () => inertia('Dashboard/Index'))->name('dashboard');
 });
 
 Route::prefix('/register')->group(function () {
