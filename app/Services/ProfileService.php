@@ -11,6 +11,7 @@ class ProfileService
         string $firstName,
         ?string $middleName,
         string $lastName,
+        string $email,
         ?string $phoneNumber,
         string $location
     ): User {
@@ -18,6 +19,7 @@ class ProfileService
             'first_name' => $firstName,
             'middle_name' => $middleName,
             'last_name' => $lastName,
+            'email' => $email,
             'phone_number' => $phoneNumber,
             'location' => $location,
         ]);

@@ -23,6 +23,7 @@ class ProfileController extends Controller
             $request->input('first_name'),
             $request->input('middle_name'),
             $request->input('last_name'),
+            $request->input('email'),
             $request->input('phone_number'),
             $request->input('location')
         );
