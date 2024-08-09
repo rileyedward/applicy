@@ -27,7 +27,10 @@ const logout = () => {
           'text-black': mobileMenuOpen,
         }"
       >
-        <a :href="route('dashboard')"> Applicy. </a>
+        <a :href="route('dashboard')">
+          Applicy
+          <span class="text-orange-600">.</span>
+        </a>
       </h1>
     </div>
 
