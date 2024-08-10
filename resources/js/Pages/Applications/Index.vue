@@ -9,6 +9,7 @@ import Fuse from 'fuse.js';
 import StatusFilter from '@/Pages/Applications/Partials/StatusFilter.vue';
 import EnvironmentFilter from '@/Pages/Applications/Partials/EnvironmentFilter.vue';
 import LocationFilter from '@/Pages/Applications/Partials/LocationFilter.vue';
+import ApplicationBanner from '@/Pages/Applications/Partials/ApplicationBanner.vue';
 
 const props = defineProps({
   environmentSelections: Array,
@@ -109,13 +110,12 @@ const filteredApplications = computed(() => {
         <LoadingSpinner v-if="loading" />
 
         <div v-else>
-          <div v-if="applications.length > 0">
-            <div
+          <div v-if="applications.length > 0" class="space-y-4">
+            <ApplicationBanner
               v-for="application in filteredApplications"
               :key="application.id"
-            >
-              {{ application.position }} - {{ application.company_name }}
-            </div>
+              :jobApplication="application"
+            />
           </div>
 
           <NoApplications v-else />

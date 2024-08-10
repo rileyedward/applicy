@@ -29,6 +29,11 @@ class JobApplication extends Model
         'status',
     ];
 
+    protected $appends = [
+        'status_pretty',
+        'last_update',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -37,5 +42,16 @@ class JobApplication extends Model
     public function actions(): HasMany
     {
         return $this->hasMany(JobApplicationAction::class);
+    }
+
+    public function getStatusPrettyAttribute(): string
+    {
+        return ucwords(str_replace('_', ' ', $this->status));
+    }
+
+    public function getLastUpdateAttribute(): string
+    {
+        // TODO: come back to this later once actions are implemented
+        return $this->updated_at->diffForHumans();
     }
 }
