@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\ApplicationSearchController;
 use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
-use App\Http\Controllers\ApplicationSearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
