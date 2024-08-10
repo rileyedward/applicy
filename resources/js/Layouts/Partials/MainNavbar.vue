@@ -17,7 +17,7 @@ import UserMenuDropdown from '@/Layouts/Partials/UserMenuDropdown.vue';
           <li
             class="font-light text-sm hover:font-semibold hover:text-orange-500"
           >
-            <a href="#"> Applications </a>
+            <a :href="route('applications.index')"> Applications </a>
           </li>
         </ul>
       </div>

@@ -6,11 +6,18 @@ use App\Http\Requests\JobApplicationRequest;
 use App\Models\JobApplication;
 use App\Services\JobApplicationService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Inertia\Response;
 
 class JobApplicationController extends Controller
 {
     public function __construct(protected JobApplicationService $jobApplicationService) {}
+
+    public function index(Request $request): Response
+    {
+        return inertia('Applications/Index');
+    }
 
     public function store(JobApplicationRequest $request): RedirectResponse
     {

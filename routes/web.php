@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\EducationExperienceController;
+use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
@@ -53,6 +54,14 @@ Route::prefix('/cover-letter')->middleware('auth')->group(function () {
     Route::post('/', [CoverLetterController::class, 'store'])->name('cover-letter.store');
     Route::put('/{coverLetterTemplate}', [CoverLetterController::class, 'update'])->name('cover-letter.update');
     Route::delete('/{coverLetterTemplate}', [CoverLetterController::class, 'destroy'])->name('cover-letter.destroy');
+});
+
+/** Applications */
+Route::prefix('/applications')->middleware('auth')->group(function () {
+    Route::get('/', [JobApplicationController::class, 'index'])->name('applications.index');
+    Route::post('/', [JobApplicationController::class, 'store'])->name('applications.store');
+    Route::put('/{jobApplication}', [JobApplicationController::class, 'update'])->name('applications.update');
+    Route::delete('/{jobApplication}', [JobApplicationController::class, 'destroy'])->name('applications.destroy');
 });
 
 /** Profile */
