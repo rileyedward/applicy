@@ -2,12 +2,15 @@
 import MainLayout from '@/Layouts/MainLayout.vue';
 import JobApplicationModal from '@/Pages/Applications/Partials/JobApplicationModal.vue';
 import { onMounted, ref, watch } from 'vue';
+import NoApplications from '@/Pages/Applications/Partials/NoApplications.vue';
+import LoadingSpinner from '@/Components/Icons/LoadingSpinner.vue';
 
 defineProps({
   environmentSelections: Array,
   statusSelections: Array,
 });
 
+const loading = ref(true);
 const applications = ref([]);
 const selectedEnvironments = ref([]);
 const selectedStatuses = ref([]);
@@ -26,6 +29,7 @@ const retrieveApplications = () => {
     })
     .then((response) => {
       applications.value = response?.data || [];
+      loading.value = false;
     });
 };
 
@@ -46,6 +50,16 @@ watch([selectedEnvironments.value, selectedStatuses.value], () => {
           :environmentSelections="environmentSelections"
           :statusSelections="statusSelections"
         />
+      </div>
+
+      <div class="py-12">
+        <LoadingSpinner v-if="loading" />
+
+        <div v-else>
+          <div v-if="applications.length > 0">Applications</div>
+
+          <NoApplications v-else />
+        </div>
       </div>
     </div>
   </MainLayout>
