@@ -6,9 +6,7 @@ import JobApplicationModal from '@/Pages/Applications/Partials/JobApplicationMod
 <template>
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
-      <div class="flex justify-between items-center">
-        <h3>Your Applications</h3>
-
+      <div class="flex justify-end items-center">
         <JobApplicationModal />
       </div>
     </div>

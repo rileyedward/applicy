@@ -31,7 +31,6 @@ return new class extends Migration
             $table->string('contact_name')->nullable();
             $table->string('contact_email')->nullable();
             $table->string('contact_phone')->nullable();
-            $table->timestamp('applied_at')->nullable();
             $table->enum('status', $statusEnums)->default('not_applied');
             $table->timestamps();
         });

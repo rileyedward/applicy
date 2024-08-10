@@ -34,7 +34,6 @@ class JobApplicationController extends Controller
             $request->input('contact_phone'),
             $request->input('description'),
             $request->input('notes'),
-            $request->input('applied_at'),
             $request->input('status')
         );
 
@@ -58,7 +57,6 @@ class JobApplicationController extends Controller
             $request->input('contact_phone'),
             $request->input('description'),
             $request->input('notes'),
-            $request->input('applied_at'),
             $request->input('status')
         );
 

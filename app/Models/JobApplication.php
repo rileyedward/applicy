@@ -26,7 +26,6 @@ class JobApplication extends Model
         'contact_phone',
         'description',
         'notes',
-        'applied_at',
         'status',
     ];
 

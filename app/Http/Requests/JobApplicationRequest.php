@@ -23,7 +23,6 @@ class JobApplicationRequest extends FormRequest
             'contact_phone' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
             'notes' => ['nullable', 'string'],
-            'applied_at' => ['required', 'date'],
             'status' => ['required', 'string', 'in:'.implode(',', $statusEnums)],
         ];
     }

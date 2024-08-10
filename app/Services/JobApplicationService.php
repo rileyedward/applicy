@@ -20,7 +20,6 @@ class JobApplicationService
         ?string $contactPhone,
         ?string $description,
         ?string $notes,
-        string $appliedAt,
         string $status
     ): JobApplication {
         return JobApplication::query()->create([
@@ -36,7 +35,6 @@ class JobApplicationService
             'contact_phone' => $contactPhone,
             'description' => $description,
             'notes' => $notes,
-            'applied_at' => $appliedAt,
             'status' => $status,
         ]);
     }
@@ -54,7 +52,6 @@ class JobApplicationService
         ?string $contactPhone,
         ?string $description,
         ?string $notes,
-        string $appliedAt,
         string $status
     ): JobApplication {
         $jobApplication->update([
@@ -69,7 +66,6 @@ class JobApplicationService
             'contact_phone' => $contactPhone,
             'description' => $description,
             'notes' => $notes,
-            'applied_at' => $appliedAt,
             'status' => $status,
         ]);
 
