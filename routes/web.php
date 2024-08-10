@@ -6,6 +6,7 @@ use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
+use App\Http\Controllers\ApplicationSearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use Illuminate\Support\Facades\Route;
@@ -60,6 +61,8 @@ Route::prefix('/cover-letter')->middleware('auth')->group(function () {
 Route::prefix('/applications')->middleware('auth')->group(function () {
     Route::get('/', [JobApplicationController::class, 'index'])->name('applications.index');
     Route::post('/', [JobApplicationController::class, 'store'])->name('applications.store');
+    Route::get('/search', ApplicationSearchController::class)->name('applications.search');
+
     Route::put('/{jobApplication}', [JobApplicationController::class, 'update'])->name('applications.update');
     Route::delete('/{jobApplication}', [JobApplicationController::class, 'destroy'])->name('applications.destroy');
 });
