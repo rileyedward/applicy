@@ -1,5 +1,10 @@
 <script setup>
 import UserMenuDropdown from '@/Layouts/Partials/UserMenuDropdown.vue';
+import { computed } from 'vue';
+
+const isApplicationRoute = computed(() => {
+  return window.location.pathname.includes('applications');
+});
 </script>
 
 <template>
@@ -16,6 +21,7 @@ import UserMenuDropdown from '@/Layouts/Partials/UserMenuDropdown.vue';
         <ul class="flex items-center gap-12">
           <li
             class="font-light text-sm hover:font-semibold hover:text-orange-500"
+            :class="{ 'font-semibold text-orange-500': isApplicationRoute }"
           >
             <a :href="route('applications.index')"> Applications </a>
           </li>
