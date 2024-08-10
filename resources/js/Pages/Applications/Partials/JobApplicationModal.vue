@@ -47,7 +47,7 @@ const submit = () => {
 <template>
   <div>
     <SecondaryButton @click.prevent="showModal = true">
-      + Application
+      Add
     </SecondaryButton>
     <Modal :show="showModal" @close="showModal = false" maxWidth="6xl">
       <div class="p-6">
