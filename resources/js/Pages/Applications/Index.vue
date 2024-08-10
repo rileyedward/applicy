@@ -61,7 +61,9 @@ const filteredApplications = computed(() => {
 <template>
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
-      <div class="flex justify-end items-center">
+      <div class="flex justify-between items-center">
+        <div />
+
         <JobApplicationModal
           :environmentSelections="environmentSelections"
           :statusSelections="statusSelections"
