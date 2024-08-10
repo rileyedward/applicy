@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JobApplication extends Model
 {
-    use HasFactory, HasActions;
+    use HasActions, HasFactory;
 
     protected $table = 'job_applications';
 
@@ -31,7 +31,7 @@ class JobApplication extends Model
     ];
 
     protected $appends = [
-        'status_pretty'
+        'status_pretty',
     ];
 
     public function user(): BelongsTo

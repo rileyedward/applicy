@@ -63,6 +63,7 @@ Route::prefix('/applications')->middleware('auth')->group(function () {
     Route::post('/', [JobApplicationController::class, 'store'])->name('applications.store');
     Route::get('/search', ApplicationSearchController::class)->name('applications.search');
 
+    Route::get('/{jobApplication}', [JobApplicationController::class, 'show'])->name('applications.show');
     Route::put('/{jobApplication}', [JobApplicationController::class, 'update'])->name('applications.update');
     Route::delete('/{jobApplication}', [JobApplicationController::class, 'destroy'])->name('applications.destroy');
 });

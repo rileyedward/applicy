@@ -53,6 +53,15 @@ class JobApplicationController extends Controller
         return back();
     }
 
+    public function show(Request $request, JobApplication $jobApplication): Response
+    {
+        $jobApplication->append('last_update');
+
+        return inertia('Applications/Show', [
+            'jobApplication' => $jobApplication,
+        ]);
+    }
+
     public function update(JobApplicationRequest $request, JobApplication $jobApplication): RedirectResponse
     {
         Gate::authorize('isOwner', $jobApplication);

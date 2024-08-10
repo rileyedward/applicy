@@ -6,7 +6,7 @@ const props = defineProps({
 });
 
 const gotoApplication = () => {
-  alert('todo');
+  window.location.href = `/applications/${props.jobApplication.id}`;
 };
 </script>
 
