@@ -1,9 +1,10 @@
 <script setup>
-import MainLayout from '@/Layouts/MainLayout.vue';
 import JobApplicationModal from '@/Pages/Applications/Partials/JobApplicationModal.vue';
-import { computed, onMounted, ref, watch } from 'vue';
 import NoApplications from '@/Pages/Applications/Partials/NoApplications.vue';
 import LoadingSpinner from '@/Components/Icons/LoadingSpinner.vue';
+import TextInput from '@/Components/Breeze/TextInput.vue';
+import MainLayout from '@/Layouts/MainLayout.vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import Fuse from 'fuse.js';
 
 defineProps({
@@ -51,7 +52,8 @@ const fuseOptions = {
 const filteredApplications = computed(() => {
   if (search.value && search.value.length >= 3) {
     const fuse = new Fuse(applications.value, fuseOptions);
-    return fuse.search(search.value);
+    const items = fuse.search(search.value);
+    return items.map((item) => item.item);
   }
 
   return applications.value;
@@ -62,7 +64,11 @@ const filteredApplications = computed(() => {
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="flex justify-between items-center">
-        <div />
+        <TextInput
+          v-model="search"
+          placeholder="Search for a job..."
+          class="w-full max-w-72 block bg-neutral-700 border-none"
+        />
 
         <JobApplicationModal
           :environmentSelections="environmentSelections"
