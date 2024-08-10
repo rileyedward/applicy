@@ -31,8 +31,7 @@ class JobApplication extends Model
     ];
 
     protected $appends = [
-        'status_pretty',
-        'last_update',
+        'status_pretty'
     ];
 
     public function user(): BelongsTo
@@ -52,7 +51,6 @@ class JobApplication extends Model
 
     public function getLastUpdateAttribute(): string
     {
-        // TODO: come back to this later once actions are implemented
-        return $this->updated_at->diffForHumans();
+        return $this->actions->sortByDesc('created_at')->first()->created_at->diffForHumans();
     }
 }

@@ -20,7 +20,8 @@ class ApplicationSearchController extends Controller
             ->when($environments, fn ($query, $environments) => $query->whereIn('environment', $environments))
             ->when($statuses, fn ($query, $statuses) => $query->whereIn('status', $statuses))
             ->when($locations, fn ($query, $locations) => $query->whereIn('location', $locations))
-            ->get();
+            ->get()
+            ->append('last_update');
 
         return response()->json($jobApplications);
     }
