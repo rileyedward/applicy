@@ -6,8 +6,10 @@ import TextInput from '@/Components/Breeze/TextInput.vue';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import { computed, onMounted, ref, watch } from 'vue';
 import Fuse from 'fuse.js';
+import StatusFilter from '@/Pages/Applications/Partials/StatusFilter.vue';
+import EnvironmentFilter from '@/Pages/Applications/Partials/EnvironmentFilter.vue';
 
-defineProps({
+const props = defineProps({
   environmentSelections: Array,
   statusSelections: Array,
 });
@@ -40,7 +42,7 @@ onMounted(() => {
   retrieveApplications();
 });
 
-watch([selectedEnvironments.value, selectedStatuses.value], () => {
+watch([selectedEnvironments, selectedStatuses], () => {
   retrieveApplications();
 });
 
@@ -64,11 +66,24 @@ const filteredApplications = computed(() => {
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="flex justify-between items-center">
-        <TextInput
-          v-model="search"
-          placeholder="Search for a job..."
-          class="w-full max-w-72 block bg-neutral-700 border-none"
-        />
+        <div class="flex items-center gap-4">
+          <TextInput
+            v-model="search"
+            placeholder="Search for a job..."
+            class="w-full max-w-72 block bg-neutral-700 border-none"
+          />
+
+          <StatusFilter
+            :statusSelections="statusSelections"
+            @updateSelectedStatuses="selectedStatuses = $event"
+          />
+
+          <EnvironmentFilter
+            :environmentSelections="environmentSelections"
+            @updateSelectedEnvironments="selectedEnvironments = $event"
+          />
+        </div>
+
 
         <JobApplicationModal
           :environmentSelections="environmentSelections"
