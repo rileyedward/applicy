@@ -48,7 +48,12 @@ const submit = () => {
 
 <template>
   <div>
-    <SecondaryButton @click.prevent="showModal = true"> Add </SecondaryButton>
+    <SecondaryButton
+      @click.prevent="showModal = true"
+      class="bg-orange-400 hover:bg-orange-600 w-full sm:w-fit flex justify-center"
+    >
+      New
+    </SecondaryButton>
     <Modal :show="showModal" @close="showModal = false" maxWidth="6xl">
       <div class="p-6">
         <h3 class="text-lg font-medium text-neutral-100 mb-1">

@@ -70,35 +70,39 @@ const filteredApplications = computed(() => {
 <template>
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
-      <div class="flex justify-between items-center">
-        <div class="flex items-center gap-4">
-          <TextInput
-            v-model="search"
-            placeholder="Search for a job..."
-            class="w-full max-w-72 block bg-neutral-700 border-none"
-          />
+      <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+        <TextInput
+          v-model="search"
+          placeholder="Search for a job..."
+          class="w-full max-w-full md:max-w-72 block bg-neutral-700 border-none"
+        />
 
-          <StatusFilter
-            :statusSelections="statusSelections"
-            @updateSelectedStatuses="selectedStatuses = $event"
-          />
+        <div
+          class="w-full flex flex-col sm:flex-row justify-between md:justify-end gap-4"
+        >
+          <div class="flex justify-between sm:justify-none items-center gap-4">
+            <StatusFilter
+              :statusSelections="statusSelections"
+              @updateSelectedStatuses="selectedStatuses = $event"
+            />
 
-          <LocationFilter
-            :locationSelections="locationSelections"
-            @updateSelectedLocations="selectedLocations = $event"
-          />
+            <LocationFilter
+              :locationSelections="locationSelections"
+              @updateSelectedLocations="selectedLocations = $event"
+            />
 
-          <EnvironmentFilter
+            <EnvironmentFilter
+              :environmentSelections="environmentSelections"
+              @updateSelectedEnvironments="selectedEnvironments = $event"
+            />
+          </div>
+
+          <JobApplicationModal
             :environmentSelections="environmentSelections"
-            @updateSelectedEnvironments="selectedEnvironments = $event"
+            :statusSelections="statusSelections"
+            @refreshApplications="retrieveApplications"
           />
         </div>
-
-        <JobApplicationModal
-          :environmentSelections="environmentSelections"
-          :statusSelections="statusSelections"
-          @refreshApplications="retrieveApplications"
-        />
       </div>
 
       <div class="py-12">
