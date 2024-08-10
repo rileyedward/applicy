@@ -1,17 +1,28 @@
 <script setup>
-defineProps({
+import { computed } from 'vue';
+
+const props = defineProps({
   jobApplication: Object,
 });
+
+const gotoApplication = () => {
+  alert('todo');
+};
 </script>
 
 <template>
-  <div class="p-6 bg-neutral-800 rounded-md shadow-md">
-    <div class="flex justify-between items-start mb-4">
+  <div
+    class="p-6 bg-neutral-800 rounded-md shadow-md transform transition-transform duration-300 hover:scale-105 cursor-pointer"
+    @click.prevent="gotoApplication"
+  >
+    <div class="flex justify-between items-start">
       <div>
-        <h2 class="text-xl font-bold text-white">
+        <h2 class="text-2xl font-semibold text-white flex items-center gap-2">
           {{ jobApplication.position }}
         </h2>
-        <p class="text-gray-400">{{ jobApplication.company_name }}</p>
+        <p class="text-lg text-gray-400 flex items-center gap-2">
+          {{ jobApplication.company_name }}
+        </p>
       </div>
 
       <div
