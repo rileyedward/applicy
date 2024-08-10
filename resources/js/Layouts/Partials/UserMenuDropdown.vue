@@ -31,7 +31,7 @@ const logout = () => {
     </div>
     <div
       v-if="dropdownOpen"
-      class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-neutral-800 ring-1 ring-gray-600"
+      class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-neutral-800 ring-1 ring-gray-600 z-50"
     >
       <div>
         <a
