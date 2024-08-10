@@ -8,10 +8,12 @@ import { computed, onMounted, ref, watch } from 'vue';
 import Fuse from 'fuse.js';
 import StatusFilter from '@/Pages/Applications/Partials/StatusFilter.vue';
 import EnvironmentFilter from '@/Pages/Applications/Partials/EnvironmentFilter.vue';
+import LocationFilter from '@/Pages/Applications/Partials/LocationFilter.vue';
 
 const props = defineProps({
   environmentSelections: Array,
   statusSelections: Array,
+  locationSelections: Array,
 });
 
 const loading = ref(true);
@@ -19,6 +21,7 @@ const search = ref('');
 const applications = ref([]);
 const selectedEnvironments = ref([]);
 const selectedStatuses = ref([]);
+const selectedLocations = ref([]);
 
 const retrieveApplications = () => {
   axios
@@ -30,6 +33,8 @@ const retrieveApplications = () => {
             : selectedEnvironments.value,
         statuses:
           selectedStatuses.value.length === 0 ? null : selectedStatuses.value,
+        locations:
+          selectedLocations.value.length === 0 ? null : selectedLocations.value,
       },
     })
     .then((response) => {
@@ -42,7 +47,7 @@ onMounted(() => {
   retrieveApplications();
 });
 
-watch([selectedEnvironments, selectedStatuses], () => {
+watch([selectedEnvironments, selectedStatuses, selectedLocations], () => {
   retrieveApplications();
 });
 
@@ -76,6 +81,11 @@ const filteredApplications = computed(() => {
           <StatusFilter
             :statusSelections="statusSelections"
             @updateSelectedStatuses="selectedStatuses = $event"
+          />
+
+          <LocationFilter
+            :locationSelections="locationSelections"
+            @updateSelectedLocations="selectedLocations = $event"
           />
 
           <EnvironmentFilter

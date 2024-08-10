@@ -14,6 +14,7 @@ class ApplicationSearchRequest extends FormRequest
         return [
             'environments' => ['array', 'in:'.implode(',', $environmentEnums)],
             'statuses' => ['array', 'in:'.implode(',', $statusEnums)],
+            'locations' => ['array'],
         ];
     }
 }

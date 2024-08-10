@@ -18,10 +18,12 @@ class JobApplicationController extends Controller
     {
         $environmentSelections = config('applications.environments');
         $statusSelections = config('applications.statuses');
+        $locationSelections = $request->user()->jobApplications()->distinct('location')->pluck('location');
 
         return inertia('Applications/Index', [
             'environmentSelections' => $environmentSelections,
             'statusSelections' => $statusSelections,
+            'locationSelections' => $locationSelections,
         ]);
     }
 
