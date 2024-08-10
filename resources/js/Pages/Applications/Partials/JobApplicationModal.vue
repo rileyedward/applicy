@@ -15,6 +15,8 @@ const props = defineProps({
   statusSelections: Array,
 });
 
+const emits = defineEmits(['refreshApplications']);
+
 const showModal = ref(false);
 
 const form = useForm({
@@ -33,14 +35,14 @@ const form = useForm({
 });
 
 const submit = () => {
-  form.post(
-    route('applications.store', {
-      onSuccess: () => {
-        showModal.value = false;
-        form.reset();
-      },
-    })
-  );
+  form.post(route('applications.store'), {
+    preserveScroll: true,
+    onSuccess: () => {
+      emits('refreshApplications');
+      showModal.value = false;
+      form.reset();
+    },
+  });
 };
 </script>
 

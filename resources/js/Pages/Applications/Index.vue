@@ -1,9 +1,10 @@
 <script setup>
 import MainLayout from '@/Layouts/MainLayout.vue';
 import JobApplicationModal from '@/Pages/Applications/Partials/JobApplicationModal.vue';
-import { onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import NoApplications from '@/Pages/Applications/Partials/NoApplications.vue';
 import LoadingSpinner from '@/Components/Icons/LoadingSpinner.vue';
+import Fuse from 'fuse.js';
 
 defineProps({
   environmentSelections: Array,
@@ -11,6 +12,7 @@ defineProps({
 });
 
 const loading = ref(true);
+const search = ref('');
 const applications = ref([]);
 const selectedEnvironments = ref([]);
 const selectedStatuses = ref([]);
@@ -40,6 +42,20 @@ onMounted(() => {
 watch([selectedEnvironments.value, selectedStatuses.value], () => {
   retrieveApplications();
 });
+
+const fuseOptions = {
+  keys: ['company_name', 'position'],
+  threshold: 0.3,
+};
+
+const filteredApplications = computed(() => {
+  if (search.value && search.value.length >= 3) {
+    const fuse = new Fuse(applications.value, fuseOptions);
+    return fuse.search(search.value);
+  }
+
+  return applications.value;
+});
 </script>
 
 <template>
@@ -49,6 +65,7 @@ watch([selectedEnvironments.value, selectedStatuses.value], () => {
         <JobApplicationModal
           :environmentSelections="environmentSelections"
           :statusSelections="statusSelections"
+          @refreshApplications="retrieveApplications"
         />
       </div>
 
@@ -57,7 +74,10 @@ watch([selectedEnvironments.value, selectedStatuses.value], () => {
 
         <div v-else>
           <div v-if="applications.length > 0">
-            <div v-for="application in applications" :key="application.id">
+            <div
+              v-for="application in filteredApplications"
+              :key="application.id"
+            >
               {{ application.position }} - {{ application.company_name }}
             </div>
           </div>

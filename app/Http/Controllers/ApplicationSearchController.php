@@ -10,8 +10,6 @@ class ApplicationSearchController extends Controller
 {
     public function __invoke(ApplicationSearchRequest $request): JsonResponse
     {
-        sleep(5);
-
         $user = $request->user();
         $environments = $request->input('environments');
         $statuses = $request->input('statuses');
