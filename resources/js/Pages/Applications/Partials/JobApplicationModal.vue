@@ -8,22 +8,28 @@ import InputError from '@/Components/Breeze/InputError.vue';
 import InputLabel from '@/Components/Breeze/InputLabel.vue';
 import TextArea from '@/Components/Breeze/TextArea.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
+import SelectInput from '@/Components/Breeze/SelectInput.vue';
+
+const props = defineProps({
+  environmentSelections: Array,
+  statusSelections: Array,
+});
 
 const showModal = ref(false);
 
 const form = useForm({
+  status: props.statusSelections[0].value,
   job_url: '',
   position: '',
   company_name: '',
   location: '',
-  environment: '',
+  environment: props.environmentSelections[0].value,
   salary_range: '',
   contact_name: '',
   contact_email: '',
   contact_phone: '',
   description: '',
   notes: '',
-  status: 'not_applied',
 });
 
 const submit = () => {
@@ -53,6 +59,33 @@ const submit = () => {
         </p>
 
         <form @submit.prevent="submit" class="space-y-6">
+          <div class="flex flex-col lg:flex-row gap-4">
+            <div class="flex-1">
+              <InputLabel for="status" value="Application Status" />
+              <SelectInput
+                v-model="form.status"
+                :options="statusSelections"
+                id="status"
+                class="mt-1 block w-full bg-neutral-700 border-none"
+              />
+              <InputError :message="form.errors.status" class="mt-1" />
+            </div>
+
+            <div class="flex-1">
+              <InputLabel for="job_url" value="Job URL" />
+              <TextInput
+                v-model="form.job_url"
+                id="job_url"
+                type="text"
+                class="mt-1 block w-full bg-neutral-700 border-none"
+                placeholder="https://monsterinc.com/careers"
+              />
+              <InputError :message="form.errors.job_url" class="mt-1" />
+            </div>
+          </div>
+
+          <hr class="border-neutral-600 my-6" />
+
           <div class="flex flex-col lg:flex-row gap-4">
             <div class="flex-1">
               <InputLabel for="position" value="Position" />
@@ -92,10 +125,10 @@ const submit = () => {
             </div>
             <div class="flex-1">
               <InputLabel for="environment" value="Environment" />
-              <TextInput
+              <SelectInput
                 v-model="form.environment"
+                :options="environmentSelections"
                 id="environment"
-                type="text"
                 class="mt-1 block w-full bg-neutral-700 border-none"
                 placeholder="Remote"
               />
@@ -104,17 +137,6 @@ const submit = () => {
           </div>
 
           <div class="flex flex-col lg:flex-row gap-4">
-            <div class="flex-1">
-              <InputLabel for="job_url" value="Job URL" />
-              <TextInput
-                v-model="form.job_url"
-                id="job_url"
-                type="text"
-                class="mt-1 block w-full bg-neutral-700 border-none"
-                placeholder="https://monsterinc.com/careers"
-              />
-              <InputError :message="form.errors.job_url" class="mt-1" />
-            </div>
             <div class="flex-1">
               <InputLabel for="salary_range" value="Salary Range" />
               <TextInput
@@ -126,6 +148,8 @@ const submit = () => {
               />
               <InputError :message="form.errors.salary_range" class="mt-1" />
             </div>
+
+            <div class="flex-1" />
           </div>
 
           <hr class="border-neutral-600 my-6" />
@@ -167,15 +191,19 @@ const submit = () => {
             </div>
           </div>
 
-          <div class="w-full">
-            <InputLabel for="contact_email" value="Contact Email" />
-            <TextInput
-              v-model="form.contact_email"
-              id="contact_email"
-              type="email"
-              class="mt-1 block w-full bg-neutral-700 border-none"
-            />
-            <InputError :message="form.errors.contact_email" class="mt-1" />
+          <div class="flex flex-col lg:flex-row gap-4">
+            <div class="flex-1">
+              <InputLabel for="contact_email" value="Contact Email" />
+              <TextInput
+                v-model="form.contact_email"
+                id="contact_email"
+                type="email"
+                class="mt-1 block w-full bg-neutral-700 border-none"
+              />
+              <InputError :message="form.errors.contact_email" class="mt-1" />
+            </div>
+
+            <div class="flex-1" />
           </div>
 
           <hr class="border-neutral-600 my-6" />
@@ -209,11 +237,6 @@ const submit = () => {
               class="mt-1 block w-full bg-neutral-700 border-none"
             />
             <InputError :message="form.errors.notes" class="mt-1" />
-          </div>
-
-          <!-- form errors -->
-          <div>
-            {{ JSON.stringify(form.errors) }}
           </div>
 
           <div class="flex justify-end">

@@ -16,7 +16,13 @@ class JobApplicationController extends Controller
 
     public function index(Request $request): Response
     {
-        return inertia('Applications/Index');
+        $environmentSelections = config('applications.environments');
+        $statusSelections = config('applications.statuses');
+
+        return inertia('Applications/Index', [
+            'environmentSelections' => $environmentSelections,
+            'statusSelections' => $statusSelections,
+        ]);
     }
 
     public function store(JobApplicationRequest $request): RedirectResponse
