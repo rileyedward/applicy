@@ -94,7 +94,6 @@ const filteredApplications = computed(() => {
           />
         </div>
 
-
         <JobApplicationModal
           :environmentSelections="environmentSelections"
           :statusSelections="statusSelections"

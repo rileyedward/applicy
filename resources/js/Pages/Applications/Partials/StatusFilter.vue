@@ -1,6 +1,8 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
+import CheckmarkIcon from '@/Components/Icons/CheckmarkIcon.vue';
+import DownArrowIcon from '@/Components/Icons/DownArrowIcon.vue';
 
 const props = defineProps({
   statusSelections: Array,
@@ -11,9 +13,20 @@ const emits = defineEmits(['updateSelectedStatuses']);
 const showPopup = ref(false);
 const selectedFilters = ref([]);
 
-watch(() => selectedFilters.value, (newValue) => {
-  emits('updateSelectedStatuses', newValue);
+onMounted(() => {
+  window.addEventListener('click', (event) => {
+    if (!event.target.closest('.relative')) {
+      showPopup.value = false;
+    }
+  });
 });
+
+watch(
+  () => selectedFilters.value,
+  (newValue) => {
+    emits('updateSelectedStatuses', newValue);
+  }
+);
 
 const togglePopup = () => {
   showPopup.value = !showPopup.value;
@@ -27,6 +40,11 @@ const togglePopup = () => {
       class="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
     >
       Status
+      <span>
+        <CheckmarkIcon v-if="selectedFilters.length > 0" />
+
+        <DownArrowIcon v-else />
+      </span>
     </SecondaryButton>
 
     <div
@@ -46,10 +64,7 @@ const togglePopup = () => {
             v-model="selectedFilters"
             class="h-4 w-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500"
           />
-          <label
-            :for="index"
-            class="ml-2 block text-sm"
-          >
+          <label :for="index" class="ml-2 block text-sm">
             {{ filter.label }}
           </label>
         </div>
