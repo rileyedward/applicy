@@ -29,7 +29,7 @@ class JobApplicationController extends Controller
 
     public function store(JobApplicationRequest $request): RedirectResponse
     {
-        $this->jobApplicationService->createJobApplication(
+        $jobApplication = $this->jobApplicationService->createJobApplication(
             $request->user(),
             $request->input('job_url'),
             $request->input('position'),
@@ -43,6 +43,11 @@ class JobApplicationController extends Controller
             $request->input('description'),
             $request->input('notes'),
             $request->input('status')
+        );
+
+        $jobApplication->addAction(
+            $jobApplication->status_pretty,
+            $jobApplication->status
         );
 
         return back();
