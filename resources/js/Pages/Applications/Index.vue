@@ -56,7 +56,11 @@ watch([selectedEnvironments.value, selectedStatuses.value], () => {
         <LoadingSpinner v-if="loading" />
 
         <div v-else>
-          <div v-if="applications.length > 0">Applications</div>
+          <div v-if="applications.length > 0">
+            <div v-for="application in applications" :key="application.id">
+              {{ application.position }} - {{ application.company_name }}
+            </div>
+          </div>
 
           <NoApplications v-else />
         </div>
