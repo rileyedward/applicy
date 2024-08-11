@@ -32,7 +32,7 @@ class JobApplication extends Model
     ];
 
     protected $appends = [
-        'status_pretty'
+        'status_pretty',
     ];
 
     public function user(): BelongsTo
@@ -62,6 +62,6 @@ class JobApplication extends Model
 
     public function buildAIContextString(): string
     {
-        return '(Job Application) ' . $this->position . ' at ' . $this->company_name . ' - ' . $this->description;
+        return '(Job Application) '.$this->position.' at '.$this->company_name.' - '.$this->description;
     }
 }

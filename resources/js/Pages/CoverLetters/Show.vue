@@ -8,6 +8,7 @@ import TextArea from '@/Components/Breeze/TextArea.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import BackArrowIcon from '@/Components/Icons/BackArrowIcon.vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
+import CoverLetterAssistant from '@/Pages/CoverLetters/Partials/CoverLetterAssistant.vue';
 
 const props = defineProps({
   coverLetterTemplate: Object,
@@ -38,14 +39,20 @@ const removeCoverLetter = () => {
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="max-w-4xl bg-neutral-800 p-6 rounded-lg shadow-lg">
         <div>
-          <a
-            :href="route('cover-letter.index')"
-            class="text-neutral-300 hover:text-neutral-500 flex items-center mb-1"
-          >
-            <BackArrowIcon />
-            Back to Cover Letters
-          </a>
-          <h3 class="text-xl font-semibold">Manage Cover Letter</h3>
+          <div class="flex justify-between items-center">
+            <div>
+              <a
+                :href="route('cover-letter.index')"
+                class="text-neutral-300 hover:text-neutral-500 flex items-center mb-1"
+              >
+                <BackArrowIcon />
+                Back to Cover Letters
+              </a>
+              <h3 class="text-xl font-semibold">Manage Cover Letter</h3>
+            </div>
+
+            <CoverLetterAssistant :coverLetterTemplate="coverLetterTemplate" />
+          </div>
 
           <p class="text-neutral-500 mt-1 max-w-xl">
             Manage your cover letter template to use in your job hunt.

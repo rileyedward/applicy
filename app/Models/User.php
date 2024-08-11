@@ -35,7 +35,7 @@ class User extends Authenticatable
     ];
 
     protected $appends = [
-        'initials'
+        'initials',
     ];
 
     protected function casts(): array
@@ -97,6 +97,6 @@ class User extends Authenticatable
 
     public function buildAIContextString(): string
     {
-        return '(User) ' . $this->first_name . ' ' . $this->last_name . ' - ' . $this->email . ' - ' . $this->phone_number . ', located in ' . $this->location;
+        return '(User) '.$this->first_name.' '.$this->last_name.' - '.$this->email.' - '.$this->phone_number.', located in '.$this->location;
     }
 }

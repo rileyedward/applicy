@@ -25,6 +25,6 @@ class CoverLetterTemplate extends Model
 
     public function buildAIContextString(): string
     {
-        return '(Cover Letter Template) ' . $this->title . ' - ' . $this->body;
+        return '(Cover Letter Template) '.$this->title.' - '.$this->body;
     }
 }
