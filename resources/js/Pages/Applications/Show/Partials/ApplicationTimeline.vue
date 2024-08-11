@@ -14,7 +14,7 @@ const detailedView = ref(false);
 </script>
 
 <template>
-  <div class="max-w-4xl">
+  <div class="max-w-5xl">
     <!-- Timeline -->
     <div class="space-y-3">
       <NewTimeline

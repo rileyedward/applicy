@@ -50,7 +50,7 @@ const deleteApplication = () => {
 </script>
 
 <template>
-  <div class="bg-neutral-800 p-6 rounded-lg shadow-lg max-w-4xl">
+  <div class="bg-neutral-800 p-6 rounded-lg shadow-lg max-w-5xl">
     <h2 class="text-lg font-semibold text-neutral-100 mb-2">
       Update Application
     </h2>
