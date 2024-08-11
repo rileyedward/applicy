@@ -22,4 +22,9 @@ class CoverLetterTemplate extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function buildAIContextString(): string
+    {
+        return '(Cover Letter Template) ' . $this->title . ' - ' . $this->body;
+    }
 }

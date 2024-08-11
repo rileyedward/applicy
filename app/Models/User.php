@@ -34,7 +34,9 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $appends = ['initials'];
+    protected $appends = [
+        'initials'
+    ];
 
     protected function casts(): array
     {
@@ -91,5 +93,10 @@ class User extends Authenticatable
     public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
+    }
+
+    public function buildAIContextString(): string
+    {
+        return '(User) ' . $this->first_name . ' ' . $this->last_name . ' - ' . $this->email . ' - ' . $this->phone_number . ', located in ' . $this->location;
     }
 }
