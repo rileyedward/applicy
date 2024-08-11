@@ -1,15 +1,15 @@
 <script setup>
-import JobApplicationModal from '@/Pages/Applications/Partials/JobApplicationModal.vue';
-import NoApplications from '@/Pages/Applications/Partials/NoApplications.vue';
+import JobApplicationModal from '@/Pages/Applications/Index/Partials/JobApplicationModal.vue';
+import NoApplications from '@/Pages/Applications/Index/Partials/NoApplications.vue';
 import LoadingSpinner from '@/Components/Icons/LoadingSpinner.vue';
 import TextInput from '@/Components/Breeze/TextInput.vue';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import { computed, onMounted, ref, watch } from 'vue';
 import Fuse from 'fuse.js';
-import StatusFilter from '@/Pages/Applications/Partials/StatusFilter.vue';
-import EnvironmentFilter from '@/Pages/Applications/Partials/EnvironmentFilter.vue';
-import LocationFilter from '@/Pages/Applications/Partials/LocationFilter.vue';
-import ApplicationBanner from '@/Pages/Applications/Partials/ApplicationBanner.vue';
+import StatusFilter from '@/Pages/Applications/Index/Partials/StatusFilter.vue';
+import EnvironmentFilter from '@/Pages/Applications/Index/Partials/EnvironmentFilter.vue';
+import LocationFilter from '@/Pages/Applications/Index/Partials/LocationFilter.vue';
+import ApplicationBanner from '@/Pages/Applications/Index/Partials/ApplicationBanner.vue';
 
 const props = defineProps({
   environmentSelections: Array,

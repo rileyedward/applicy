@@ -1,6 +1,6 @@
 <script setup>
 import MainLayout from '@/Layouts/MainLayout.vue';
-import ApplicationHeader from '@/Pages/Applications/Partials/ApplicationHeader.vue';
+import ApplicationHeader from '@/Pages/Applications/Index/Partials/ApplicationHeader.vue';
 
 defineProps({
   jobApplication: Object,

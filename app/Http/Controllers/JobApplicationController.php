@@ -20,7 +20,7 @@ class JobApplicationController extends Controller
         $statusSelections = config('applications.statuses');
         $locationSelections = $request->user()->jobApplications()->distinct('location')->pluck('location');
 
-        return inertia('Applications/Index', [
+        return inertia('Applications/Index/Page', [
             'environmentSelections' => $environmentSelections,
             'statusSelections' => $statusSelections,
             'locationSelections' => $locationSelections,
@@ -57,7 +57,7 @@ class JobApplicationController extends Controller
     {
         $jobApplication->append('last_update');
 
-        return inertia('Applications/Show', [
+        return inertia('Applications/Show/Page', [
             'jobApplication' => $jobApplication,
         ]);
     }
