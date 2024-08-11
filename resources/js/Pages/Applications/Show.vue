@@ -1,5 +1,6 @@
 <script setup>
 import MainLayout from '@/Layouts/MainLayout.vue';
+import ApplicationHeader from '@/Pages/Applications/Partials/ApplicationHeader.vue';
 
 defineProps({
   jobApplication: Object,
@@ -9,7 +10,7 @@ defineProps({
 <template>
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
-      <h1>Show</h1>
+      <ApplicationHeader :jobApplication="jobApplication" />
     </div>
   </MainLayout>
 </template>
