@@ -1,5 +1,7 @@
 <script setup>
 import TimelineBanner from '@/Pages/Applications/Show/Partials/TimelineBanner.vue';
+import NewTimeline from '@/Pages/Applications/Show/Partials/NewTimeline.vue';
+import TimelineDotsIcon from '@/Components/Icons/TimelineDotsIcon.vue';
 
 defineProps({
   jobApplication: Object,
@@ -20,11 +22,13 @@ defineProps({
 
     <!-- Timeline -->
     <div class="space-y-3 py-8">
-      <TimelineBanner
-        v-for="action in jobApplication.actions"
-        :key="action.id"
-        :action="action"
-      />
+      <NewTimeline />
+
+      <div v-for="action in jobApplication.actions" :key="action.id">
+        <TimelineDotsIcon class="my-4" />
+
+        <TimelineBanner :action="action" :jobApplication="jobApplication" />
+      </div>
     </div>
   </div>
 </template>
