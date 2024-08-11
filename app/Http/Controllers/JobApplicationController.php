@@ -55,6 +55,7 @@ class JobApplicationController extends Controller
 
     public function show(Request $request, JobApplication $jobApplication): Response
     {
+        $jobApplication->load('actions');
         $jobApplication->append('last_update');
 
         $environmentSelections = config('applications.environments');

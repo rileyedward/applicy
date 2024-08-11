@@ -39,7 +39,7 @@ const showEditForm = ref(false);
           :statusSelections="statusSelections"
         />
 
-        <ApplicationTimeline v-else />
+        <ApplicationTimeline v-else :jobApplication="jobApplication" />
       </div>
     </div>
   </MainLayout>
