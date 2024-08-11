@@ -6,6 +6,7 @@ const props = defineProps({
   action: Object,
   jobApplication: Object,
   statusSelections: Array,
+  detailedView: Boolean,
 });
 
 const showModal = ref(false);
@@ -47,6 +48,26 @@ const showModal = ref(false);
           </p>
         </div>
       </div>
+
+      <transition name="fade" mode="in-out">
+        <hr v-if="detailedView" class="my-2 border-neutral-700" />
+      </transition>
+
+      <transition name="fade" mode="in-out">
+        <p v-if="detailedView" class="text-sm text-gray-400">
+          {{ action.notes }}
+        </p>
+      </transition>
     </div>
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
+</style>

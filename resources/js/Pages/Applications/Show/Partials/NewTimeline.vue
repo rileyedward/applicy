@@ -7,11 +7,14 @@ import InputError from '@/Components/Breeze/InputError.vue';
 import InputLabel from '@/Components/Breeze/InputLabel.vue';
 import SelectInput from '@/Components/Breeze/SelectInput.vue';
 import TextArea from '@/Components/Breeze/TextArea.vue';
+import DownArrowIcon from '@/Components/Icons/DownArrowIcon.vue';
 
 const props = defineProps({
   jobApplication: Object,
   statusSelections: Array,
 });
+
+defineEmits(['toggleDetailedView']);
 
 const showModal = ref(false);
 
@@ -42,13 +45,19 @@ const submit = () => {
 
 <template>
   <div>
-    <button
-      @click="showModal = true"
-      class="flex items-center justify-center bg-orange-500 text-white w-10 h-10 rounded-full shadow-md hover:bg-orange-600 hover:scale-105"
-      aria-label="Add"
-    >
-      <span class="text-2xl">+</span>
-    </button>
+    <div class="flex justify-between items-center">
+      <button
+        @click="showModal = true"
+        class="flex items-center justify-center bg-orange-500 text-white w-10 h-10 rounded-full shadow-md hover:bg-orange-600 hover:scale-105"
+        aria-label="Add"
+      >
+        <span class="text-2xl">+</span>
+      </button>
+
+      <button @click.prevent="$emit('toggleDetailedView')">
+        <DownArrowIcon class="w-5 h-5" />
+      </button>
+    </div>
 
     <Modal :show="showModal" @close="showModal = false">
       <div class="p-6">

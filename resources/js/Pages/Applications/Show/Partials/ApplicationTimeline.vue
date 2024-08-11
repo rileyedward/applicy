@@ -2,12 +2,15 @@
 import TimelineBanner from '@/Pages/Applications/Show/Partials/TimelineBanner.vue';
 import NewTimeline from '@/Pages/Applications/Show/Partials/NewTimeline.vue';
 import TimelineDotsIcon from '@/Components/Icons/TimelineDotsIcon.vue';
+import { ref } from 'vue';
 
 defineProps({
   jobApplication: Object,
   actions: Array,
   statusSelections: Array,
 });
+
+const detailedView = ref(false);
 </script>
 
 <template>
@@ -17,6 +20,7 @@ defineProps({
       <NewTimeline
         :jobApplication="jobApplication"
         :statusSelections="statusSelections"
+        @toggleDetailedView="detailedView = !detailedView"
       />
 
       <div v-for="action in actions" :key="action.id">
@@ -26,6 +30,7 @@ defineProps({
           :action="action"
           :jobApplication="jobApplication"
           :statusSelections="statusSelections"
+          :detailedView="detailedView"
         />
       </div>
     </div>
