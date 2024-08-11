@@ -65,13 +65,17 @@ class ResumeController extends Controller
         return Storage::disk('public')->response($filepath);
     }
 
-    public function download(Resume $resume): StreamedResponse
+    public function destroy(Resume $resume): RedirectResponse
     {
         Gate::authorize('isOwner', $resume);
 
         $filename = $resume->slug.'.pdf';
         $filepath = 'users/'.$resume->user_id.'/resumes/'.$filename;
 
-        return Storage::disk('public')->download($filepath, $filename);
+        Storage::disk('public')->delete($filepath);
+
+        $resume->delete();
+
+        return to_route('resumes.index');
     }
 }
