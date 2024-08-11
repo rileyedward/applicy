@@ -2,13 +2,11 @@
 import AssistantIcon from '@/Components/Icons/AssistantIcon.vue';
 import Modal from '@/Components/Breeze/Modal.vue';
 import { ref, watch } from 'vue';
-import { useForm } from '@inertiajs/vue3';
 import InputLabel from '@/Components/Breeze/InputLabel.vue';
 import TextArea from '@/Components/Breeze/TextArea.vue';
 import LoadingSpinner from '@/Components/Icons/LoadingSpinner.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
-import InputError from '@/Components/Breeze/InputError.vue';
 
 const props = defineProps({
   coverLetterTemplate: Object,
@@ -23,7 +21,7 @@ const hasGenerated = ref(false);
 watch(
   () => selectedStarterQuestion.value,
   () => {
-    form.prompt = starterQuestions.value[selectedStarterQuestion.value];
+    prompt.value = starterQuestions.value[selectedStarterQuestion.value];
   }
 );
 
@@ -33,24 +31,26 @@ const starterQuestions = ref([
   'What are some ways to make this cover letter more professional?',
 ]);
 
-const form = useForm({
-  prompt: starterQuestions.value[selectedStarterQuestion.value],
-});
+const prompt = ref(starterQuestions.value[selectedStarterQuestion.value]);
 
 const submit = () => {
   loading.value = true;
 
-  setTimeout(() => {
-    response.value = 'This is a response to the prompt.';
-    hasGenerated.value = true;
-    loading.value = false;
-  }, 2000);
+  axios
+    .post(route('cover-letter.assistant', props.coverLetterTemplate.id), {
+      prompt: prompt.value,
+    })
+    .then((res) => {
+      response.value = res.data;
+      hasGenerated.value = true;
+      loading.value = false;
+    });
 };
 
 const reset = () => {
   hasGenerated.value = false;
   selectedStarterQuestion.value = 0;
-  form.reset();
+  prompt.value = starterQuestions.value[selectedStarterQuestion.value];
   response.value = '';
 };
 </script>
@@ -91,11 +91,10 @@ const reset = () => {
         <div class="w-full">
           <InputLabel for="prompt" value="Prompt" />
           <TextArea
-            v-model="form.prompt"
+            v-model="prompt"
             id="prompt"
             class="mt-1 block w-full bg-neutral-700 border-none"
           />
-          <InputError :message="form.errors.prompt" />
         </div>
 
         <div class="w-full flex justify-end">
@@ -103,6 +102,10 @@ const reset = () => {
             v-if="!hasGenerated"
             type="submit"
             class="bg-orange-500 hover:bg-orange-600 w-full sm:w-fit flex justify-center"
+            :class="{
+              'cursor-not-allowed bg-neutral-400': !prompt,
+            }"
+            :disabled="!prompt"
           >
             Generate
           </PrimaryButton>
@@ -111,7 +114,7 @@ const reset = () => {
           </SecondaryButton>
         </div>
 
-        <div v-if="form.prompt">
+        <div v-if="prompt">
           <div class="bg-neutral-700 p-4 rounded-lg">
             <code class="text-neutral-300 text-sm">
               <LoadingSpinner v-if="loading" />
