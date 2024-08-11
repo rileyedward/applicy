@@ -17,7 +17,11 @@ class ResumeController extends Controller
 
     public function index(Request $request): Response
     {
-        return inertia('Resumes/Index');
+        $resumes = $request->user()->resumes;
+
+        return inertia('Resumes/Index', [
+            'resumes' => $resumes,
+        ]);
     }
 
     public function store(Request $request): RedirectResponse

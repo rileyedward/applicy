@@ -1,6 +1,10 @@
 <script setup>
 import MainLayout from '@/Layouts/MainLayout.vue';
 import UploadResume from '@/Pages/Resumes/Partials/UploadResume.vue';
+
+defineProps({
+  resumes: Array,
+});
 </script>
 
 <template>
@@ -12,6 +16,11 @@ import UploadResume from '@/Pages/Resumes/Partials/UploadResume.vue';
 
           <UploadResume />
         </div>
+
+        <p class="text-neutral-500 mt-1 max-w-xl">
+          Manage all your resumes here that you wish to use for your job
+          applications.
+        </p>
       </div>
     </div>
   </MainLayout>
