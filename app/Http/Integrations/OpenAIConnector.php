@@ -14,7 +14,7 @@ class OpenAIConnector extends Connector
     public function defaultHeaders(): array
     {
         return [
-            'Authorization' => 'Bearer ' . config('services.openai.key'),
+            'Authorization' => 'Bearer '.config('services.openai.key'),
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
         ];

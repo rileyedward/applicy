@@ -13,9 +13,7 @@ class CreateChatRequest extends Request implements HasBody
 
     protected Method $method = Method::POST;
 
-    public function __construct(protected array $messages)
-    {
-    }
+    public function __construct(protected array $messages) {}
 
     public function resolveEndpoint(): string
     {
