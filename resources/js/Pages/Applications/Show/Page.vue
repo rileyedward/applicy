@@ -9,6 +9,7 @@ import ApplicationTimeline from '@/Pages/Applications/Show/Partials/ApplicationT
 
 defineProps({
   jobApplication: Object,
+  actions: Array,
   environmentSelections: Array,
   statusSelections: Array,
   locationSelections: Array,
@@ -39,7 +40,12 @@ const showEditForm = ref(false);
           :statusSelections="statusSelections"
         />
 
-        <ApplicationTimeline v-else :jobApplication="jobApplication" />
+        <ApplicationTimeline
+          v-else
+          :jobApplication="jobApplication"
+          :actions="actions"
+          :statusSelections="statusSelections"
+        />
       </div>
     </div>
   </MainLayout>

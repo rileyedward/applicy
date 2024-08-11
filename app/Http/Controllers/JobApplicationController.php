@@ -55,8 +55,9 @@ class JobApplicationController extends Controller
 
     public function show(Request $request, JobApplication $jobApplication): Response
     {
-        $jobApplication->load('actions');
         $jobApplication->append('last_update');
+
+        $actions = $jobApplication->actions()->orderBy('created_at', 'desc')->get();
 
         $environmentSelections = config('applications.environments');
         $statusSelections = config('applications.statuses');
@@ -64,6 +65,7 @@ class JobApplicationController extends Controller
 
         return inertia('Applications/Show/Page', [
             'jobApplication' => $jobApplication,
+            'actions' => $actions,
             'environmentSelections' => $environmentSelections,
             'statusSelections' => $statusSelections,
             'locationSelections' => $locationSelections,

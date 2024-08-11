@@ -5,6 +5,8 @@ import TimelineDotsIcon from '@/Components/Icons/TimelineDotsIcon.vue';
 
 defineProps({
   jobApplication: Object,
+  actions: Array,
+  statusSelections: Array,
 });
 </script>
 
@@ -22,9 +24,12 @@ defineProps({
 
     <!-- Timeline -->
     <div class="space-y-3 py-8">
-      <NewTimeline />
+      <NewTimeline
+        :jobApplication="jobApplication"
+        :statusSelections="statusSelections"
+      />
 
-      <div v-for="action in jobApplication.actions" :key="action.id">
+      <div v-for="action in actions" :key="action.id">
         <TimelineDotsIcon class="my-4" />
 
         <TimelineBanner :action="action" :jobApplication="jobApplication" />
