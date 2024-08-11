@@ -26,32 +26,33 @@ class ResumeController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validatedData = $request->validate([
             'title' => ['required', 'string'],
             'file' => ['required', 'file', 'mimes:pdf', 'max:2048'],
         ]);
 
-        $slug = str()->slug($request->title);
-        $filepath = storage_path('app/public/resumes/'.$slug.'.pdf');
+        $slug = str()->slug($validatedData['title']);
+        $filename = $slug.'.pdf';
 
-        Storage::put($filepath, $request->file('file')->getContent());
+        $filepath = $request->file('file')->storeAs('resumes', $filename, 'public');
 
         $this->resumeService->createResume(
             $request->user(),
-            $request->title,
+            $validatedData['title'],
             $slug,
             $filepath
         );
 
-        return back();
+        return back()->with('success', 'File uploaded successfully!');
     }
 
     public function download(Resume $resume): StreamedResponse
     {
         Gate::authorize('isOwner', $resume);
 
-        $filepath = storage_path('app/public/resumes/'.$resume->slug.'.pdf');
+        $filename = $resume->slug.'.pdf';
+        $filepath = 'resumes/'.$filename;
 
-        return Storage::download($filepath);
+        return Storage::disk('public')->download($filepath, $filename);
     }
 }

@@ -16,7 +16,7 @@ const form = useForm({
 });
 
 const handleFileChange = (event) => {
-  form.file = event.target.files[0]; // Set the actual file object
+  form.file = event.target.files[0];
 };
 
 const submit = () => {
@@ -72,13 +72,16 @@ const submit = () => {
                 for="file"
                 class="flex flex-col items-center justify-center w-full h-32 bg-neutral-800 rounded-lg cursor-pointer hover:bg-neutral-700 transition"
               >
-                <FileUploadIcon :fileUploaded="form.file" />
+                <FileUploadIcon :fileUploaded="form.title" />
                 <input
                   id="file"
                   type="file"
                   class="hidden"
                   @change="handleFileChange"
                 />
+                <p v-if="form.file" class="text-xs text-neutral-400 mt-2">
+                  {{ form.title.name }}
+                </p>
                 <InputError :message="form.errors.file" />
               </label>
             </div>
