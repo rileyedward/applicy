@@ -42,6 +42,7 @@ return [
     ],
 
     'openai' => [
+        'url' => 'https://api.openai.com/v1',
         'key' => env('OPEN_AI_KEY'),
     ],
 
