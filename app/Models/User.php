@@ -78,6 +78,11 @@ class User extends Authenticatable
         return $this->hasMany(Interview::class);
     }
 
+    public function resumes(): HasMany
+    {
+        return $this->hasMany(Resume::class);
+    }
+
     public function coverLetterTemplates(): HasMany
     {
         return $this->hasMany(CoverLetterTemplate::class);
