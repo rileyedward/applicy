@@ -15,7 +15,16 @@ class CoverLetterController extends Controller
 
     public function index(Request $request): Response
     {
-        return inertia('CoverLetters/Index');
+        $coverLetterTemplates = $request->user()->coverLetterTemplates;
+
+        return inertia('CoverLetters/Index', [
+            'coverLetterTemplates' => $coverLetterTemplates,
+        ]);
+    }
+
+    public function create(Request $request): Response
+    {
+        return inertia('CoverLetters/Create');
     }
 
     public function store(Request $request): RedirectResponse
@@ -31,7 +40,7 @@ class CoverLetterController extends Controller
             $request->input('body')
         );
 
-        return back();
+        return to_route('cover-letter.index');
     }
 
     public function update(Request $request, CoverLetterTemplate $coverLetterTemplate): RedirectResponse

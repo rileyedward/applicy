@@ -6,6 +6,13 @@ const model = defineModel({
   required: true,
 });
 
+defineProps({
+  rows: {
+    type: Number,
+    default: 5,
+  },
+});
+
 const input = ref(null);
 
 defineExpose({ focus: () => input.value.focus() });
@@ -13,7 +20,7 @@ defineExpose({ focus: () => input.value.focus() });
 
 <template>
   <textarea
-    rows="5"
+    :rows="rows"
     class="border-gray-300 focus:border-orange-500 focus:ring-orange-500 rounded-md shadow-sm"
     v-model="model"
     ref="textarea"
