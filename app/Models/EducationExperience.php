@@ -38,4 +38,9 @@ class EducationExperience extends Model
             'skill_id'
         )->withPivot('id');
     }
+
+    public function buildAIContextString(): string
+    {
+        return '(Education) - '.$this->institution_name.' '.$this->location.' '.$this->degree.' '.$this->field_of_study.' '.$this->description;
+    }
 }

@@ -37,4 +37,9 @@ class ProfessionalExperience extends Model
             'skill_id'
         )->withPivot('id');
     }
+
+    public function buildAIContextString(): string
+    {
+        return '(Professional) - '.$this->position.' '.$this->company_name.' '.$this->location.' '.$this->description;
+    }
 }

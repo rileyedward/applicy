@@ -29,4 +29,9 @@ class PortfolioProject extends Model
     {
         return $this->belongsToMany(Skill::class, 'project_skill', 'portfolio_project_id', 'skill_id');
     }
+
+    public function buildAIContextString(): string
+    {
+        return '(Portfolio) - '.$this->name.' '.$this->description;
+    }
 }
