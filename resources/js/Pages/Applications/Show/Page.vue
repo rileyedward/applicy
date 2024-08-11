@@ -22,7 +22,7 @@ const showEditForm = ref(false);
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="flex justify-between items-center">
         <ApplicationHeader :jobApplication="jobApplication" />
-        <div class="flex items-center gap-8">
+        <div class="flex flex-col md:flex-row items-center gap-2 md:gap-8">
           <ViewToggle
             :showEditForm="showEditForm"
             @toggleView="showEditForm = !showEditForm"

@@ -19,7 +19,7 @@ const isEmptyContactInformation = computed(
   <div>
     <button
       @click.prevent="showModal = true"
-      class="text-orange-500 border border-orange-500 px-4 py-1 rounded-2xl cursor-pointer transition-all duration-300 ease-in-out transform hover:bg-orange-500 hover:text-white hover:shadow-lg hover:scale-105"
+      class="w-24 flex justify-center text-orange-500 border border-orange-500 px-4 py-1 rounded-2xl cursor-pointer transition-all duration-300 ease-in-out transform hover:bg-orange-500 hover:text-white hover:shadow-lg hover:scale-105"
       aria-label="Contact the employer"
     >
       Contact

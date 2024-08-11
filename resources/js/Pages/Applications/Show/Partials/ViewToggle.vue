@@ -10,7 +10,10 @@ defineEmits(['toggleView']);
 
 <template>
   <div>
-    <SecondaryButton @click.prevent="$emit('toggleView')">
+    <SecondaryButton
+      @click.prevent="$emit('toggleView')"
+      class="w-24 flex justify-center"
+    >
       <span v-if="showEditForm">Timeline</span>
       <span v-else>Edit</span>
     </SecondaryButton>
