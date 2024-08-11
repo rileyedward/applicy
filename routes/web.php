@@ -10,6 +10,7 @@ use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => inertia('Landing/Index'))->name('index');
@@ -59,6 +60,11 @@ Route::prefix('/cover-letters')->middleware('auth')->group(function () {
     Route::get('/{coverLetterTemplate}', [CoverLetterController::class, 'show'])->name('cover-letter.show');
     Route::put('/{coverLetterTemplate}', [CoverLetterController::class, 'update'])->name('cover-letter.update');
     Route::delete('/{coverLetterTemplate}', [CoverLetterController::class, 'destroy'])->name('cover-letter.destroy');
+});
+
+/** Resumes */
+Route::prefix('/resumes')->middleware('auth')->group(function () {
+    Route::get('/', [ResumeController::class, 'index'])->name('resumes.index');
 });
 
 /** Applications */

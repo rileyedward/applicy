@@ -6,6 +6,7 @@ import { useForm } from '@inertiajs/vue3';
 import ProfileIcon from '@/Components/Icons/ProfileIcon.vue';
 import JobIcon from '@/Components/Icons/JobIcon.vue';
 import CoverLetterIcon from '@/Components/Icons/CoverLetterIcon.vue';
+import ResumeIcon from '@/Components/Icons/ResumeIcon.vue';
 
 const mobileMenuOpen = ref(false);
 
@@ -66,6 +67,12 @@ const logout = () => {
             >
               <JobIcon />
               <span>Jobs</span>
+            </a>
+          </li>
+          <li class="text-black font-normal hover:font-semibold space-y-6">
+            <a :href="route('resumes.index')" class="flex items-center gap-4">
+              <ResumeIcon />
+              <span>Resumes</span>
             </a>
           </li>
           <li class="text-black font-normal hover:font-semibold space-y-6">

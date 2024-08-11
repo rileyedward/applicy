@@ -6,6 +6,10 @@ const isApplicationRoute = computed(() => {
   return window.location.pathname.includes('applications');
 });
 
+const isResumeRoute = computed(() => {
+  return window.location.pathname.includes('resume');
+});
+
 const isCoverLetterRoute = computed(() => {
   return window.location.pathname.includes('cover-letter');
 });
@@ -28,6 +32,13 @@ const isCoverLetterRoute = computed(() => {
             :class="{ 'font-semibold text-orange-500': isApplicationRoute }"
           >
             <a :href="route('applications.index')"> Applications </a>
+          </li>
+
+          <li
+            class="font-light text-sm hover:font-semibold hover:text-orange-500"
+            :class="{ 'font-semibold text-orange-500': isResumeRoute }"
+          >
+            <a :href="route('resumes.index')"> Resumes </a>
           </li>
 
           <li
