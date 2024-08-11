@@ -13,6 +13,7 @@ class JobApplicationRequest extends FormRequest
 
         return [
             'job_url' => ['nullable', 'url'],
+            'company_url' => ['nullable', 'url'],
             'position' => ['required', 'string'],
             'company_name' => ['required', 'string'],
             'location' => ['required', 'string'],
@@ -23,7 +24,7 @@ class JobApplicationRequest extends FormRequest
             'contact_phone' => ['nullable', 'string'],
             'description' => ['nullable', 'string'],
             'notes' => ['nullable', 'string'],
-            'status' => ['required', 'string', 'in:'.implode(',', $statusEnums)],
+            'status' => ['nullable', 'string', 'in:'.implode(',', $statusEnums)],
         ];
     }
 }

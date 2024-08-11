@@ -16,10 +16,12 @@ defineProps({
       Back to Applications
     </a>
     <a :href="jobApplication.job_url" target="_blank">
-      <h3 class="text-2xl font-semibold mt-1">
-        {{ jobApplication.position }},
+      <h3 class="text-2xl font-semibold mt-1 hover:underline">
+        {{ jobApplication.position }}
       </h3>
-      <h4 class="text-lg font-semibold text-orange-500">
+    </a>
+    <a :href="jobApplication.company_url" target="_blank">
+      <h4 class="text-lg font-semibold text-orange-500 hover:underline">
         @{{ jobApplication.company_name }}
       </h4>
     </a>

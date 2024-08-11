@@ -21,6 +21,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('job_url')->nullable();
+            $table->string('company_url')->nullable();
             $table->string('position');
             $table->string('company_name');
             $table->string('location');

@@ -32,6 +32,7 @@ class JobApplicationController extends Controller
         $jobApplication = $this->jobApplicationService->createJobApplication(
             $request->user(),
             $request->input('job_url'),
+            $request->input('company_url'),
             $request->input('position'),
             $request->input('company_name'),
             $request->input('location'),
@@ -82,6 +83,7 @@ class JobApplicationController extends Controller
         $this->jobApplicationService->updateJobApplication(
             $jobApplication,
             $request->input('job_url'),
+            $request->input('company_url'),
             $request->input('position'),
             $request->input('company_name'),
             $request->input('location'),
@@ -92,7 +94,6 @@ class JobApplicationController extends Controller
             $request->input('contact_phone'),
             $request->input('description'),
             $request->input('notes'),
-            $request->input('status')
         );
 
         return back();

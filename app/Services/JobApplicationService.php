@@ -10,6 +10,7 @@ class JobApplicationService
     public function createJobApplication(
         User $user,
         ?string $jobUrl,
+        ?string $companyUrl,
         string $position,
         string $companyName,
         string $location,
@@ -25,6 +26,7 @@ class JobApplicationService
         return JobApplication::query()->create([
             'user_id' => $user->id,
             'job_url' => $jobUrl,
+            'company_url' => $companyUrl,
             'position' => $position,
             'company_name' => $companyName,
             'location' => $location,
@@ -42,6 +44,7 @@ class JobApplicationService
     public function updateJobApplication(
         JobApplication $jobApplication,
         ?string $jobUrl,
+        ?string $companyUrl,
         string $position,
         string $companyName,
         string $location,
@@ -52,10 +55,10 @@ class JobApplicationService
         ?string $contactPhone,
         ?string $description,
         ?string $notes,
-        string $status
     ): JobApplication {
         $jobApplication->update([
             'job_url' => $jobUrl,
+            'company_url' => $companyUrl,
             'position' => $position,
             'company_name' => $companyName,
             'location' => $location,
@@ -66,7 +69,6 @@ class JobApplicationService
             'contact_phone' => $contactPhone,
             'description' => $description,
             'notes' => $notes,
-            'status' => $status,
         ]);
 
         return $jobApplication;

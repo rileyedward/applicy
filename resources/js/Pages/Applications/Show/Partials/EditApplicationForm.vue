@@ -15,8 +15,8 @@ const props = defineProps({
 });
 
 const form = useForm({
-  status: props.jobApplication?.status ?? props.statusSelections[0].value,
   job_url: props.jobApplication?.job_url ?? '',
+  company_url: props.jobApplication?.company_url ?? '',
   position: props.jobApplication?.position ?? '',
   company_name: props.jobApplication?.company_name ?? '',
   location: props.jobApplication?.location ?? '',
@@ -61,17 +61,6 @@ const deleteApplication = () => {
     <form @submit.prevent="submit" class="space-y-6">
       <div class="flex flex-col lg:flex-row gap-4">
         <div class="flex-1">
-          <InputLabel for="status" value="Application Status" />
-          <SelectInput
-            v-model="form.status"
-            :options="statusSelections"
-            id="status"
-            class="mt-1 block w-full bg-neutral-700 border-none"
-          />
-          <InputError :message="form.errors.status" class="mt-1" />
-        </div>
-
-        <div class="flex-1">
           <InputLabel for="job_url" value="Job URL" />
           <TextInput
             v-model="form.job_url"
@@ -81,6 +70,18 @@ const deleteApplication = () => {
             placeholder="https://monsterinc.com/careers"
           />
           <InputError :message="form.errors.job_url" class="mt-1" />
+        </div>
+
+        <div class="flex-1">
+          <InputLabel for="company_url" value="Company URL" />
+          <TextInput
+            v-model="form.company_url"
+            id="company_url"
+            type="text"
+            class="mt-1 block w-full bg-neutral-700 border-none"
+            placeholder="https://monsterinc.com/careers"
+          />
+          <InputError :message="form.errors.company_url" class="mt-1" />
         </div>
       </div>
 

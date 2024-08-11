@@ -22,6 +22,7 @@ const showModal = ref(false);
 const form = useForm({
   status: props.statusSelections[0].value,
   job_url: '',
+  company_url: '',
   position: '',
   company_name: '',
   location: '',
@@ -75,7 +76,9 @@ const submit = () => {
               />
               <InputError :message="form.errors.status" class="mt-1" />
             </div>
+          </div>
 
+          <div class="flex flex-col lg:flex-row gap-4">
             <div class="flex-1">
               <InputLabel for="job_url" value="Job URL" />
               <TextInput
@@ -86,6 +89,18 @@ const submit = () => {
                 placeholder="https://monsterinc.com/careers"
               />
               <InputError :message="form.errors.job_url" class="mt-1" />
+            </div>
+
+            <div class="flex-1">
+              <InputLabel for="company_url" value="Company URL" />
+              <TextInput
+                v-model="form.company_url"
+                id="company_url"
+                type="text"
+                class="mt-1 block w-full bg-neutral-700 border-none"
+                placeholder="https://monsterinc.com/careers"
+              />
+              <InputError :message="form.errors.company_url" class="mt-1" />
             </div>
           </div>
 
