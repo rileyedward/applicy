@@ -89,11 +89,11 @@ const reset = () => {
 
       <form @submit.prevent="submit" class="space-y-6">
         <div class="w-full">
-          <InputLabel for="prompt" value="Prompt" />
+          <InputLabel for="prompt" value="What would you like help on?" />
           <TextArea
             v-model="prompt"
             id="prompt"
-            class="mt-1 block w-full bg-neutral-700 border-none"
+            class="mt-1 block w-full bg-neutral-700 border-none scrollbar-hide"
           />
         </div>
 
@@ -115,14 +115,19 @@ const reset = () => {
         </div>
 
         <div v-if="prompt">
-          <div class="bg-neutral-700 p-4 rounded-lg">
+          <div
+            class="bg-neutral-700 p-4 rounded-lg max-h-[350px] overflow-y-auto scrollbar-hide"
+          >
             <code class="text-neutral-300 text-sm">
               <LoadingSpinner v-if="loading" />
               <span v-else>
-                <span v-if="response && response.length">
+                <span
+                  v-if="response && response.length"
+                  class="whitespace-pre-wrap"
+                >
                   {{ response }}
                 </span>
-                <span v-else> Write a response to the prompt above. </span>
+                <span v-else> Waiting for response... </span>
               </span>
             </code>
           </div>

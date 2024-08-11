@@ -18,6 +18,11 @@ class CoverLetterAssistantController extends Controller
     {
         Gate::authorize('isOwner', $coverLetterTemplate);
 
+        if (app()->environment('local')) {
+            sleep(2);
+            return response()->json('This ia a test response');
+        }
+
         $request->validate([
             'prompt' => ['required', 'string'],
         ]);

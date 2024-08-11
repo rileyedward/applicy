@@ -45,7 +45,7 @@ const removeResume = () => {
                 Remove
               </SecondaryButton>
 
-              <ResumeAssistant />
+              <ResumeAssistant :resume="resume" />
             </div>
           </div>
 
