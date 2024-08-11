@@ -20,6 +20,7 @@ class ResumeAssistantController extends Controller
 
         if (app()->environment('local')) {
             sleep(2);
+
             return response()->json('This ia a test response');
         }
 
@@ -36,9 +37,10 @@ class ResumeAssistantController extends Controller
         $request = new CreateChatRequest($payload);
 
         try {
-            $response = $this->openAIConnector->send($request)->json();
+            $response = $this->openAIConnector->send($request);
+            $json = $response->json();
 
-            return response()->json($response);
+            return response()->json($json['choices'][0]['message']['content']);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
