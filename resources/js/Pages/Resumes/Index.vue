@@ -33,14 +33,17 @@ const downloadResume = (resume) => {
           :key="resume.id"
           class="bg-neutral-800 shadow rounded-lg p-4 mt-8 hover:shadow-lg transition duration-300 hover:scale-105 cursor-pointer"
         >
-          <div class="flex justify-between items-center">
+          <a
+            :href="route('resumes.show', resume.id)"
+            class="flex justify-between items-center"
+          >
             <div>
               <h4 class="text-lg font-semibold">{{ resume.title }}</h4>
               <p class="text-neutral-500">
                 {{ new Date(resume.created_at).toLocaleDateString() }}
               </p>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </div>

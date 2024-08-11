@@ -46,6 +46,25 @@ class ResumeController extends Controller
         return back()->with('success', 'File uploaded successfully!');
     }
 
+    public function show(Resume $resume): Response
+    {
+        Gate::authorize('isOwner', $resume);
+
+        return inertia('Resumes/Show', [
+            'resume' => $resume,
+        ]);
+    }
+
+    public function view(Resume $resume): StreamedResponse
+    {
+        Gate::authorize('isOwner', $resume);
+
+        $filename = $resume->slug.'.pdf';
+        $filepath = 'resumes/'.$filename;
+
+        return Storage::disk('public')->response($filepath);
+    }
+
     public function download(Resume $resume): StreamedResponse
     {
         Gate::authorize('isOwner', $resume);
