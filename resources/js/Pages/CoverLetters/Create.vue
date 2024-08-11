@@ -1,5 +1,4 @@
 <script setup>
-import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
 import MainLayout from '@/Layouts/MainLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 import TextInput from '@/Components/Breeze/TextInput.vue';

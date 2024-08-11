@@ -76,6 +76,6 @@ class CoverLetterController extends Controller
 
         $this->coverLetterService->deleteCoverLetterTemplate($coverLetterTemplate);
 
-        return back();
+        return to_route('cover-letter.index');
     }
 }
