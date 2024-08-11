@@ -10,7 +10,7 @@ import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
 
 const props = defineProps({
-  coverLetterTemplate: Object,
+  resume: Object,
 });
 
 const showModal = ref(false);
@@ -27,9 +27,9 @@ watch(
 );
 
 const starterQuestions = ref([
-  'What are some general tips for improving this cover letter?',
-  'What are some common mistakes to avoid in this cover letter?',
-  'What are some ways to make this cover letter more professional?',
+  'What are some general tips for improving this resume?',
+  'What are some common mistakes to avoid in this resume?',
+  'What are some ways to make this resume more professional?',
 ]);
 
 const form = useForm({
@@ -41,6 +41,7 @@ const submit = () => {
 
   setTimeout(() => {
     response.value = 'This is a response to the prompt.';
+    selectedStarterQuestion.value = 0;
     hasGenerated.value = true;
     loading.value = false;
   }, 2000);
@@ -48,7 +49,6 @@ const submit = () => {
 
 const reset = () => {
   hasGenerated.value = false;
-  selectedStarterQuestion.value = 0;
   form.reset();
   response.value = '';
 };

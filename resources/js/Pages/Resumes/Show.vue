@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import BackArrowIcon from '@/Components/Icons/BackArrowIcon.vue';
 import { useForm } from '@inertiajs/vue3';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
+import ResumeAssistant from '@/Pages/Resumes/Partials/ResumeAssistant.vue';
 
 const props = defineProps({
   resume: Object,
@@ -39,9 +40,13 @@ const removeResume = () => {
               </h3>
             </div>
 
-            <SecondaryButton @click.prevent="removeResume">
-              Remove
-            </SecondaryButton>
+            <div class="flex items-center gap-8">
+              <SecondaryButton @click.prevent="removeResume">
+                Remove
+              </SecondaryButton>
+
+              <ResumeAssistant />
+            </div>
           </div>
 
           <p class="text-neutral-500 mt-1 max-w-xl">
