@@ -4,6 +4,7 @@ use App\Http\Controllers\ApplicationSearchController;
 use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\JobApplicationController;
+use App\Http\Controllers\ApplicationActionController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
@@ -63,9 +64,15 @@ Route::prefix('/applications')->middleware('auth')->group(function () {
     Route::post('/', [JobApplicationController::class, 'store'])->name('applications.store');
     Route::get('/search', ApplicationSearchController::class)->name('applications.search');
 
-    Route::get('/{jobApplication}', [JobApplicationController::class, 'show'])->name('applications.show');
-    Route::put('/{jobApplication}', [JobApplicationController::class, 'update'])->name('applications.update');
-    Route::delete('/{jobApplication}', [JobApplicationController::class, 'destroy'])->name('applications.destroy');
+    Route::prefix('/{jobApplication}')->group(function () {
+        Route::get('/', [JobApplicationController::class, 'show'])->name('applications.show');
+        Route::put('/', [JobApplicationController::class, 'update'])->name('applications.update');
+        Route::delete('/', [JobApplicationController::class, 'destroy'])->name('applications.destroy');
+
+        Route::post('/actions', [ApplicationActionController::class, 'store'])->name('applications.actions.store');
+        Route::put('/actions/{jobApplicationAction}', [ApplicationActionController::class, 'update'])->name('applications.actions.update');
+        Route::delete('/actions/{jobApplicationAction}', [ApplicationActionController::class, 'destroy'])->name('applications.actions.destroy');
+    });
 });
 
 /** Profile */
