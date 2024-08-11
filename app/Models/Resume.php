@@ -26,6 +26,6 @@ class Resume extends Model
 
     public function buildAIContextString(): string
     {
-        return "temp";
+        return 'temp';
     }
 }
