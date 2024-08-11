@@ -35,7 +35,7 @@ const close = () => {
         <div class="max-w-[225px] md:max-w-full">
           <h3 class="text-lg font-medium">Education Experience</h3>
           <p class="mt-1 text-sm text-neutral-400 mb-6">
-            Add your education experience to your profile.
+            Tell us about your education experience.
           </p>
         </div>
 

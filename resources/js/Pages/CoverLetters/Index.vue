@@ -11,13 +11,8 @@ defineProps({
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="max-w-4xl">
-        <div class="flex justify-between items-center">
-          <div>
-            <h3 class="text-xl font-semibold">Cover Letters</h3>
-            <p class="text-neutral-500 mt-1">
-              Manage your cover letter templates.
-            </p>
-          </div>
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="text-xl font-semibold">Cover Letters</h3>
 
           <a :href="route('cover-letter.create')">
             <SecondaryButton
@@ -27,6 +22,11 @@ defineProps({
             </SecondaryButton>
           </a>
         </div>
+
+        <p class="text-neutral-500 mt-1 max-w-xl">
+          Manage all your cover letters here that you wish to use as templates
+          for your job applications.
+        </p>
 
         <div class="mt-8 space-y-3">
           <div

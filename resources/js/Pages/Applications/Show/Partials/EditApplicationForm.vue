@@ -55,7 +55,7 @@ const deleteApplication = () => {
       Update Application
     </h2>
     <p class="text-sm text-neutral-300 mb-6">
-      Please fill out the form below to update your job application details.
+      Modify the details of your job application below.
     </p>
 
     <form @submit.prevent="submit" class="space-y-6">

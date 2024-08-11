@@ -19,7 +19,7 @@ const form = useForm({
 });
 
 const submit = () => {
-  form.post(route('cover-letter.update', props.coverLetterTemplate.id), {
+  form.put(route('cover-letter.update', props.coverLetterTemplate.id), {
     onSuccess: () => {
       form.reset();
     },
@@ -37,15 +37,19 @@ const removeCoverLetter = () => {
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="max-w-4xl bg-neutral-800 p-6 rounded-lg shadow-lg">
-        <div class="mb-2">
+        <div>
           <a
             :href="route('cover-letter.index')"
-            class="text-neutral-300 hover:text-neutral-500 flex items-center"
+            class="text-neutral-300 hover:text-neutral-500 flex items-center mb-1"
           >
             <BackArrowIcon />
             Back to Cover Letters
           </a>
           <h3 class="text-xl font-semibold">Manage Cover Letter</h3>
+
+          <p class="text-neutral-500 mt-1 max-w-xl">
+            Manage your cover letter template to use in your job hunt.
+          </p>
         </div>
 
         <form @submit.prevent="submit" class="space-y-6 mt-8">

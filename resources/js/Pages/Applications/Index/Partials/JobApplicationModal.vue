@@ -61,7 +61,8 @@ const submit = () => {
           New Job Application
         </h3>
         <p class="text-sm text-neutral-300 mb-6">
-          Please fill out the form below to apply for this job.
+          Congratulations on finding a new job opportunity! Fill out the form
+          below to tell us a bit more about the application.
         </p>
 
         <form @submit.prevent="submit" class="space-y-6">

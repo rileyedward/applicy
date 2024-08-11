@@ -27,12 +27,14 @@ const isEmptyContactInformation = computed(
 
     <Modal :show="showModal" @close="showModal = false">
       <div class="p-6 bg-neutral-800 rounded-md shadow-md">
-        <h2 class="text-2xl font-semibold text-white mb-1">Contact</h2>
+        <h2 class="text-2xl font-semibold text-white mb-1">
+          Contact the Employer
+        </h2>
 
         <p class="text-neutral-500 text-base mb-4 max-w-3xl">
-          Contact the employer for more information about the job or to follow
-          up on your application. Utilize AI assistance to help you with your
-          application and reaching out to the employer.
+          Get in touch with the employer to follow up or ask about the status of
+          your application. Utilize the AI assistant below to help you craft the
+          perfect message.
         </p>
 
         <div
@@ -65,10 +67,7 @@ const isEmptyContactInformation = computed(
         <!-- Placeholder for future AI assistance features -->
         <div class="bg-neutral-700 p-4 rounded-md">
           <h3 class="text-xl font-semibold text-white">AI Assistance</h3>
-          <p class="text-neutral-500 mt-2">
-            Coming soon: Ask questions or get insights on your application
-            status.
-          </p>
+          <p class="text-neutral-500 mt-2">Coming soon...</p>
         </div>
       </div>
     </Modal>

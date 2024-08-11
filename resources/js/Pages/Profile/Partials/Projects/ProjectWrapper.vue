@@ -35,7 +35,7 @@ const close = () => {
         <div class="max-w-[225px] md:max-w-full">
           <h3 class="text-lg font-medium">Portfolio Projects</h3>
           <p class="mt-1 text-sm text-neutral-400 mb-6">
-            Add your portfolio projects to your profile.
+            Share some of your portfolio projects with us.
           </p>
         </div>
 

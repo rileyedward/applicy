@@ -74,7 +74,7 @@ const filteredApplications = computed(() => {
       <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
         <TextInput
           v-model="search"
-          placeholder="Search for a job..."
+          placeholder="Search your applications..."
           class="w-full max-w-full md:max-w-72 block bg-neutral-700 border-none"
         />
 
