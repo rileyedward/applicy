@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ApplicationActionRequest;
 use App\Models\JobApplication;
 use App\Models\JobApplicationAction;
+use App\Services\InterviewService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
 
@@ -24,6 +25,17 @@ class ApplicationActionController extends Controller
             'status' => $request->input('new_status'),
         ]);
 
+        if ($request->input('new_status') === 'interview_scheduled') {
+            resolve(InterviewService::class)->scheduleInterview(
+                $request->user(),
+                $jobApplication,
+                $request->input('interview_date'),
+                $request->input('interview_time'),
+                $request->input('interview_url'),
+                $request->input('notes')
+            );
+        }
+
         return back();
     }
 
@@ -36,6 +48,23 @@ class ApplicationActionController extends Controller
             'new_status' => $request->input('new_status'),
             'notes' => $request->input('notes'),
         ]);
+
+        if ($jobApplication->actions()->latest()->first()->id === $jobApplicationAction->id) {
+            $jobApplication->update([
+                'status' => $request->input('new_status'),
+            ]);
+        }
+
+        if ($request->input('new_status') === 'interview_scheduled') {
+            resolve(InterviewService::class)->scheduleInterview(
+                $request->user(),
+                $jobApplication,
+                $request->input('interview_date'),
+                $request->input('interview_time'),
+                $request->input('interview_url'),
+                $request->input('notes')
+            );
+        }
 
         return back();
     }

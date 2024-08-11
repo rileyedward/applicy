@@ -5,7 +5,7 @@ import TextArea from '@/Components/Breeze/TextArea.vue';
 import InputError from '@/Components/Breeze/InputError.vue';
 import SelectInput from '@/Components/Breeze/SelectInput.vue';
 import InputLabel from '@/Components/Breeze/InputLabel.vue';
-import { watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
@@ -22,8 +22,13 @@ const emits = defineEmits(['close']);
 const form = useForm({
   new_status: props.action?.new_status ?? props.statusSelections[0].value,
   title: props.action?.title ?? '',
+  interview_date: '',
+  interview_time: '',
+  interview_url: '',
   notes: props.action?.notes ?? '',
 });
+
+const isInterview = computed(() => form.new_status === 'interview_scheduled');
 
 watch(
   () => form.new_status,
@@ -98,6 +103,45 @@ const removeAction = () => {
           />
           <InputError :message="form.errors.title" class="mt-1" />
         </div>
+
+        <hr v-if="isInterview" class="border-neutral-600 my-6" />
+
+        <div v-if="isInterview" class="flex flex-col lg:flex-row gap-4">
+          <div class="flex-1">
+            <InputLabel for="interview_date" value="Interview Date" />
+            <TextInput
+              v-model="form.interview_date"
+              id="interview_date"
+              type="date"
+              class="mt-1 block w-full bg-neutral-700 border-none"
+            />
+            <InputError :message="form.errors.interview_date" class="mt-1" />
+          </div>
+          <div class="flex-1">
+            <InputLabel for="interview_time" value="Interview Time" />
+            <TextInput
+              v-model="form.interview_time"
+              id="interview_time"
+              type="time"
+              class="mt-1 block w-full bg-neutral-700 border-none"
+            />
+            <InputError :message="form.errors.interview_time" class="mt-1" />
+          </div>
+        </div>
+
+        <div v-if="isInterview" class="w-full">
+          <InputLabel for="interview_url" value="Interview URL" />
+          <TextInput
+            v-model="form.interview_url"
+            id="interview_url"
+            type="text"
+            class="mt-1 block w-full bg-neutral-700 border-none"
+            placeholder="Enter the URL for the interview..."
+          />
+          <InputError :message="form.errors.interview_url" class="mt-1" />
+        </div>
+
+        <hr v-if="isInterview" class="border-neutral-600 my-6" />
 
         <div class="w-full">
           <InputLabel for="notes" value="Notes" />
