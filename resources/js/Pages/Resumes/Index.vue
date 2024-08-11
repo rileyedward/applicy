@@ -1,6 +1,6 @@
 <script setup>
 import MainLayout from '@/Layouts/MainLayout.vue';
-import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
+import UploadResume from '@/Pages/Resumes/Partials/UploadResume.vue';
 </script>
 
 <template>
@@ -10,11 +10,7 @@ import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
         <div class="flex justify-between items-center mb-2">
           <h3 class="text-xl font-semibold">Resumes</h3>
 
-          <SecondaryButton
-            class="bg-orange-400 hover:bg-orange-600 w-full sm:w-fit flex justify-center"
-          >
-            New
-          </SecondaryButton>
+          <UploadResume />
         </div>
       </div>
     </div>
