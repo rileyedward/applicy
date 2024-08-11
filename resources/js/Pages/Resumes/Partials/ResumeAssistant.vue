@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 const showModal = ref(false);
-const selectedStarterQuestion = ref(0);
+const selectedStarterQuestion = ref(null);
 const loading = ref(false);
 const response = ref('');
 const hasGenerated = ref(false);
@@ -26,9 +26,9 @@ watch(
 );
 
 const starterQuestions = ref([
-  'What are some general tips for improving this resume?',
-  'What are some common mistakes to avoid in this resume?',
-  'What are some ways to make this resume more professional?',
+  'How can I highlight my skills more effectively on my resume?',
+  'What are the best ways to quantify my achievements in this resume?',
+  'What are the key elements that make a resume stand out to recruiters?',
 ]);
 
 const prompt = ref(starterQuestions.value[selectedStarterQuestion.value]);

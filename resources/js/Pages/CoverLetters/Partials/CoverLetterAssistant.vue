@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 const showModal = ref(false);
-const selectedStarterQuestion = ref(0);
+const selectedStarterQuestion = ref(null);
 const loading = ref(false);
 const response = ref('');
 const hasGenerated = ref(false);
@@ -26,9 +26,9 @@ watch(
 );
 
 const starterQuestions = ref([
-  'What are some general tips for improving this cover letter?',
-  'What are some common mistakes to avoid in this cover letter?',
-  'What are some ways to make this cover letter more professional?',
+  'How can I make my cover letter more compelling and personalized?',
+  'What are the most impactful ways to open and close my cover letter?',
+  'What are the key elements that make a cover letter stand out to employers?',
 ]);
 
 const prompt = ref(starterQuestions.value[selectedStarterQuestion.value]);
