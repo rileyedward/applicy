@@ -1,7 +1,7 @@
 <script setup>
 import AssistantIcon from '@/Components/Icons/AssistantIcon.vue';
 import Modal from '@/Components/Breeze/Modal.vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 import InputLabel from '@/Components/Breeze/InputLabel.vue';
 import TextArea from '@/Components/Breeze/TextArea.vue';
@@ -13,11 +13,25 @@ const props = defineProps({
 });
 
 const showModal = ref(false);
+const selectedStarterQuestion = ref(0);
 const loading = ref(false);
 const response = ref('');
 
+watch(
+  () => selectedStarterQuestion.value,
+  () => {
+    form.prompt = starterQuestions.value[selectedStarterQuestion.value];
+  }
+);
+
+const starterQuestions = ref([
+  'What are some general tips for improving this cover letter?',
+  'What are some common mistakes to avoid in this cover letter?',
+  'What are some ways to make this cover letter more professional?',
+]);
+
 const form = useForm({
-  prompt: '',
+  prompt: starterQuestions.value[selectedStarterQuestion.value],
 });
 
 const submit = () => {
@@ -44,6 +58,22 @@ const submit = () => {
         <p class="text-sm text-neutral-300">
           Use the assistant to help you write a cover letter.
         </p>
+      </div>
+
+      <div class="mb-4 space-y-2">
+        <button
+          v-for="(question, index) in starterQuestions"
+          :key="index"
+          @click.prevent="selectedStarterQuestion = index"
+          class="w-full text-left px-4 py-2 rounded-lg font-medium shadow-sm transition duration-150 ease-in-out"
+          :class="{
+            'bg-orange-400 text-white': selectedStarterQuestion === index,
+            'bg-neutral-400 text-white hover:bg-orange-300':
+              selectedStarterQuestion !== index,
+          }"
+        >
+          {{ question }}
+        </button>
       </div>
 
       <form @submit.prevent="submit" class="space-y-6">
