@@ -7,6 +7,8 @@ import SelectInput from '@/Components/Breeze/SelectInput.vue';
 import InputLabel from '@/Components/Breeze/InputLabel.vue';
 import { watch } from 'vue';
 import { useForm } from '@inertiajs/vue3';
+import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
+import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
 
 const props = defineProps({
   show: Boolean,
@@ -45,6 +47,24 @@ const submit = () => {
       },
     }
   );
+};
+
+const removeAction = () => {
+  if (confirm('Are you sure you want to remove this action?')) {
+    form.delete(
+      route('applications.actions.destroy', [
+        props.jobApplication.id,
+        props.action.id,
+      ]),
+      {
+        preserveScroll: true,
+        onSuccess: () => {
+          form.reset();
+          emits('close');
+        },
+      }
+    );
+  }
 };
 </script>
 
@@ -90,13 +110,17 @@ const submit = () => {
           <InputError :message="form.errors.notes" class="mt-1" />
         </div>
 
-        <div class="flex justify-end">
-          <button
+        <div class="flex justify-end gap-4">
+          <SecondaryButton @click.prevent="removeAction">
+            Remove
+          </SecondaryButton>
+          <PrimaryButton
             type="submit"
-            class="bg-orange-500 text-white px-2 py-1 rounded-md shadow-md hover:bg-orange-600"
+            :disabled="form.processing"
+            class="bg-orange-600 hover:bg-orange-500"
           >
             Save
-          </button>
+          </PrimaryButton>
         </div>
       </form>
     </div>
