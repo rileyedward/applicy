@@ -10,6 +10,7 @@ use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\CoverLetterAssistantController;
 use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,9 +58,12 @@ Route::prefix('/cover-letters')->middleware('auth')->group(function () {
     Route::get('/', [CoverLetterController::class, 'index'])->name('cover-letter.index');
     Route::get('/new', [CoverLetterController::class, 'create'])->name('cover-letter.create');
     Route::post('/', [CoverLetterController::class, 'store'])->name('cover-letter.store');
+
     Route::get('/{coverLetterTemplate}', [CoverLetterController::class, 'show'])->name('cover-letter.show');
     Route::put('/{coverLetterTemplate}', [CoverLetterController::class, 'update'])->name('cover-letter.update');
     Route::delete('/{coverLetterTemplate}', [CoverLetterController::class, 'destroy'])->name('cover-letter.destroy');
+
+    Route::post('/{coverLetterTemplate}/assistant', CoverLetterAssistantController::class)->name('cover-letter.assistant');
 });
 
 /** Resumes */

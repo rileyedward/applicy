@@ -8,6 +8,7 @@ import TextArea from '@/Components/Breeze/TextArea.vue';
 import LoadingSpinner from '@/Components/Icons/LoadingSpinner.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
+import InputError from '@/Components/Breeze/InputError.vue';
 
 const props = defineProps({
   coverLetterTemplate: Object,
@@ -94,6 +95,7 @@ const reset = () => {
             id="prompt"
             class="mt-1 block w-full bg-neutral-700 border-none"
           />
+          <InputError :message="form.errors.prompt" />
         </div>
 
         <div class="w-full flex justify-end">
