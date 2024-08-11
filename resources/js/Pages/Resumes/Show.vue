@@ -55,7 +55,7 @@ const removeResume = () => {
             :src="pdfUrl"
             width="100%"
             height="600px"
-            class="border-0"
+            class="border-0 bg-neutral-800 p-4 shadow-md rounded-2xl"
           />
         </div>
       </div>
