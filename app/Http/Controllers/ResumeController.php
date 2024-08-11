@@ -34,7 +34,7 @@ class ResumeController extends Controller
         $slug = str()->slug($validatedData['title']);
         $filename = $slug.'.pdf';
 
-        $filepath = $request->file('file')->storeAs('resumes', $filename, 'public');
+        $filepath = $request->file('file')->storeAs('users/'.$request->user()->id.'/resumes', $filename, 'public');
 
         $this->resumeService->createResume(
             $request->user(),
@@ -60,7 +60,7 @@ class ResumeController extends Controller
         Gate::authorize('isOwner', $resume);
 
         $filename = $resume->slug.'.pdf';
-        $filepath = 'resumes/'.$filename;
+        $filepath = 'users/'.$resume->user_id.'/resumes/'.$filename;
 
         return Storage::disk('public')->response($filepath);
     }
@@ -70,7 +70,7 @@ class ResumeController extends Controller
         Gate::authorize('isOwner', $resume);
 
         $filename = $resume->slug.'.pdf';
-        $filepath = 'resumes/'.$filename;
+        $filepath = 'users/'.$resume->user_id.'/resumes/'.$filename;
 
         return Storage::disk('public')->download($filepath, $filename);
     }
