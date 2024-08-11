@@ -18,7 +18,7 @@ const pdfUrl = ref(
       <div class="max-w-4xl">
         <div>
           <a
-            :href="route('cover-letter.index')"
+            :href="route('resumes.index')"
             class="text-neutral-300 hover:text-neutral-500 flex items-center mb-1"
           >
             <BackArrowIcon />
