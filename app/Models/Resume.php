@@ -23,4 +23,9 @@ class Resume extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function buildAIContextString(): string
+    {
+        return "temp";
+    }
 }

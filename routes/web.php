@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\CoverLetterAssistantController;
+use App\Http\Controllers\ResumeAssistantController;
 use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 
@@ -73,6 +74,8 @@ Route::prefix('/resumes')->middleware('auth')->group(function () {
     Route::get('/{resume}', [ResumeController::class, 'show'])->name('resumes.show');
     Route::delete('/{resume}', [ResumeController::class, 'destroy'])->name('resumes.destroy');
     Route::get('/{resume}/view', [ResumeController::class, 'view'])->name('resumes.view');
+
+    Route::post('/{resume}/assistant', ResumeAssistantController::class)->name('resumes.assistant');
 });
 
 /** Applications */
