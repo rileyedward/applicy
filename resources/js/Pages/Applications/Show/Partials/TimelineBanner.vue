@@ -50,11 +50,14 @@ const showModal = ref(false);
       </div>
 
       <transition name="fade" mode="in-out">
-        <hr v-if="detailedView" class="my-2 border-neutral-700" />
+        <hr
+          v-if="detailedView && action.notes"
+          class="my-2 border-neutral-700"
+        />
       </transition>
 
       <transition name="fade" mode="in-out">
-        <p v-if="detailedView" class="text-sm text-gray-400">
+        <p v-if="detailedView && action.notes" class="text-sm text-gray-400">
           {{ action.notes }}
         </p>
       </transition>
