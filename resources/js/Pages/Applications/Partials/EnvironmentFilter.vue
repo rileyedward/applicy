@@ -39,7 +39,8 @@ const togglePopup = () => {
       @click="togglePopup"
       class="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
     >
-      Environment
+      <span class="hidden sm:inline-block"> Environment </span>
+      <span class="sm:hidden"> Env </span>
       <span>
         <CheckmarkIcon v-if="selectedFilters.length > 0" />
 
@@ -49,7 +50,7 @@ const togglePopup = () => {
 
     <div
       v-if="showPopup"
-      class="origin-top-left absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-neutral-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
+      class="origin-top-left absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-neutral-800 ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
     >
       <div class="py-1">
         <div
