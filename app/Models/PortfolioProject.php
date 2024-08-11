@@ -20,6 +20,10 @@ class PortfolioProject extends Model
         'description',
     ];
 
+    protected $appends = [
+        'ai_context_string',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -30,7 +34,7 @@ class PortfolioProject extends Model
         return $this->belongsToMany(Skill::class, 'project_skill', 'portfolio_project_id', 'skill_id');
     }
 
-    public function buildAIContextString(): string
+    public function getAiContextStringAttribute(): string
     {
         return '(Portfolio) - '.$this->name.' '.$this->description;
     }

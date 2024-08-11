@@ -24,6 +24,10 @@ class EducationExperience extends Model
         'description',
     ];
 
+    protected $appends = [
+        'ai_context_string',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -39,7 +43,7 @@ class EducationExperience extends Model
         )->withPivot('id');
     }
 
-    public function buildAIContextString(): string
+    public function getAiContextStringAttribute(): string
     {
         return '(Education) - '.$this->institution_name.' '.$this->location.' '.$this->degree.' '.$this->field_of_study.' '.$this->description;
     }

@@ -6,6 +6,7 @@ use App\Http\Integrations\OpenAIConnector;
 use App\Http\Integrations\Requests\CreateChatRequest;
 use App\Models\Resume;
 use App\Models\User;
+use App\Repositories\UserContextRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -17,12 +18,6 @@ class ResumeAssistantController extends Controller
     public function __invoke(Request $request, Resume $resume): JsonResponse
     {
         Gate::authorize('isOwner', $resume);
-
-        if (app()->environment('local')) {
-            sleep(2);
-
-            return response()->json('This ia a test response');
-        }
 
         $request->validate([
             'prompt' => ['required', 'string'],
@@ -51,19 +46,23 @@ class ResumeAssistantController extends Controller
         Resume $resume,
         string $prompt
     ): array {
-        return [
+        $repository = new UserContextRepository($user);
+        $userContext = $repository->buildContext();
+
+        $resumeContext = [
             [
                 'role' => 'system',
                 'content' => 'I am going to give you context to a user as well as the resume and I want you to make improvements to the resume based on a prompt message',
             ],
             [
                 'role' => 'system',
-                'content' => $user->buildAIContextString(),
+                'content' => $resume->ai_context_string,
             ],
-            [
-                'role' => 'system',
-                'content' => $resume->buildAIContextString(),
-            ],
+        ];
+
+        return [
+            ...$userContext,
+            ...$resumeContext,
             [
                 'role' => 'user',
                 'content' => $prompt,

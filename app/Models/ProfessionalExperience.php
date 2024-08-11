@@ -23,6 +23,10 @@ class ProfessionalExperience extends Model
         'description',
     ];
 
+    protected $appends = [
+        'ai_context_string',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -38,7 +42,7 @@ class ProfessionalExperience extends Model
         )->withPivot('id');
     }
 
-    public function buildAIContextString(): string
+    public function getAiContextStringAttribute(): string
     {
         return '(Professional) - '.$this->position.' '.$this->company_name.' '.$this->location.' '.$this->description;
     }

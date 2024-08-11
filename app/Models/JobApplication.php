@@ -33,6 +33,7 @@ class JobApplication extends Model
 
     protected $appends = [
         'status_pretty',
+        'ai_context_string',
     ];
 
     public function user(): BelongsTo
@@ -60,7 +61,7 @@ class JobApplication extends Model
         return $this->actions->sortByDesc('created_at')->first()->created_at->diffForHumans();
     }
 
-    public function buildAIContextString(): string
+    public function getAiContextStringAttribute(): string
     {
         return '(Job Application) '.$this->position.' at '.$this->company_name.' - '.$this->description;
     }

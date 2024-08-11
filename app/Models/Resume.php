@@ -19,12 +19,16 @@ class Resume extends Model
         'file',
     ];
 
+    protected $appends = [
+        'ai_context_string',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    public function buildAIContextString(): string
+    public function getAiContextStringAttribute(): string
     {
         return 'temp';
     }

@@ -36,6 +36,7 @@ class User extends Authenticatable
 
     protected $appends = [
         'initials',
+        'ai_context_string',
     ];
 
     protected function casts(): array
@@ -95,7 +96,7 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
-    public function buildAIContextString(): string
+    public function getAiContextStringAttribute(): string
     {
         return '(User) '.$this->first_name.' '.$this->last_name.' - '.$this->email.' - '.$this->phone_number.', located in '.$this->location;
     }
