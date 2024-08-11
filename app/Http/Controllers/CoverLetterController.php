@@ -43,6 +43,15 @@ class CoverLetterController extends Controller
         return to_route('cover-letter.index');
     }
 
+    public function show(Request $request, CoverLetterTemplate $coverLetterTemplate): Response
+    {
+        Gate::authorize('isOwner', $coverLetterTemplate);
+
+        return inertia('CoverLetters/Show', [
+            'coverLetterTemplate' => $coverLetterTemplate,
+        ]);
+    }
+
     public function update(Request $request, CoverLetterTemplate $coverLetterTemplate): RedirectResponse
     {
         Gate::authorize('isOwner', $coverLetterTemplate);

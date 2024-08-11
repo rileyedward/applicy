@@ -34,16 +34,18 @@ defineProps({
             :key="coverLetter.id"
             class="bg-neutral-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition duration-300 hover:scale-105 cursor-pointer"
           >
-            <h4 class="text-lg font-semibold">
-              {{ coverLetter.title }}
-            </h4>
-            <p class="text-sm text-orange-500 mt-1">
-              {{ new Date(coverLetter.created_at).toLocaleDateString() }}
-            </p>
+            <a :href="route('cover-letter.show', coverLetter.id)">
+              <h4 class="text-lg font-semibold">
+                {{ coverLetter.title }}
+              </h4>
+              <p class="text-sm text-orange-500 mt-1">
+                {{ new Date(coverLetter.created_at).toLocaleDateString() }}
+              </p>
 
-            <p class="text-neutral-500 mt-1 truncate-lines">
-              {{ coverLetter.body }}
-            </p>
+              <p class="text-neutral-500 mt-1 truncate-lines">
+                {{ coverLetter.body }}
+              </p>
+            </a>
           </div>
         </div>
       </div>
