@@ -44,6 +44,11 @@ class JobApplication extends Model
         return $this->hasMany(JobApplicationAction::class);
     }
 
+    public function interviews(): HasMany
+    {
+        return $this->hasMany(Interview::class);
+    }
+
     public function getStatusPrettyAttribute(): string
     {
         return ucwords(str_replace('_', ' ', $this->status));

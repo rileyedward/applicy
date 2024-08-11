@@ -63,12 +63,15 @@ class JobApplicationController extends Controller
         $statusSelections = config('applications.statuses');
         $locationSelections = $request->user()->jobApplications()->distinct('location')->pluck('location');
 
+        $reminder = $this->jobApplicationService->getReminder($jobApplication);
+
         return inertia('Applications/Show/Page', [
             'jobApplication' => $jobApplication,
             'actions' => $actions,
             'environmentSelections' => $environmentSelections,
             'statusSelections' => $statusSelections,
             'locationSelections' => $locationSelections,
+            'reminder' => $reminder,
         ]);
     }
 

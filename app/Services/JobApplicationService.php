@@ -76,4 +76,32 @@ class JobApplicationService
     {
         $jobApplication->delete();
     }
+
+    public function getReminder(JobApplication $jobApplication): array
+    {
+        if ($jobApplication->interviews()->exists()) {
+            $interview = $jobApplication->interviews->first();
+
+            return [
+                'color' => 'blue',
+                'message' => 'You have an interview scheduled for '.$interview->interview_date.' at '.$interview->interview_time,
+            ];
+        }
+
+        if ($jobApplication->status === 'challenge_sent') {
+            return [
+                'color' => 'orange',
+                'message' => 'You have a coding challenge due soon',
+            ];
+        }
+
+        if ($jobApplication->status === 'offered') {
+            return [
+                'color' => 'green',
+                'message' => 'You have an offer from '.$jobApplication->company_name,
+            ];
+        }
+
+        return [];
+    }
 }
