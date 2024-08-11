@@ -13,6 +13,7 @@ class Resume extends Model
     protected $table = 'resumes';
 
     protected $fillable = [
+        'user_id',
         'title',
         'slug',
         'file',

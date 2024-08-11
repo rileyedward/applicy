@@ -13,7 +13,7 @@ class ResumeFactory extends Factory
             'user_id' => User::factory(),
             'title' => $this->faker->sentence,
             'slug' => $this->faker->slug,
-            'file' => $this->faker->word . '.pdf',
+            'file' => $this->faker->word.'.pdf',
         ];
     }
 }

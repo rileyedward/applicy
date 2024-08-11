@@ -65,6 +65,7 @@ Route::prefix('/cover-letters')->middleware('auth')->group(function () {
 /** Resumes */
 Route::prefix('/resumes')->middleware('auth')->group(function () {
     Route::get('/', [ResumeController::class, 'index'])->name('resumes.index');
+    Route::post('/', [ResumeController::class, 'store'])->name('resumes.store');
 });
 
 /** Applications */
