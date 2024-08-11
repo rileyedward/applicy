@@ -19,7 +19,7 @@ const gotoApplication = () => {
       class="flex flex-col-reverse gap-4 md:flex-row justify-between items-start md:items-center"
     >
       <!-- Position and Company Info -->
-      <div class="mb-4 md:mb-0">
+      <div class="mb-4 md:mb-0 w-full">
         <h2 class="text-xl font-semibold text-white">
           {{ jobApplication.position }}
         </h2>
