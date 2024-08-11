@@ -6,6 +6,7 @@ use App\Http\Integrations\OpenAIConnector;
 use App\Http\Integrations\Requests\CreateChatRequest;
 use App\Models\Resume;
 use App\Models\User;
+use App\Repositories\ResumeContextRepository;
 use App\Repositories\UserContextRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -46,8 +47,11 @@ class ResumeAssistantController extends Controller
         Resume $resume,
         string $prompt
     ): array {
-        $repository = new UserContextRepository($user);
-        $userContext = $repository->buildContext();
+        $userRepository = new UserContextRepository($user);
+        $userContext = $userRepository->buildContext();
+
+        $resumeRepository = new ResumeContextRepository($resume);
+        $resumeContext = $resumeRepository->buildContext();
 
         $resumeContext = [
             [
@@ -56,7 +60,7 @@ class ResumeAssistantController extends Controller
             ],
             [
                 'role' => 'system',
-                'content' => $resume->ai_context_string,
+                'content' => $resumeContext,
             ],
         ];
 
