@@ -1,6 +1,3 @@
 <template>
-  <p class="text-gray-500 text-lg font-medium">
-    What are you doing here? Get out there and apply for some jobs, you've got
-    this!
-  </p>
+  <p class="text-gray-500 text-lg font-medium">No applications found.</p>
 </template>

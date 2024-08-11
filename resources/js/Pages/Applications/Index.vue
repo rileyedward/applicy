@@ -110,7 +110,7 @@ const filteredApplications = computed(() => {
         <LoadingSpinner v-if="loading" />
 
         <div v-else>
-          <div v-if="applications.length > 0" class="space-y-4">
+          <div v-if="filteredApplications.length > 0" class="space-y-4">
             <ApplicationBanner
               v-for="application in filteredApplications"
               :key="application.id"
