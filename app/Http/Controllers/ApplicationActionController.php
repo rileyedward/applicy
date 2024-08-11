@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Gate;
 
 class ApplicationActionController extends Controller
 {
-    public function store(ApplicationActionRequest $request, JobApplication $jobApplication): RedirectResponse {
+    public function store(ApplicationActionRequest $request, JobApplication $jobApplication): RedirectResponse
+    {
         Gate::authorize('isOwner', $jobApplication);
 
         $jobApplication->addAction(
@@ -20,13 +21,14 @@ class ApplicationActionController extends Controller
         );
 
         $jobApplication->update([
-            'status' => $request->input('new_status')
+            'status' => $request->input('new_status'),
         ]);
 
         return back();
     }
 
-    public function update(ApplicationActionRequest $request, JobApplication $jobApplication, JobApplicationAction $jobApplicationAction): RedirectResponse {
+    public function update(ApplicationActionRequest $request, JobApplication $jobApplication, JobApplicationAction $jobApplicationAction): RedirectResponse
+    {
         Gate::authorize('isOwner', $jobApplication);
 
         $jobApplicationAction->update([
@@ -38,12 +40,13 @@ class ApplicationActionController extends Controller
         return back();
     }
 
-    public function destroy(JobApplication $jobApplication, JobApplicationAction $jobApplicationAction): RedirectResponse {
+    public function destroy(JobApplication $jobApplication, JobApplicationAction $jobApplicationAction): RedirectResponse
+    {
         Gate::authorize('isOwner', $jobApplication);
 
         if ($jobApplication->actions()->latest()->first()->id === $jobApplicationAction->id) {
             $jobApplication->update([
-                'status' => $jobApplicationAction->previous_status
+                'status' => $jobApplicationAction->previous_status,
             ]);
         }
 

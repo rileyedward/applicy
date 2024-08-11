@@ -22,7 +22,11 @@ defineProps({
       <div v-for="action in actions" :key="action.id">
         <TimelineDotsIcon class="my-4" />
 
-        <TimelineBanner :action="action" :jobApplication="jobApplication" />
+        <TimelineBanner
+          :action="action"
+          :jobApplication="jobApplication"
+          :statusSelections="statusSelections"
+        />
       </div>
     </div>
   </div>
