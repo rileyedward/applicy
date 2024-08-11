@@ -13,7 +13,7 @@ class InterviewService
         JobApplication $jobApplication,
         string $interviewDate,
         string $interviewTime,
-        string $interviewUrl,
+        ?string $interviewUrl,
         ?string $notes
     ): Interview {
         return Interview::query()->create([
