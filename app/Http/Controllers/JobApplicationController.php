@@ -57,8 +57,15 @@ class JobApplicationController extends Controller
     {
         $jobApplication->append('last_update');
 
+        $environmentSelections = config('applications.environments');
+        $statusSelections = config('applications.statuses');
+        $locationSelections = $request->user()->jobApplications()->distinct('location')->pluck('location');
+
         return inertia('Applications/Show/Page', [
             'jobApplication' => $jobApplication,
+            'environmentSelections' => $environmentSelections,
+            'statusSelections' => $statusSelections,
+            'locationSelections' => $locationSelections,
         ]);
     }
 
@@ -91,6 +98,6 @@ class JobApplicationController extends Controller
 
         $jobApplication->delete();
 
-        return back();
+        return to_route('applications.index');
     }
 }

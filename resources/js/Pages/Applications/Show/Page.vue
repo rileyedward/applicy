@@ -4,9 +4,14 @@ import ApplicationHeader from '@/Pages/Applications/Index/Partials/ApplicationHe
 import ViewToggle from '@/Pages/Applications/Show/Partials/ViewToggle.vue';
 import ContactModal from '@/Pages/Applications/Show/Partials/ContactModal.vue';
 import { ref } from 'vue';
+import EditApplicationForm from '@/Pages/Applications/Show/Partials/EditApplicationForm.vue';
+import ApplicationTimeline from '@/Pages/Applications/Show/Partials/ApplicationTimeline.vue';
 
 defineProps({
   jobApplication: Object,
+  environmentSelections: Array,
+  statusSelections: Array,
+  locationSelections: Array,
 });
 
 const showEditForm = ref(false);
@@ -24,6 +29,17 @@ const showEditForm = ref(false);
           />
           <ContactModal :jobApplication="jobApplication" />
         </div>
+      </div>
+
+      <div class="py-12">
+        <EditApplicationForm
+          v-if="showEditForm"
+          :jobApplication="jobApplication"
+          :environmentSelections="environmentSelections"
+          :statusSelections="statusSelections"
+        />
+
+        <ApplicationTimeline v-else />
       </div>
     </div>
   </MainLayout>
