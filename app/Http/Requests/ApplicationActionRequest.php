@@ -13,8 +13,8 @@ class ApplicationActionRequest extends FormRequest
         return [
             'title' => ['required', 'string'],
             'new_status' => ['required', 'string', 'in:'.implode(',', $statusEnums)],
-            'interview_date' => ['required_if:new_status,interview_scheduled', 'date'],
-            'interview_time' => ['required_if:new_status,interview_scheduled', 'date_format:H:i'],
+            'interview_date' => ['required_if:new_status,interview_scheduled'],
+            'interview_time' => ['required_if:new_status,interview_scheduled'],
             'interview_url' => ['nullable', 'url'],
             'notes' => ['nullable', 'string'],
         ];
