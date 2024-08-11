@@ -5,6 +5,7 @@ import LogoutIcon from '@/Components/Icons/LogoutIcon.vue';
 import { useForm } from '@inertiajs/vue3';
 import ProfileIcon from '@/Components/Icons/ProfileIcon.vue';
 import JobIcon from '@/Components/Icons/JobIcon.vue';
+import CoverLetterIcon from '@/Components/Icons/CoverLetterIcon.vue';
 
 const mobileMenuOpen = ref(false);
 
@@ -58,10 +59,22 @@ const logout = () => {
     >
       <div v-show="mobileMenuOpen" class="fixed inset-0 bg-white px-8 py-24">
         <ul class="flex flex-col gap-8">
-          <li class="text-black font-normal hover:font-semibold">
-            <a href="#" class="flex items-center gap-4">
+          <li class="text-black font-normal hover:font-semibold space-y-6">
+            <a
+              :href="route('applications.index')"
+              class="flex items-center gap-4"
+            >
               <JobIcon />
-              <span>Applications</span>
+              <span>Jobs</span>
+            </a>
+          </li>
+          <li class="text-black font-normal hover:font-semibold space-y-6">
+            <a
+              :href="route('cover-letter.index')"
+              class="flex items-center gap-4"
+            >
+              <CoverLetterIcon />
+              <span>Cover Letters</span>
             </a>
           </li>
         </ul>

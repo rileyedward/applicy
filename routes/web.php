@@ -52,7 +52,8 @@ Route::prefix('/portfolio')->middleware('auth')->group(function () {
 });
 
 /** Cover Letter Templates */
-Route::prefix('/cover-letter')->middleware('auth')->group(function () {
+Route::prefix('/cover-letters')->middleware('auth')->group(function () {
+    Route::get('/', [CoverLetterController::class, 'index'])->name('cover-letter.index');
     Route::post('/', [CoverLetterController::class, 'store'])->name('cover-letter.store');
     Route::put('/{coverLetterTemplate}', [CoverLetterController::class, 'update'])->name('cover-letter.update');
     Route::delete('/{coverLetterTemplate}', [CoverLetterController::class, 'destroy'])->name('cover-letter.destroy');

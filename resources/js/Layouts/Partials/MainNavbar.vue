@@ -5,6 +5,10 @@ import { computed } from 'vue';
 const isApplicationRoute = computed(() => {
   return window.location.pathname.includes('applications');
 });
+
+const isCoverLetterRoute = computed(() => {
+  return window.location.pathname.includes('cover-letter');
+});
 </script>
 
 <template>
@@ -24,6 +28,13 @@ const isApplicationRoute = computed(() => {
             :class="{ 'font-semibold text-orange-500': isApplicationRoute }"
           >
             <a :href="route('applications.index')"> Applications </a>
+          </li>
+
+          <li
+            class="font-light text-sm hover:font-semibold hover:text-orange-500"
+            :class="{ 'font-semibold text-orange-500': isCoverLetterRoute }"
+          >
+            <a :href="route('cover-letter.index')"> Cover Letters </a>
           </li>
         </ul>
       </div>
