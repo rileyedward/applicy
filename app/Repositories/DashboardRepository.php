@@ -22,7 +22,7 @@ class DashboardRepository
         $applicationsToApplyTo = $this->fetchApplicationsToApplyTo($user);
         $challengesToComplete = $this->fetchChallengesToComplete($user);
 
-        return $applicationsToApplyTo->merge($challengesToComplete)->sortBy('created_at');
+        return $applicationsToApplyTo->merge($challengesToComplete)->sortBy('created_at')->values();
     }
 
     protected function fetchApplicationsToApplyTo(User $user): Collection
@@ -35,7 +35,6 @@ class DashboardRepository
     protected function fetchChallengesToComplete(User $user): Collection
     {
         return $user->jobApplications()
-            ->without('actions')
             ->where('status', 'challenge_sent')
             ->get();
     }
