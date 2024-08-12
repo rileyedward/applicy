@@ -27,7 +27,7 @@ class UserContextRepository
         });
     }
 
-    protected function buildEducationContext(&$context)
+    protected function buildEducationContext(&$context): void
     {
         foreach ($this->user->educationExperiences as $educationExperience) {
             $context[] = [
@@ -37,7 +37,7 @@ class UserContextRepository
         }
     }
 
-    protected function buildProfessionalContext(&$context)
+    protected function buildProfessionalContext(&$context): void
     {
         foreach ($this->user->professionalExperiences as $professionalExperience) {
             $context[] = [
@@ -47,7 +47,7 @@ class UserContextRepository
         }
     }
 
-    protected function buildPortfolioContext(&$context)
+    protected function buildPortfolioContext(&$context): void
     {
         foreach ($this->user->portfolioProjects as $portfolioProject) {
             $context[] = [

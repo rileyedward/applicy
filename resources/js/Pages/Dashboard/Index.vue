@@ -4,6 +4,7 @@ import UpcomingInterviews from '@/Pages/Dashboard/Partials/UpcomingInterviews.vu
 
 defineProps({
   upcomingInterviews: Array,
+  upcomingReminders: Array,
 });
 </script>
 
@@ -12,6 +13,10 @@ defineProps({
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="max-w-4xl">
         <UpcomingInterviews :upcomingInterviews="upcomingInterviews" />
+
+        <div>
+          {{ JSON.stringify(upcomingReminders) }}
+        </div>
       </div>
     </div>
   </MainLayout>
