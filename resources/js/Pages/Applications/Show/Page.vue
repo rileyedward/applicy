@@ -6,7 +6,6 @@ import ContactModal from '@/Pages/Applications/Show/Partials/ContactModal.vue';
 import { ref } from 'vue';
 import EditApplicationForm from '@/Pages/Applications/Show/Partials/EditApplicationForm.vue';
 import ApplicationTimeline from '@/Pages/Applications/Show/Partials/ApplicationTimeline.vue';
-import Reminder from '@/Pages/Applications/Show/Partials/Reminder.vue';
 import ApplicationAssistant from '@/Pages/Applications/Show/Partials/ApplicationAssistant.vue';
 
 defineProps({
@@ -17,7 +16,6 @@ defineProps({
   locationSelections: Array,
   coverLetterTemplateSelections: Array,
   resumeSelections: Array,
-  reminder: Object,
 });
 
 const showEditForm = ref(false);
@@ -26,8 +24,6 @@ const showEditForm = ref(false);
 <template>
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
-      <Reminder :reminder="reminder" class="mb-4" />
-
       <div
         class="flex flex-col-reverse md:flex-row justify-between items-center"
       >

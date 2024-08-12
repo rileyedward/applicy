@@ -78,8 +78,6 @@ class JobApplicationController extends Controller
             ];
         });
 
-        $reminder = $this->jobApplicationService->getReminder($jobApplication);
-
         return inertia('Applications/Show/Page', [
             'jobApplication' => $jobApplication,
             'actions' => $actions,
@@ -87,8 +85,7 @@ class JobApplicationController extends Controller
             'statusSelections' => $statusSelections,
             'locationSelections' => $locationSelections,
             'coverLetterTemplateSelections' => $coverLetterTemplateSelections,
-            'resumeSelections' => $resumeSelections,
-            'reminder' => $reminder,
+            'resumeSelections' => $resumeSelections
         ]);
     }
 
