@@ -24,8 +24,7 @@ defineProps({
         </div>
 
         <p class="text-neutral-500 mt-1 max-w-xl">
-          Manage all your cover letters here that you wish to use as templates
-          for your job applications.
+          Manage your cover letter letters you wish to use as templates.
         </p>
 
         <div class="mt-8 space-y-3">

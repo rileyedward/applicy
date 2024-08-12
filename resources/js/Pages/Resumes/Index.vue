@@ -1,7 +1,6 @@
 <script setup>
 import MainLayout from '@/Layouts/MainLayout.vue';
 import UploadResume from '@/Pages/Resumes/Partials/UploadResume.vue';
-import DownloadIcon from '@/Components/Icons/DownloadIcon.vue';
 import { useForm } from '@inertiajs/vue3';
 
 const props = defineProps({
@@ -24,8 +23,7 @@ const downloadResume = (resume) => {
         </div>
 
         <p class="text-neutral-500 mt-1 max-w-xl">
-          Manage all your resumes here that you wish to use for your job
-          applications.
+          Manage your resumes here you're using in your job search.
         </p>
 
         <div

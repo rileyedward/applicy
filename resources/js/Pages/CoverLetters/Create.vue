@@ -37,7 +37,7 @@ const submit = () => {
           <h3 class="text-xl font-semibold">New Cover Letter</h3>
 
           <p class="text-neutral-500 mt-1 max-w-xl">
-            Create a new cover letter template to use in your job hunt.
+            Create a new cover letter template to use when applying for jobs.
           </p>
         </div>
 

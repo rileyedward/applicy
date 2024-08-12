@@ -27,9 +27,15 @@ const showEditForm = ref(false);
     <div class="max-w-6xl mx-auto px-8 py-12">
       <Reminder :reminder="reminder" class="mb-4" />
 
-      <div class="flex justify-between items-center">
-        <ApplicationHeader :jobApplication="jobApplication" />
-        <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
+      <div
+        class="flex flex-col-reverse md:flex-row justify-between items-center"
+      >
+        <div class="w-full">
+          <ApplicationHeader :jobApplication="jobApplication" />
+        </div>
+        <div
+          class="flex justify-between md:justify-end items-center gap-2 md:gap-4 w-full mb-4 md:mb-0"
+        >
           <ViewToggle
             :showEditForm="showEditForm"
             @toggleView="showEditForm = !showEditForm"

@@ -66,9 +66,11 @@ const submit = () => {
 
     <Modal :show="showModal" @close="showModal = false">
       <div class="p-6">
-        <h3 class="text-lg font-medium text-neutral-100 mb-1">New Action</h3>
+        <h3 class="text-lg font-medium text-neutral-100 mb-1">
+          Have an update for this application?
+        </h3>
         <p class="text-sm text-neutral-300 mb-6">
-          Add a new action to your application timeline.
+          Submit a new action to update the status of this application.
         </p>
 
         <form @submit.prevent="submit" class="space-y-6">

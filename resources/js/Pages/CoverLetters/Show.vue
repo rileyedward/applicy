@@ -55,7 +55,7 @@ const removeCoverLetter = () => {
           </div>
 
           <p class="text-neutral-500 mt-1 max-w-xl">
-            Manage your cover letter template to use in your job hunt.
+            Manage your cover letter template.
           </p>
         </div>
 

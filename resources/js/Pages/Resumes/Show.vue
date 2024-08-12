@@ -26,8 +26,10 @@ const removeResume = () => {
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="max-w-4xl">
         <div>
-          <div class="flex justify-between items-center">
-            <div>
+          <div
+            class="flex flex-col-reverse md:flex-row justify-between items-start md:items-center"
+          >
+            <div class="w-full">
               <a
                 :href="route('resumes.index')"
                 class="text-neutral-300 hover:text-neutral-500 flex items-center mb-1"
@@ -40,7 +42,9 @@ const removeResume = () => {
               </h3>
             </div>
 
-            <div class="flex items-center gap-8">
+            <div
+              class="flex justify-between md:justify-end items-center gap-8 w-full my-4 md:my-0"
+            >
               <SecondaryButton @click.prevent="removeResume">
                 Remove
               </SecondaryButton>
@@ -50,7 +54,7 @@ const removeResume = () => {
           </div>
 
           <p class="text-neutral-500 mt-1 max-w-xl">
-            Manage your resume template to use in your job hunt.
+            Manage and view your resume.
           </p>
         </div>
 

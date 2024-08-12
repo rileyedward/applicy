@@ -64,10 +64,10 @@ const reset = () => {
     <div class="p-6">
       <div class="mb-4">
         <h3 class="text-lg font-medium text-neutral-100 mb-1">
-          Need some tips?
+          Need some help on your cover letter?
         </h3>
         <p class="text-sm text-neutral-300">
-          Use the assistant to help you write a cover letter.
+          Ask for some tips on how to improve your cover letter.
         </p>
       </div>
 

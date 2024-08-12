@@ -76,9 +76,11 @@ const removeAction = () => {
 <template>
   <Modal :show="show" @close="$emit('close')">
     <div class="p-6">
-      <h3 class="text-lg font-medium text-neutral-100 mb-1">Update Action</h3>
+      <h3 class="text-lg font-medium text-neutral-100 mb-1">
+        Modify application update action
+      </h3>
       <p class="text-sm text-neutral-300 mb-6">
-        Update the action for this application.
+        Update the details of a previous action for this application.
       </p>
 
       <form @submit.prevent="submit" class="space-y-6">
