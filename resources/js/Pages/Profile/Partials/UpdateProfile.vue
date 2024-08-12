@@ -28,7 +28,7 @@ const submit = () => {
     <div class="w-full bg-neutral-800 rounded-2xl p-6">
       <h3 class="text-lg font-medium">Profile Information</h3>
       <p class="mt-1 text-sm text-neutral-400 mb-6">
-        Update your account's profile information and email address.
+        Manage your contact and personal information.
       </p>
 
       <form @submit.prevent="submit" class="max-w-2xl space-y-6">
