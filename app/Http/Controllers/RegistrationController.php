@@ -34,6 +34,6 @@ class RegistrationController extends Controller
 
         $this->authenticationService->createStripeCustomer($user);
 
-        return to_route('dashboard');
+        return to_route('profile.index');
     }
 }
