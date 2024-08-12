@@ -16,20 +16,27 @@ use App\Http\Controllers\ResumeAssistantController;
 use App\Http\Controllers\ResumeController;
 use Illuminate\Support\Facades\Route;
 
+/** Landing Page */
 Route::get('/', fn () => inertia('Landing/Index'))->name('index');
 
-/** Authentication */
+/** Registration */
 Route::prefix('/register')->group(function () {
     Route::get('/', [RegistrationController::class, 'index'])->name('register.index');
     Route::post('/', [RegistrationController::class, 'store'])->name('register.store');
 });
 
+/** Login */
 Route::prefix('/login')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('login');
     Route::post('/', [LoginController::class, 'store'])->name('login.store');
 });
-
 Route::delete('/logout', [LoginController::class, 'destroy'])->name('logout');
+
+/** Profile */
+Route::prefix('/profile')->middleware('auth')->group(function () {
+    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
+    Route::put('/', [ProfileController::class, 'update'])->name('profile.update');
+});
 
 /** Dashboard */
 Route::get('/dashboard', fn () => inertia('Dashboard/Index'))->middleware('auth')->name('dashboard');
@@ -58,25 +65,30 @@ Route::prefix('/portfolio')->middleware('auth')->group(function () {
 /** Cover Letter Templates */
 Route::prefix('/cover-letters')->middleware('auth')->group(function () {
     Route::get('/', [CoverLetterController::class, 'index'])->name('cover-letter.index');
-    Route::get('/new', [CoverLetterController::class, 'create'])->name('cover-letter.create');
     Route::post('/', [CoverLetterController::class, 'store'])->name('cover-letter.store');
+    Route::get('/new', [CoverLetterController::class, 'create'])->name('cover-letter.create');
 
-    Route::get('/{coverLetterTemplate}', [CoverLetterController::class, 'show'])->name('cover-letter.show');
-    Route::put('/{coverLetterTemplate}', [CoverLetterController::class, 'update'])->name('cover-letter.update');
-    Route::delete('/{coverLetterTemplate}', [CoverLetterController::class, 'destroy'])->name('cover-letter.destroy');
+    Route::prefix('/{coverLetterTemplate}')->group(function () {
+        Route::get('/', [CoverLetterController::class, 'show'])->name('cover-letter.show');
+        Route::put('/', [CoverLetterController::class, 'update'])->name('cover-letter.update');
+        Route::delete('/', [CoverLetterController::class, 'destroy'])->name('cover-letter.destroy');
 
-    Route::post('/{coverLetterTemplate}/assistant', CoverLetterAssistantController::class)->name('cover-letter.assistant');
+        Route::post('/assistant', CoverLetterAssistantController::class)->name('cover-letter.assistant');
+    });
 });
 
 /** Resumes */
 Route::prefix('/resumes')->middleware('auth')->group(function () {
     Route::get('/', [ResumeController::class, 'index'])->name('resumes.index');
     Route::post('/', [ResumeController::class, 'store'])->name('resumes.store');
-    Route::get('/{resume}', [ResumeController::class, 'show'])->name('resumes.show');
-    Route::delete('/{resume}', [ResumeController::class, 'destroy'])->name('resumes.destroy');
-    Route::get('/{resume}/view', [ResumeController::class, 'view'])->name('resumes.view');
 
-    Route::post('/{resume}/assistant', ResumeAssistantController::class)->name('resumes.assistant');
+    Route::prefix('/{resume}')->group(function () {
+        Route::get('/', [ResumeController::class, 'show'])->name('resumes.show');
+        Route::delete('/', [ResumeController::class, 'destroy'])->name('resumes.destroy');
+        Route::get('/view', [ResumeController::class, 'view'])->name('resumes.view');
+
+        Route::post('/assistant', ResumeAssistantController::class)->name('resumes.assistant');
+    });
 });
 
 /** Applications */
@@ -92,14 +104,10 @@ Route::prefix('/applications')->middleware('auth')->group(function () {
 
         Route::post('/assistant/contact', ApplicationContactAssistantController::class)->name('applications.assistant.contact');
 
-        Route::post('/actions', [ApplicationActionController::class, 'store'])->name('applications.actions.store');
-        Route::put('/actions/{jobApplicationAction}', [ApplicationActionController::class, 'update'])->name('applications.actions.update');
-        Route::delete('/actions/{jobApplicationAction}', [ApplicationActionController::class, 'destroy'])->name('applications.actions.destroy');
+        Route::prefix('/actions')->group(function () {
+            Route::post('/', [ApplicationActionController::class, 'store'])->name('applications.actions.store');
+            Route::put('/{jobApplicationAction}', [ApplicationActionController::class, 'update'])->name('applications.actions.update');
+            Route::delete('/{jobApplicationAction}', [ApplicationActionController::class, 'destroy'])->name('applications.actions.destroy');
+        });
     });
-});
-
-/** Profile */
-Route::prefix('/profile')->middleware('auth')->group(function () {
-    Route::get('/', [ProfileController::class, 'index'])->name('profile.index');
-    Route::put('/', [ProfileController::class, 'update'])->name('profile.update');
 });
