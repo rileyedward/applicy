@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ResumeAssistantController;
 use App\Http\Controllers\ResumeController;
+use App\Http\Controllers\ReviseResumeController;
 use Illuminate\Support\Facades\Route;
 
 /** Landing Page */
@@ -114,4 +115,5 @@ Route::prefix('/assistant')->middleware('auth')->group(function () {
 
     Route::post('/application/{jobApplication}/contact', ApplicationContactAssistantController::class)->name('assistant.application.contact');
     Route::post('/application/{jobApplication}/cover-letter', GenerateCoverLetterController::class)->name('assistant.application.cover-letter');
+    Route::post('/application/{jobApplication}/resume', ReviseResumeController::class)->name('assistant.application.resume');
 });

@@ -3,10 +3,12 @@ import AssistantIcon from '@/Components/Icons/AssistantIcon.vue';
 import { ref } from 'vue';
 import Modal from '@/Components/Breeze/Modal.vue';
 import GenerateCoverLetter from '@/Pages/Applications/Show/Partials/GenerateCoverLetter.vue';
+import ReviseResume from '@/Pages/Applications/Show/Partials/ReviseResume.vue';
 
 const props = defineProps({
   jobApplication: Object,
   coverLetterTemplateSelections: Array,
+  resumeSelections: Array,
 });
 
 const showModal = ref(false);
@@ -61,9 +63,11 @@ const selectedAction = ref('cover-letter');
           :coverLetterTemplateSelections="coverLetterTemplateSelections"
         />
 
-        <div v-else-if="selectedAction === 'revise-resume'" class="my-6">
-          <p class="text-sm text-neutral-300">Coming soon...</p>
-        </div>
+        <ReviseResume
+          v-else-if="selectedAction === 'revise-resume'"
+          :jobApplication="jobApplication"
+          :resumeSelections="resumeSelections"
+        />
       </div>
     </Modal>
   </div>

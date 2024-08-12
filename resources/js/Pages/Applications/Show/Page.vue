@@ -16,6 +16,7 @@ defineProps({
   statusSelections: Array,
   locationSelections: Array,
   coverLetterTemplateSelections: Array,
+  resumeSelections: Array,
   reminder: Object,
 });
 
@@ -44,6 +45,7 @@ const showEditForm = ref(false);
           <ApplicationAssistant
             :jobApplication="jobApplication"
             :coverLetterTemplateSelections="coverLetterTemplateSelections"
+            :resumeSelections="resumeSelections"
           />
         </div>
       </div>

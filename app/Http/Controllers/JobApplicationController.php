@@ -71,6 +71,13 @@ class JobApplicationController extends Controller
             ];
         });
 
+        $resumeSelections = $request->user()->resumes->map(function ($resume) {
+            return [
+                'value' => $resume->id,
+                'label' => $resume->title,
+            ];
+        });
+
         $reminder = $this->jobApplicationService->getReminder($jobApplication);
 
         return inertia('Applications/Show/Page', [
@@ -80,6 +87,7 @@ class JobApplicationController extends Controller
             'statusSelections' => $statusSelections,
             'locationSelections' => $locationSelections,
             'coverLetterTemplateSelections' => $coverLetterTemplateSelections,
+            'resumeSelections' => $resumeSelections,
             'reminder' => $reminder,
         ]);
     }

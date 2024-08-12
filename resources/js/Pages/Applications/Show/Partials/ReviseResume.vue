@@ -8,10 +8,10 @@ import LoadingSpinner from '@/Components/Icons/LoadingSpinner.vue';
 
 const props = defineProps({
   jobApplication: Object,
-  coverLetterTemplateSelections: Array,
+  resumeSelections: Array,
 });
 
-const selectedCoverLetterTemplate = ref(null);
+const selectedResume = ref(null);
 const loading = ref(false);
 const response = ref('');
 const hasGenerated = ref(false);
@@ -20,12 +20,9 @@ const submit = () => {
   loading.value = true;
 
   axios
-    .post(
-      route('assistant.application.cover-letter', props.jobApplication.id),
-      {
-        cover_letter_template_id: selectedCoverLetterTemplate?.value ?? null,
-      }
-    )
+    .post(route('assistant.application.resume', props.jobApplication.id), {
+      resume_id: selectedResume?.value ?? null,
+    })
     .then((res) => {
       response.value = res.data;
       hasGenerated.value = true;
@@ -42,18 +39,18 @@ const reset = () => {
 <template>
   <div>
     <p class="text-base text-neutral-300 my-4">
-      Utilize our AI assistant to generate a cover letter
+      Utilize our AI assistant to revise your resume
     </p>
 
     <form @submit.prevent="submit" class="space-y-6">
-      <div v-if="coverLetterTemplateSelections.length > 0" class="w-full">
+      <div v-if="resumeSelections.length > 0" class="w-full">
         <InputLabel
           for="cover_letter"
-          value="Select one of your cover letters as a template"
+          value="Select one of your resumes to revise"
         />
         <SelectInput
-          v-model="selectedCoverLetterTemplate"
-          :options="coverLetterTemplateSelections ?? []"
+          v-model="selectedResume"
+          :options="resumeSelections ?? []"
           id="cover_letter"
           class="mt-1 block w-full bg-neutral-700 border-none scrollbar-hide"
         />
@@ -64,9 +61,9 @@ const reset = () => {
           v-if="!hasGenerated"
           type="submit"
           class="bg-orange-500 hover:bg-orange-600 w-full sm:w-fit flex justify-center"
-          :disabled="!selectedCoverLetterTemplate"
+          :disabled="!selectedResume"
           :class="{
-            'cursor-not-allowed opacity-50': !selectedCoverLetterTemplate,
+            'cursor-not-allowed opacity-50': !selectedResume,
           }"
         >
           Generate
@@ -74,7 +71,7 @@ const reset = () => {
         <SecondaryButton v-else @click.prevent="reset"> Reset </SecondaryButton>
       </div>
 
-      <div v-if="selectedCoverLetterTemplate">
+      <div v-if="selectedResume">
         <div
           class="bg-neutral-700 p-4 rounded-lg max-h-[350px] overflow-y-auto scrollbar-hide"
         >
