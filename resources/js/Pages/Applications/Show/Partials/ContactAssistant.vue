@@ -6,7 +6,7 @@ import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import InputLabel from '@/Components/Breeze/InputLabel.vue';
 
-defineProps({
+const props = defineProps({
   jobApplication: Object,
 });
 
