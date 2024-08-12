@@ -64,17 +64,13 @@ const reset = () => {
           v-if="!hasGenerated"
           type="submit"
           class="bg-orange-500 hover:bg-orange-600 w-full sm:w-fit flex justify-center"
-          :disabled="!selectedCoverLetterTemplate"
-          :class="{
-            'cursor-not-allowed opacity-50': !selectedCoverLetterTemplate,
-          }"
         >
           Generate
         </PrimaryButton>
         <SecondaryButton v-else @click.prevent="reset"> Reset </SecondaryButton>
       </div>
 
-      <div v-if="selectedCoverLetterTemplate">
+      <div>
         <div
           class="bg-neutral-700 p-4 rounded-lg max-h-[350px] overflow-y-auto scrollbar-hide"
         >
