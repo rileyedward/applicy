@@ -60,6 +60,10 @@ const selectedAction = ref('cover-letter');
           :jobApplication="jobApplication"
           :coverLetterTemplateSelections="coverLetterTemplateSelections"
         />
+
+        <div v-else-if="selectedAction === 'revise-resume'" class="my-6">
+          <p class="text-sm text-neutral-300">Coming soon...</p>
+        </div>
       </div>
     </Modal>
   </div>
