@@ -1,3 +1,3 @@
 <template>
-  <p class="text-gray-500 text-lg font-medium">No applications found.</p>
+  <p class="text-neutral-300 text-lg font-medium">No resumes found.</p>
 </template>

@@ -46,6 +46,12 @@ defineProps({
               </p>
             </a>
           </div>
+
+          <div v-if="coverLetterTemplates.length === 0" class="mt-8">
+            <p class="text-neutral-300 text-lg font-medium">
+              No templates found.
+            </p>
+          </div>
         </div>
       </div>
     </div>

@@ -43,6 +43,10 @@ const downloadResume = (resume) => {
             </div>
           </a>
         </div>
+
+        <div v-if="resumes.length === 0" class="mt-8">
+          <p class="text-neutral-300 text-lg font-medium">No resumes found.</p>
+        </div>
       </div>
     </div>
   </MainLayout>
