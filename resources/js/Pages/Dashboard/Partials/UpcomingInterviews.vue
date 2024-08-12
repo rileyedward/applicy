@@ -14,7 +14,10 @@ defineProps({
       </h3>
 
       <p class="text-neutral-500 mt-1 max-w-xl mb-4">
-        Here are your upcoming interviews. Good luck!
+        <span v-if="upcomingInterviews.length > 0">
+          Here are your upcoming interviews. Good luck!
+        </span>
+        <span v-else> You have no upcoming interviews. </span>
       </p>
     </div>
 
