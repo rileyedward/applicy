@@ -1,6 +1,6 @@
 <script setup>
 import Modal from '@/Components/Breeze/Modal.vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import SecondaryButton from '@/Components/Breeze/SecondaryButton.vue';
 import { useForm } from '@inertiajs/vue3';
 import TextInput from '@/Components/Breeze/TextInput.vue';
@@ -18,9 +18,14 @@ const props = defineProps({
 const emits = defineEmits(['refreshApplications']);
 
 const showModal = ref(false);
+const hasApplied = ref(false);
+
+watch(hasApplied, (value) => {
+  form.status = value ? 'applied' : 'not_applied';
+});
 
 const form = useForm({
-  status: props.statusSelections[0].value,
+  status: hasApplied.value ? 'applied' : 'not_applied',
   job_url: '',
   company_url: '',
   position: '',
@@ -66,16 +71,25 @@ const submit = () => {
         </p>
 
         <form @submit.prevent="submit" class="space-y-6">
-          <div class="flex flex-col lg:flex-row gap-4">
-            <div class="flex-1">
-              <InputLabel for="status" value="Application Status" />
-              <SelectInput
-                v-model="form.status"
-                :options="statusSelections"
-                id="status"
-                class="mt-1 block w-full bg-neutral-700 border-none"
+          <div class="w-full">
+            <InputLabel
+              for="has_applied"
+              value="Have you applied to this already?"
+            />
+
+            <div class="mt-1 flex items-center">
+              <input
+                v-model="hasApplied"
+                id="has_applied"
+                type="checkbox"
+                class="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded-full toggle-checkbox"
               />
-              <InputError :message="form.errors.status" class="mt-1" />
+              <label
+                for="has_applied"
+                class="ml-2 block text-sm text-neutral-300"
+              >
+                {{ hasApplied ? 'Yes' : 'No' }}
+              </label>
             </div>
           </div>
 
