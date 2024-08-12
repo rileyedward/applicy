@@ -36,8 +36,8 @@ defineProps({
       </a>
     </div>
 
-    <div v-else class="flex items-center justify-center">
-      <p class="text-neutral-500">No reminders available. Start adding some!</p>
+    <div v-else class="flex items-center">
+      <p class="text-neutral-500">No reminders at this time!</p>
     </div>
   </aside>
 </template>
