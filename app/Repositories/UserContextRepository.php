@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Cache;
 
 class UserContextRepository
 {
@@ -10,18 +11,20 @@ class UserContextRepository
 
     public function buildContext(): array
     {
-        $context = [
-            [
-                'role' => 'system',
-                'content' => $this->user->ai_context_string,
-            ],
-        ];
+        return Cache::remember('user_context_'.$this->user->id, 60 * 60 * 24, function () {
+            $context = [
+                [
+                    'role' => 'system',
+                    'content' => $this->user->ai_context_string,
+                ],
+            ];
 
-        $this->buildEducationContext($context);
-        $this->buildProfessionalContext($context);
-        $this->buildPortfolioContext($context);
+            $this->buildEducationContext($context);
+            $this->buildProfessionalContext($context);
+            $this->buildPortfolioContext($context);
 
-        return $context;
+            return $context;
+        });
     }
 
     protected function buildEducationContext(&$context)
