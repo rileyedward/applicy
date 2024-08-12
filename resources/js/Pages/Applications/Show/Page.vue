@@ -7,6 +7,7 @@ import { ref } from 'vue';
 import EditApplicationForm from '@/Pages/Applications/Show/Partials/EditApplicationForm.vue';
 import ApplicationTimeline from '@/Pages/Applications/Show/Partials/ApplicationTimeline.vue';
 import Reminder from '@/Pages/Applications/Show/Partials/Reminder.vue';
+import ApplicationAssistant from '@/Pages/Applications/Show/Partials/ApplicationAssistant.vue';
 
 defineProps({
   jobApplication: Object,
@@ -27,12 +28,13 @@ const showEditForm = ref(false);
 
       <div class="flex justify-between items-center">
         <ApplicationHeader :jobApplication="jobApplication" />
-        <div class="flex flex-col md:flex-row items-center gap-2 md:gap-8">
+        <div class="flex flex-col md:flex-row items-center gap-2 md:gap-4">
           <ViewToggle
             :showEditForm="showEditForm"
             @toggleView="showEditForm = !showEditForm"
           />
           <ContactModal :jobApplication="jobApplication" />
+          <ApplicationAssistant :jobApplication="jobApplication" />
         </div>
       </div>
 
