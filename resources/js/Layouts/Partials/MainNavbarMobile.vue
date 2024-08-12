@@ -66,7 +66,7 @@ const logout = () => {
               class="flex items-center gap-4"
             >
               <JobIcon />
-              <span>Jobs</span>
+              <span>Applications</span>
             </a>
           </li>
           <li class="text-black font-normal hover:font-semibold space-y-6">
