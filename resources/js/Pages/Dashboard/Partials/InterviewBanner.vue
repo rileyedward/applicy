@@ -1,5 +1,6 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+import InterviewSettingsModal from '@/Pages/Dashboard/Partials/InterviewSettingsModal.vue';
 
 const props = defineProps({
   interview: Object,
@@ -17,11 +18,26 @@ const formattedTime = computed(() => {
     minute: '2-digit',
   });
 });
+
+const selectedInterview = ref(null);
+const isModalOpen = ref(false);
+
+const openSettingsModal = () => {
+  selectedInterview.value = props.interview;
+  isModalOpen.value = true;
+};
 </script>
 
 <template>
+  <InterviewSettingsModal
+    :interview="selectedInterview"
+    :show="isModalOpen"
+    @close="isModalOpen = false"
+  />
+
   <div
-    class="bg-neutral-900 p-4 rounded-lg hover:scale-105 cursor-pointer transition-transform"
+    class="bg-neutral-800 p-4 rounded-lg hover:scale-105 cursor-pointer transition-transform"
+    @click.prevent="openSettingsModal"
   >
     <div class="flex flex-col-reverse md:flex-row items-center justify-between">
       <div class="text-center md:text-left">

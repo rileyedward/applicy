@@ -10,7 +10,9 @@ defineProps({
 <template>
   <MainLayout>
     <div class="max-w-6xl mx-auto px-8 py-12">
-      <UpcomingInterviews :upcomingInterviews="upcomingInterviews" />
+      <div class="max-w-4xl">
+        <UpcomingInterviews :upcomingInterviews="upcomingInterviews" />
+      </div>
     </div>
   </MainLayout>
 </template>

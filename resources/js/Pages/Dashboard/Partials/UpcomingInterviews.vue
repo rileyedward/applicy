@@ -7,7 +7,7 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-neutral-800 p-4 rounded-2xl shadow-md">
+  <div>
     <div>
       <h3 class="text-lg font-semibold text-neutral-100">
         Upcoming Interviews
