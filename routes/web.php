@@ -10,6 +10,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ApplicationContactAssistantController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ResumeAssistantController;
 use App\Http\Controllers\ResumeController;
@@ -88,6 +89,8 @@ Route::prefix('/applications')->middleware('auth')->group(function () {
         Route::get('/', [JobApplicationController::class, 'show'])->name('applications.show');
         Route::put('/', [JobApplicationController::class, 'update'])->name('applications.update');
         Route::delete('/', [JobApplicationController::class, 'destroy'])->name('applications.destroy');
+
+        Route::post('/assistant/contact', ApplicationContactAssistantController::class)->name('applications.assistant.contact');
 
         Route::post('/actions', [ApplicationActionController::class, 'store'])->name('applications.actions.store');
         Route::put('/actions/{jobApplicationAction}', [ApplicationActionController::class, 'update'])->name('applications.actions.update');
