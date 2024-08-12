@@ -6,6 +6,7 @@ use App\Http\Controllers\ApplicationSearchController;
 use App\Http\Controllers\CoverLetterAssistantController;
 use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\EducationExperienceController;
+use App\Http\Controllers\GenerateCoverLetterController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
@@ -110,5 +111,7 @@ Route::prefix('/applications')->middleware('auth')->group(function () {
 Route::prefix('/assistant')->middleware('auth')->group(function () {
     Route::post('/cover-letter/{coverLetterTemplate}/tips', CoverLetterAssistantController::class)->name('assistant.cover-letter.tips');
     Route::post('/resume/{resume}/tips', ResumeAssistantController::class)->name('assistant.resume.tips');
+
     Route::post('/application/{jobApplication}/contact', ApplicationContactAssistantController::class)->name('assistant.application.contact');
+    Route::post('/application/{jobApplication}/cover-letter', GenerateCoverLetterController::class)->name('assistant.application.cover-letter');
 });
