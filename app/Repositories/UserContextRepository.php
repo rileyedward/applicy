@@ -11,7 +11,7 @@ class UserContextRepository
 
     public function buildContext(): array
     {
-        return Cache::remember('user_context_'.$this->user->id, 60 * 60 * 24, function () {
+        return Cache::remember('user_context_'.$this->user->id, 60 * 60 * 24 * 5, function () {
             $context = [
                 [
                     'role' => 'system',

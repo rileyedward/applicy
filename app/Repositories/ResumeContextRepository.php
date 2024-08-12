@@ -13,7 +13,7 @@ class ResumeContextRepository
 
     public function buildContext(): string
     {
-        return Cache::remember('resume_context_'.$this->resume->id, 60 * 60 * 24, function () {
+        return Cache::remember('resume_context_'.$this->resume->id, 60 * 60 * 24 * 5, function () {
             $filepath = $this->getFilePath();
 
             if (! Storage::disk('public')->exists($filepath)) {
