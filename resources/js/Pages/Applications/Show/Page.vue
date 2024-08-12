@@ -15,6 +15,7 @@ defineProps({
   environmentSelections: Array,
   statusSelections: Array,
   locationSelections: Array,
+  coverLetterTemplateSelections: Array,
   reminder: Object,
 });
 
@@ -34,7 +35,10 @@ const showEditForm = ref(false);
             @toggleView="showEditForm = !showEditForm"
           />
           <ContactModal :jobApplication="jobApplication" />
-          <ApplicationAssistant :jobApplication="jobApplication" />
+          <ApplicationAssistant
+            :jobApplication="jobApplication"
+            :coverLetterTemplateSelections="coverLetterTemplateSelections"
+          />
         </div>
       </div>
 

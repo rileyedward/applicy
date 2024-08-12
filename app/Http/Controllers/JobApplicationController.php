@@ -64,6 +64,13 @@ class JobApplicationController extends Controller
         $statusSelections = config('applications.statuses');
         $locationSelections = $request->user()->jobApplications()->distinct('location')->pluck('location');
 
+        $coverLetterTemplateSelections = $request->user()->coverLetterTemplates->map(function ($coverLetterTemplate) {
+            return [
+                'value' => $coverLetterTemplate->id,
+                'label' => $coverLetterTemplate->title,
+            ];
+        });
+
         $reminder = $this->jobApplicationService->getReminder($jobApplication);
 
         return inertia('Applications/Show/Page', [
@@ -72,6 +79,7 @@ class JobApplicationController extends Controller
             'environmentSelections' => $environmentSelections,
             'statusSelections' => $statusSelections,
             'locationSelections' => $locationSelections,
+            'coverLetterTemplateSelections' => $coverLetterTemplateSelections,
             'reminder' => $reminder,
         ]);
     }
