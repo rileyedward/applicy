@@ -85,7 +85,7 @@ class JobApplicationController extends Controller
             'statusSelections' => $statusSelections,
             'locationSelections' => $locationSelections,
             'coverLetterTemplateSelections' => $coverLetterTemplateSelections,
-            'resumeSelections' => $resumeSelections
+            'resumeSelections' => $resumeSelections,
         ]);
     }
 
