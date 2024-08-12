@@ -1,6 +1,7 @@
 <script setup>
 import Modal from '@/Components/Breeze/Modal.vue';
 import { computed, ref } from 'vue';
+import ContactAssistant from '@/Pages/Applications/Show/Partials/ContactAssistant.vue';
 
 const props = defineProps({
   jobApplication: Object,
@@ -64,11 +65,7 @@ const isEmptyContactInformation = computed(
           No contact information available at this time...
         </p>
 
-        <!-- Placeholder for future AI assistance features -->
-        <div class="bg-neutral-700 p-4 rounded-md">
-          <h3 class="text-xl font-semibold text-white">AI Assistance</h3>
-          <p class="text-neutral-500 mt-2">Coming soon...</p>
-        </div>
+        <ContactAssistant :jobApplication="jobApplication" />
       </div>
     </Modal>
   </div>

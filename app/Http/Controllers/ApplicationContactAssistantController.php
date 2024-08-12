@@ -12,9 +12,7 @@ use Illuminate\Support\Facades\Gate;
 
 class ApplicationContactAssistantController extends Controller
 {
-    public function __construct(protected OpenAIConnector $openAIConnector)
-    {
-    }
+    public function __construct(protected OpenAIConnector $openAIConnector) {}
 
     public function __invoke(Request $request, JobApplication $jobApplication)
     {
@@ -57,8 +55,8 @@ class ApplicationContactAssistantController extends Controller
             ],
             [
                 'role' => 'system',
-                'content' => $jobApplication->ai_context_string
-            ]
+                'content' => $jobApplication->ai_context_string,
+            ],
         ];
 
         return [
@@ -67,7 +65,7 @@ class ApplicationContactAssistantController extends Controller
             [
                 'role' => 'user',
                 'content' => $prompt,
-            ]
+            ],
         ];
     }
 }

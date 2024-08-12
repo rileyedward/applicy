@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplicationActionController;
+use App\Http\Controllers\ApplicationContactAssistantController;
 use App\Http\Controllers\ApplicationSearchController;
 use App\Http\Controllers\CoverLetterAssistantController;
 use App\Http\Controllers\CoverLetterController;
@@ -10,7 +11,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ApplicationContactAssistantController;
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\ResumeAssistantController;
 use App\Http\Controllers\ResumeController;
