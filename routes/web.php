@@ -5,6 +5,7 @@ use App\Http\Controllers\ApplicationContactAssistantController;
 use App\Http\Controllers\ApplicationSearchController;
 use App\Http\Controllers\CoverLetterAssistantController;
 use App\Http\Controllers\CoverLetterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\GenerateCoverLetterController;
 use App\Http\Controllers\JobApplicationController;
@@ -41,7 +42,7 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
 });
 
 /** Dashboard */
-Route::get('/dashboard', fn () => inertia('Dashboard/Index'))->middleware('auth')->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
 /** Education Experience */
 Route::prefix('/education')->middleware('auth')->group(function () {
