@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Models\CoverLetterTemplate;
 use App\Models\EducationExperience;
+use App\Models\Interview;
 use App\Models\PortfolioProject;
 use App\Models\ProfessionalExperience;
 use App\Models\Resume;
 use App\Policies\CoverLetterTemplatePolicy;
 use App\Policies\EducationExperiencePolicy;
+use App\Policies\InterviewPolicy;
 use App\Policies\PortfolioProjectPolicy;
 use App\Policies\ProfessionalExperiencePolicy;
 use App\Policies\ResumePolicy;
@@ -30,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
         Gate::policy(PortfolioProject::class, PortfolioProjectPolicy::class);
         Gate::policy(CoverLetterTemplate::class, CoverLetterTemplatePolicy::class);
         Gate::policy(Resume::class, ResumePolicy::class);
+        Gate::policy(Interview::class, InterviewPolicy::class);
     }
 }

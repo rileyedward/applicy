@@ -26,4 +26,35 @@ class InterviewService
             'notes' => $notes,
         ]);
     }
+
+    public function updateInterview(
+        Interview $interview,
+        string $interviewDate,
+        string $interviewTime,
+        ?string $interviewUrl,
+        ?string $notes
+    ): Interview {
+        $interview->update([
+            'interview_date' => $interviewDate,
+            'interview_time' => $interviewTime,
+            'interview_url' => $interviewUrl,
+            'notes' => $notes,
+        ]);
+
+        return $interview;
+    }
+
+    public function deleteInterview(Interview $interview): void
+    {
+        $interview->delete();
+    }
+
+    public function completeInterview(Interview $interview): Interview
+    {
+        $interview->update([
+            'is_completed' => true,
+        ]);
+
+        return $interview;
+    }
 }

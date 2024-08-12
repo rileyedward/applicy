@@ -13,6 +13,7 @@ class DashboardController extends Controller
             ->interviews()
             ->with('jobApplication')
             ->where('interview_date', '>=', now())
+            ->where('is_completed', false)
             ->orderBy('interview_date')
             ->get();
 

@@ -7,7 +7,12 @@ const props = defineProps({
 });
 
 const formattedDate = computed(() => {
-  return new Date(props.interview.interview_date).toLocaleDateString();
+  return new Date(props.interview.interview_date).toLocaleDateString([], {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
 });
 
 const formattedTime = computed(() => {

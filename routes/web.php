@@ -8,6 +8,7 @@ use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EducationExperienceController;
 use App\Http\Controllers\GenerateCoverLetterController;
+use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortfolioProjectController;
@@ -107,6 +108,13 @@ Route::prefix('/applications')->middleware('auth')->group(function () {
             Route::delete('/{jobApplicationAction}', [ApplicationActionController::class, 'destroy'])->name('applications.actions.destroy');
         });
     });
+});
+
+/** Interviews */
+Route::prefix('/interviews')->middleware('auth')->group(function () {
+    Route::put('/{interview}', [InterviewController::class, 'update'])->name('interviews.update');
+    Route::delete('/{interview}', [InterviewController::class, 'destroy'])->name('interviews.destroy');
+    Route::post('/{interview}/complete', [InterviewController::class, 'complete'])->name('interviews.complete');
 });
 
 /** Assistant */

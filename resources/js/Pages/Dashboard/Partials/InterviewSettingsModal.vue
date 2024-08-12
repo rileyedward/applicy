@@ -19,6 +19,7 @@ const emits = defineEmits(['close']);
 const form = useForm({
   interview_date: props.interview?.interview_date ?? '',
   interview_time: props.interview?.interview_time ?? '',
+  interview_url: props.interview?.interview_url ?? '',
   notes: props.interview?.notes ?? '',
 });
 
@@ -27,12 +28,13 @@ watch(
   (value) => {
     form.interview_date = value?.interview_date ?? '';
     form.interview_time = value?.interview_time ?? '';
+    form.interview_url = value?.interview_url ?? '';
     form.notes = value?.notes ?? '';
   }
 );
 
 const submit = () => {
-  form.put(route('resumes.index', props.interview.id), {
+  form.put(route('interviews.update', props.interview.id), {
     preserveScroll: true,
     onSuccess: () => {
       emits('close');
@@ -42,7 +44,7 @@ const submit = () => {
 
 const removeInterview = () => {
   if (confirm('Are you sure you want to delete this interview?')) {
-    form.delete(route('resumes.index', props.interview.id), {
+    form.delete(route('interviews.destroy', props.interview.id), {
       preserveScroll: true,
       onSuccess: () => {
         emits('close');
@@ -53,7 +55,7 @@ const removeInterview = () => {
 
 const markAsComplete = () => {
   if (confirm('Are you sure you want to mark this interview as complete?')) {
-    form.put(route('resumes.index', props.interview.id), {
+    form.post(route('interviews.complete', props.interview.id), {
       preserveScroll: true,
       data: {
         completed: true,
@@ -110,6 +112,16 @@ const markAsComplete = () => {
             />
             <InputError :message="form.errors.interview_time" class="mt-1" />
           </div>
+        </div>
+
+        <div class="w-full">
+          <InputLabel for="interview_url" value="Interview URL" />
+          <TextInput
+            v-model="form.interview_url"
+            id="interview_url"
+            class="mt-1 block w-full bg-neutral-700 border-none"
+          />
+          <InputError :message="form.errors.interview_url" class="mt-1" />
         </div>
 
         <div class="w-full">
