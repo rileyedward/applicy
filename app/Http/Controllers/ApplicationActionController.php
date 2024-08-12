@@ -15,7 +15,7 @@ class ApplicationActionController extends Controller
     {
         Gate::authorize('isOwner', $jobApplication);
 
-        $jobApplication->addAction(
+        $action = $jobApplication->addAction(
             $request->input('title'),
             $request->input('new_status'),
             $request->input('notes')
@@ -29,6 +29,7 @@ class ApplicationActionController extends Controller
             resolve(InterviewService::class)->scheduleInterview(
                 $request->user(),
                 $jobApplication,
+                $action,
                 $request->input('interview_date'),
                 $request->input('interview_time'),
                 $request->input('interview_url'),
@@ -59,6 +60,7 @@ class ApplicationActionController extends Controller
             resolve(InterviewService::class)->scheduleInterview(
                 $request->user(),
                 $jobApplication,
+                $jobApplicationAction,
                 $request->input('interview_date'),
                 $request->input('interview_time'),
                 $request->input('interview_url'),

@@ -15,6 +15,7 @@ class Interview extends Model
     protected $fillable = [
         'user_id',
         'job_application_id',
+        'job_application_action_id',
         'interview_date',
         'interview_time',
         'interview_url',
@@ -30,5 +31,10 @@ class Interview extends Model
     public function jobApplication(): BelongsTo
     {
         return $this->belongsTo(JobApplication::class);
+    }
+
+    public function action(): BelongsTo
+    {
+        return $this->belongsTo(JobApplicationAction::class);
     }
 }

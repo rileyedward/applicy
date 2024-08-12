@@ -34,6 +34,17 @@ class InterviewController extends Controller
 
         $this->interviewService->deleteInterview($interview);
 
+        $jobApplication = $interview->jobApplication;
+
+        $jobApplication->addAction(
+            'Interview unscheduled',
+            'in_review',
+        );
+
+        $jobApplication->update([
+            'status' => 'in_review',
+        ]);
+
         return back();
     }
 
