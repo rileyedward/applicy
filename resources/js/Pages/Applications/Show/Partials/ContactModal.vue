@@ -2,12 +2,14 @@
 import Modal from '@/Components/Breeze/Modal.vue';
 import { computed, ref } from 'vue';
 import ContactAssistant from '@/Pages/Applications/Show/Partials/ContactAssistant.vue';
+import AssistantIcon from '@/Components/Icons/AssistantIcon.vue';
 
 const props = defineProps({
   jobApplication: Object,
 });
 
 const showModal = ref(false);
+const showAssistant = ref(false);
 
 const { contact_name, contact_email, contact_phone } = props.jobApplication;
 
@@ -28,9 +30,14 @@ const isEmptyContactInformation = computed(
 
     <Modal :show="showModal" @close="showModal = false">
       <div class="p-6 bg-neutral-800 rounded-md shadow-md">
-        <h2 class="text-2xl font-semibold text-white mb-1">
-          Contact the Employer
-        </h2>
+        <div class="flex justify-between items-center">
+          <h2 class="text-2xl font-semibold text-white mb-1">
+            Contact the Employer
+          </h2>
+          <button @click.prevent="showAssistant = !showAssistant">
+            <AssistantIcon />
+          </button>
+        </div>
 
         <p class="text-neutral-500 text-base mb-4 max-w-3xl">
           Get in touch with the employer to follow up or ask about the status of
@@ -65,7 +72,13 @@ const isEmptyContactInformation = computed(
           No contact information available at this time...
         </p>
 
-        <ContactAssistant :jobApplication="jobApplication" />
+        <transition name="fade">
+          <ContactAssistant
+            v-if="showAssistant"
+            @close="showAssistant = false"
+            :jobApplication="jobApplication"
+          />
+        </transition>
       </div>
     </Modal>
   </div>

@@ -94,6 +94,7 @@ const reset = () => {
             v-model="prompt"
             id="prompt"
             class="mt-1 block w-full bg-neutral-700 border-none scrollbar-hide"
+            placeholder="Select a question above to get started..."
           />
         </div>
 
