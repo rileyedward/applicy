@@ -43,7 +43,7 @@ Route::prefix('/profile')->middleware('auth')->group(function () {
 });
 
 /** Dashboard */
-Route::get('/dashboard', DashboardController::class)->name('dashboard');
+Route::get('/dashboard', DashboardController::class)->middleware('auth')->name('dashboard');
 
 /** Education Experience */
 Route::prefix('/education')->middleware('auth')->group(function () {
