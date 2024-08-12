@@ -72,15 +72,15 @@ const submit = () => {
                 for="file"
                 class="flex flex-col items-center justify-center w-full h-32 bg-neutral-800 rounded-lg cursor-pointer hover:bg-neutral-700 transition"
               >
-                <FileUploadIcon :fileUploaded="form.title" />
+                <FileUploadIcon :fileUploaded="form.file" />
                 <input
                   id="file"
                   type="file"
                   class="hidden"
                   @change="handleFileChange"
                 />
-                <p v-if="form.file" class="text-xs text-neutral-400 mt-2">
-                  {{ form.title.name }}
+                <p v-if="form.file" class="text-xs text-neutral-400">
+                  {{ form.title }}
                 </p>
                 <InputError :message="form.errors.file" />
               </label>

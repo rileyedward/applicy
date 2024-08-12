@@ -55,7 +55,7 @@ const reset = () => {
         />
         <SelectInput
           v-model="selectedCoverLetterTemplate"
-          :options="coverLetterTemplateSelections"
+          :options="coverLetterTemplateSelections ?? []"
           id="cover_letter"
           class="mt-1 block w-full bg-neutral-700 border-none scrollbar-hide"
         />

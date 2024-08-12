@@ -1,7 +1,5 @@
 <script setup>
-defineProps({
-  fileUploaded: Boolean,
-});
+defineProps(['fileUploaded']);
 </script>
 
 <template>
@@ -21,7 +19,7 @@ defineProps({
         d="M7 16V10m0 0l5-5m-5 5l5 5M12 10h7m-7 4h7"
       ></path>
     </svg>
-    <p v-if="fileUploaded" class="mb-2 text-sm text-center text-neutral-400">
+    <p v-if="fileUploaded" class="text-sm text-center text-neutral-400">
       File uploaded
     </p>
     <div v-else class="text-center">

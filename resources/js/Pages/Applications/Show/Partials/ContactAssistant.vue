@@ -85,7 +85,7 @@ const reset = () => {
         <TextArea
           v-model="prompt"
           id="prompt"
-          rows="1"
+          :rows="1"
           class="mt-1 block w-full bg-neutral-700 border-none scrollbar-hide"
           placeholder="Select a question above to get started..."
         />

@@ -9,6 +9,7 @@ const model = defineModel({
 defineProps({
   rows: {
     type: Number,
+    required: false,
     default: 5,
   },
 });

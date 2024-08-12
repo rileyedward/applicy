@@ -60,7 +60,7 @@ const submit = () => {
               v-model="form.body"
               id="body"
               class="mt-1 block w-full bg-neutral-700 border-none"
-              rows="12"
+              :rows="12"
               placeholder="Dear Hiring Manager,"
             />
             <InputError :message="form.errors.body" class="mt-1" />
