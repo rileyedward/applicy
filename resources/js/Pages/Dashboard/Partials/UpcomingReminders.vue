@@ -29,7 +29,9 @@ defineProps({
         </div>
 
         <div class="text-right">
-          <p class="text-sm text-neutral-500">Need to Apply</p>
+          <p class="text-sm text-neutral-500">
+            {{ reminder.status_pretty }}
+          </p>
         </div>
       </a>
     </div>
