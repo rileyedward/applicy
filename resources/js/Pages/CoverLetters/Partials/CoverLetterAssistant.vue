@@ -37,7 +37,7 @@ const submit = () => {
   loading.value = true;
 
   axios
-    .post(route('cover-letter.assistant', props.coverLetterTemplate.id), {
+    .post(route('assistant.cover-letter.tips', props.coverLetterTemplate.id), {
       prompt: prompt.value,
     })
     .then((res) => {

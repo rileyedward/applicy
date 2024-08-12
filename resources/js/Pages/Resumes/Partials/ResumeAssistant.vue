@@ -37,7 +37,7 @@ const submit = () => {
   loading.value = true;
 
   axios
-    .post(route('resumes.assistant', props.resume.id), {
+    .post(route('assistant.resume.tips', props.resume.id), {
       prompt: prompt.value,
     })
     .then((res) => {

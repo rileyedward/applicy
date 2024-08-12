@@ -34,7 +34,7 @@ const submit = () => {
   loading.value = true;
 
   axios
-    .post(route('applications.assistant.contact', props.jobApplication.id), {
+    .post(route('assistant.application.contact', props.jobApplication.id), {
       prompt: prompt.value,
     })
     .then((res) => {

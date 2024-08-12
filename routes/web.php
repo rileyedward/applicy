@@ -72,8 +72,6 @@ Route::prefix('/cover-letters')->middleware('auth')->group(function () {
         Route::get('/', [CoverLetterController::class, 'show'])->name('cover-letter.show');
         Route::put('/', [CoverLetterController::class, 'update'])->name('cover-letter.update');
         Route::delete('/', [CoverLetterController::class, 'destroy'])->name('cover-letter.destroy');
-
-        Route::post('/assistant', CoverLetterAssistantController::class)->name('cover-letter.assistant');
     });
 });
 
@@ -86,8 +84,6 @@ Route::prefix('/resumes')->middleware('auth')->group(function () {
         Route::get('/', [ResumeController::class, 'show'])->name('resumes.show');
         Route::delete('/', [ResumeController::class, 'destroy'])->name('resumes.destroy');
         Route::get('/view', [ResumeController::class, 'view'])->name('resumes.view');
-
-        Route::post('/assistant', ResumeAssistantController::class)->name('resumes.assistant');
     });
 });
 
@@ -102,12 +98,17 @@ Route::prefix('/applications')->middleware('auth')->group(function () {
         Route::put('/', [JobApplicationController::class, 'update'])->name('applications.update');
         Route::delete('/', [JobApplicationController::class, 'destroy'])->name('applications.destroy');
 
-        Route::post('/assistant/contact', ApplicationContactAssistantController::class)->name('applications.assistant.contact');
-
         Route::prefix('/actions')->group(function () {
             Route::post('/', [ApplicationActionController::class, 'store'])->name('applications.actions.store');
             Route::put('/{jobApplicationAction}', [ApplicationActionController::class, 'update'])->name('applications.actions.update');
             Route::delete('/{jobApplicationAction}', [ApplicationActionController::class, 'destroy'])->name('applications.actions.destroy');
         });
     });
+});
+
+/** Assistant */
+Route::prefix('/assistant')->middleware('auth')->group(function () {
+    Route::post('/cover-letter/{coverLetterTemplate}/tips', CoverLetterAssistantController::class)->name('assistant.cover-letter.tips');
+    Route::post('/resume/{resume}/tips', ResumeAssistantController::class)->name('assistant.resume.tips');
+    Route::post('/application/{jobApplication}/contact', ApplicationContactAssistantController::class)->name('assistant.application.contact');
 });
