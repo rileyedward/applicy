@@ -13,6 +13,14 @@ watch(
   }
 );
 
+watch(isVisible, (newIsVisible) => {
+  if (newIsVisible) {
+    setTimeout(() => {
+      isVisible.value = false;
+    }, 3000);
+  }
+});
+
 const closeAlert = () => {
   isVisible.value = false;
   usePage().props.flash.message = null;
@@ -24,8 +32,8 @@ const closeAlert = () => {
     v-if="isVisible"
     class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 py-6 sm:items-start sm:justify-end pointer-events-auto transition-opacity duration-300"
     :class="{
-      'opacity-100': $page?.props?.flash?.message && isVisible,
-      'opacity-0': !$page?.props?.flash?.message || !isVisible,
+      'opacity-100': isVisible,
+      'opacity-0': !isVisible,
     }"
   >
     <div
