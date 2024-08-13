@@ -5,6 +5,7 @@ import UpcomingReminders from '@/Pages/Dashboard/Partials/UpcomingReminders.vue'
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 
 defineProps({
+  recentActivity: Array,
   upcomingInterviews: Array,
   upcomingReminders: Array,
   hasApplications: Boolean,

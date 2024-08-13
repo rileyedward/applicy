@@ -2,11 +2,24 @@
 
 namespace App\Repositories;
 
+use App\Models\JobApplicationAction;
 use App\Models\User;
 use Illuminate\Support\Collection;
 
 class DashboardRepository
 {
+    public function fetchRecentActivity(User $user): Collection
+    {
+        return JobApplicationAction::query()
+            ->whereHas('jobApplication', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+            ->with('jobApplication')
+            ->where('created_at', '>=', now()->subDays(3))
+            ->limit(5)
+            ->get();
+    }
+
     public function fetchUpcomingInterviews(User $user): Collection
     {
         return $user->interviews()
