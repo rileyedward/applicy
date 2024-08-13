@@ -12,7 +12,7 @@ class AuthenticationService
         ?string $middleName,
         string $lastName,
         string $email,
-        string $phoneNumber,
+        ?string $phoneNumber,
         string $location,
         string $password
     ): User {
