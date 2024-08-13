@@ -43,6 +43,8 @@ class ResumeController extends Controller
             $filepath
         );
 
+        $request->session()->flash('message', 'Resume uploaded successfully!');
+
         return back()->with('success', 'File uploaded successfully!');
     }
 
@@ -65,7 +67,7 @@ class ResumeController extends Controller
         return Storage::disk('public')->response($filepath);
     }
 
-    public function destroy(Resume $resume): RedirectResponse
+    public function destroy(Request $request, Resume $resume): RedirectResponse
     {
         Gate::authorize('isOwner', $resume);
 
