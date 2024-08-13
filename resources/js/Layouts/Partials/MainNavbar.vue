@@ -1,6 +1,7 @@
 <script setup>
 import UserMenuDropdown from '@/Layouts/Partials/UserMenuDropdown.vue';
 import { computed } from 'vue';
+import NavbarLogo from '@/Components/Global/NavbarLogo.vue';
 
 const isApplicationRoute = computed(() => {
   return window.location.pathname.includes('applications');
@@ -19,12 +20,7 @@ const isCoverLetterRoute = computed(() => {
   <nav>
     <div class="max-w-6xl mx-auto flex justify-between items-center px-8 py-6">
       <div class="flex items-center gap-24">
-        <h1 class="text-2xl font-bold">
-          <a :href="route('dashboard')">
-            Applicy
-            <span class="text-orange-600">.</span>
-          </a>
-        </h1>
+        <NavbarLogo />
 
         <ul class="flex items-center gap-12">
           <li

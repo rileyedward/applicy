@@ -23,7 +23,7 @@ const logout = () => {
   <nav class="relative flex justify-between items-center px-8 py-6 z-40">
     <div class="z-50">
       <h1
-        class="text-2xl font-bold transition-colors ease-in-out"
+        class="text-2xl font-bold transition-colors ease-in-out hover:text-orange-500"
         :class="{
           'text-white': !mobileMenuOpen,
           'text-black': mobileMenuOpen,
