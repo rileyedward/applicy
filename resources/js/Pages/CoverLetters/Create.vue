@@ -7,6 +7,7 @@ import InputLabel from '@/Components/Breeze/InputLabel.vue';
 import TextArea from '@/Components/Breeze/TextArea.vue';
 import PrimaryButton from '@/Components/Breeze/PrimaryButton.vue';
 import BackArrowIcon from '@/Components/Icons/BackArrowIcon.vue';
+import NewCoverLetter from '@/Pages/CoverLetters/Partials/NewCoverLetter.vue';
 
 const form = useForm({
   title: '',
@@ -20,6 +21,11 @@ const submit = () => {
     },
   });
 };
+
+const populateCoverLetter = (body) => {
+  form.title = 'New Cover Letter';
+  form.body = body;
+};
 </script>
 
 <template>
@@ -27,14 +33,20 @@ const submit = () => {
     <div class="max-w-6xl mx-auto px-8 py-12">
       <div class="max-w-4xl bg-neutral-800 p-6 rounded-lg shadow-lg">
         <div>
-          <a
-            :href="route('cover-letter.index')"
-            class="text-neutral-300 hover:text-neutral-500 flex items-center mb-1"
-          >
-            <BackArrowIcon />
-            Back to Cover Letters
-          </a>
-          <h3 class="text-xl font-semibold">New Cover Letter</h3>
+          <div class="flex justify-between items-center">
+            <div>
+              <a
+                :href="route('cover-letter.index')"
+                class="text-neutral-300 hover:text-neutral-500 flex items-center mb-1"
+              >
+                <BackArrowIcon />
+                Back to Cover Letters
+              </a>
+              <h3 class="text-xl font-semibold">New Cover Letter</h3>
+            </div>
+
+            <NewCoverLetter @populateCoverLetter="populateCoverLetter" />
+          </div>
 
           <p class="text-neutral-500 mt-1 max-w-xl">
             Create a new cover letter template to use when applying for jobs.
