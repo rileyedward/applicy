@@ -7,6 +7,7 @@ use App\Models\JobApplication;
 use App\Models\JobApplicationAction;
 use App\Services\InterviewService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class ApplicationActionController extends Controller
@@ -36,6 +37,8 @@ class ApplicationActionController extends Controller
                 $request->input('notes')
             );
         }
+
+        $request->session()->flash('message', 'Action added successfully!');
 
         return back();
     }
@@ -68,10 +71,12 @@ class ApplicationActionController extends Controller
             );
         }
 
+        $request->session()->flash('message', 'Action updated successfully!');
+
         return back();
     }
 
-    public function destroy(JobApplication $jobApplication, JobApplicationAction $jobApplicationAction): RedirectResponse
+    public function destroy(Request $request, JobApplication $jobApplication, JobApplicationAction $jobApplicationAction): RedirectResponse
     {
         Gate::authorize('isOwner', $jobApplication);
 
@@ -82,6 +87,8 @@ class ApplicationActionController extends Controller
         }
 
         $jobApplicationAction->delete();
+
+        $request->session()->flash('message', 'Action deleted successfully!');
 
         return back();
     }

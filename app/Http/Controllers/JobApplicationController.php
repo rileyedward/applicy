@@ -51,6 +51,8 @@ class JobApplicationController extends Controller
             $jobApplication->status
         );
 
+        $request->session()->flash('message', 'Job application created successfully!');
+
         return back();
     }
 
@@ -108,6 +110,8 @@ class JobApplicationController extends Controller
             $request->input('description'),
             $request->input('notes'),
         );
+
+        $request->session()->flash('message', 'Job application updated successfully!');
 
         return back();
     }
