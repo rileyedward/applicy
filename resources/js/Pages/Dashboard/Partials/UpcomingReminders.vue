@@ -8,9 +8,11 @@ defineProps({
   <aside class="bg-neutral-800 p-6 rounded-lg shadow-lg">
     <h4 class="text-xl font-bold text-neutral-100 mb-2">Reminders</h4>
 
-    <p v-if="upcomingReminders.length > 0" class="text-neutral-400 mb-6">
+    <p v-if="upcomingReminders.length > 0" class="text-neutral-400 mb-2">
       Here are your upcoming reminders.
     </p>
+
+    <hr v-if="upcomingReminders.length > 0" class="border-neutral-500 mb-6" />
 
     <div v-if="upcomingReminders.length > 0" class="space-y-4">
       <a
