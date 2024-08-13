@@ -16,6 +16,7 @@ class DashboardRepository
             })
             ->with('jobApplication')
             ->where('created_at', '>=', now()->subDays(3))
+            ->orderBy('created_at', 'desc')
             ->limit(5)
             ->get();
     }
