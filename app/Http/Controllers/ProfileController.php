@@ -39,6 +39,8 @@ class ProfileController extends Controller
             $request->input('location')
         );
 
+        $request->session()->flash('message', 'Profile updated successfully!');
+
         return back();
     }
 }

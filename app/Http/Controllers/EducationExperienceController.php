@@ -6,6 +6,7 @@ use App\Http\Requests\EducationExperienceRequest;
 use App\Models\EducationExperience;
 use App\Services\EducationService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class EducationExperienceController extends Controller
@@ -25,6 +26,8 @@ class EducationExperienceController extends Controller
             $request->input('description')
         );
 
+        $request->session()->flash('message', 'Education experience added successfully!');
+
         return back();
     }
 
@@ -43,12 +46,16 @@ class EducationExperienceController extends Controller
             $request->input('description')
         );
 
+        $request->session()->flash('message', 'Education experience updated successfully!');
+
         return back();
     }
 
-    public function destroy(EducationExperience $educationExperience): RedirectResponse
+    public function destroy(Request $request, EducationExperience $educationExperience): RedirectResponse
     {
         $this->educationService->deleteEducationExperience($educationExperience);
+
+        $request->session()->flash('message', 'Education experience deleted successfully!');
 
         return back();
     }

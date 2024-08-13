@@ -22,6 +22,8 @@ class PortfolioProjectController extends Controller
             $request->input('description')
         );
 
+        $request->session()->flash('message', 'Portfolio project added successfully!');
+
         return back();
     }
 
@@ -36,6 +38,8 @@ class PortfolioProjectController extends Controller
             $request->input('description')
         );
 
+        $request->session()->flash('message', 'Portfolio project updated successfully!');
+
         return back();
     }
 
@@ -44,6 +48,8 @@ class PortfolioProjectController extends Controller
         Gate::authorize('isOwner', $portfolioProject);
 
         $this->portfolioService->deletePortfolioProject($portfolioProject);
+
+        $request->session()->flash('message', 'Portfolio project deleted successfully!');
 
         return back();
     }

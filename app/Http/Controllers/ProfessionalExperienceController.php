@@ -6,6 +6,7 @@ use App\Http\Requests\ProfessionalExperienceRequest;
 use App\Models\ProfessionalExperience;
 use App\Services\ProfessionalService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class ProfessionalExperienceController extends Controller
@@ -24,6 +25,8 @@ class ProfessionalExperienceController extends Controller
             $request->input('description')
         );
 
+        $request->session()->flash('message', 'Professional experience added successfully!');
+
         return back();
     }
 
@@ -41,14 +44,18 @@ class ProfessionalExperienceController extends Controller
             $request->input('description')
         );
 
+        $request->session()->flash('message', 'Professional experience updated successfully!');
+
         return back();
     }
 
-    public function destroy(ProfessionalExperience $professionalExperience): RedirectResponse
+    public function destroy(Request $request, ProfessionalExperience $professionalExperience): RedirectResponse
     {
         Gate::authorize('isOwner', $professionalExperience);
 
         $this->professionalService->deleteProfessionalExperience($professionalExperience);
+
+        $request->session()->flash('message', 'Professional experience deleted successfully!');
 
         return back();
     }
