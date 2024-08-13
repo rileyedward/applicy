@@ -11,6 +11,7 @@ use App\Http\Controllers\GenerateCoverLetterController;
 use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\JobApplicationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NewCoverLetterController;
 use App\Http\Controllers\PortfolioProjectController;
 use App\Http\Controllers\ProfessionalExperienceController;
 use App\Http\Controllers\ProfileController;
@@ -119,6 +120,7 @@ Route::prefix('/interviews')->middleware('auth')->group(function () {
 
 /** Assistant */
 Route::prefix('/assistant')->middleware('auth')->group(function () {
+    Route::post('/cover-letter/new', NewCoverLetterController::class)->name('assistant.cover-letter.new');
     Route::post('/cover-letter/{coverLetterTemplate}/tips', CoverLetterAssistantController::class)->name('assistant.cover-letter.tips');
     Route::post('/resume/{resume}/tips', ResumeAssistantController::class)->name('assistant.resume.tips');
 
