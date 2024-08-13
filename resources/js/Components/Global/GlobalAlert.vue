@@ -12,6 +12,11 @@ watch(
     }
   }
 );
+
+const closeAlert = () => {
+  isVisible.value = false;
+  usePage().props.flash.message = null;
+};
 </script>
 
 <template>
@@ -31,7 +36,7 @@ watch(
           <p class="font-semibold" v-html="$page?.props?.flash?.message"></p>
         </div>
         <button
-          @click.prevent="isVisible = false"
+          @click.prevent="closeAlert"
           class="ml-4 flex-shrink-0 text-white"
         >
           <span class="text-lg font-semibold"> X </span>
