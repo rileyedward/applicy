@@ -30,7 +30,7 @@ const closeAlert = () => {
 <template>
   <div
     v-if="isVisible"
-    class="fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 py-6 sm:items-start sm:justify-end pointer-events-auto transition-opacity duration-300"
+    class="w-fit float-right fixed top-0 left-0 right-0 z-50 flex items-center justify-center px-4 py-6 sm:items-start sm:justify-end pointer-events-auto transition-opacity duration-300"
     :class="{
       'opacity-100': isVisible,
       'opacity-0': !isVisible,
