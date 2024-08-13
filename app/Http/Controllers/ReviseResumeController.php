@@ -55,7 +55,7 @@ class ReviseResumeController extends Controller
         $jobApplicationContext = [
             [
                 'role' => 'system',
-                'content' => 'I am going to give you context to a user as well as the job application and a resume as a template, I want you to revise the resume based on the job application and the resume given.',
+                'content' => 'I am going to give you context to a user as well as the job application and a resume as a template. I want you to provide tips for improving the resume based on the job application and the resume given.',
             ],
             [
                 'role' => 'system',

@@ -41,8 +41,9 @@ const reset = () => {
 
 <template>
   <div>
-    <p class="text-base text-neutral-300 my-4">
-      Utilize our AI assistant to generate a cover letter
+    <p class="text-base text-neutral-300 max-w-2xl my-4">
+      Utilize our AI assistant to generate a cover letter for this job
+      application.
     </p>
 
     <form @submit.prevent="submit" class="space-y-6">

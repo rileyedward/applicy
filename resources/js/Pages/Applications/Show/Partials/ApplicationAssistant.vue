@@ -53,7 +53,7 @@ const selectedAction = ref('cover-letter');
             @click="selectedAction = 'revise-resume'"
             class="flex-1 py-2 px-4 rounded-md text-sm font-medium"
           >
-            Revise Resume
+            Resume
           </button>
         </div>
 

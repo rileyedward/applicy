@@ -38,8 +38,9 @@ const reset = () => {
 
 <template>
   <div>
-    <p class="text-base text-neutral-300 my-4">
-      Utilize our AI assistant to revise your resume
+    <p class="text-base text-neutral-300 max-w-2xl my-4">
+      Utilize our AI assistant to get some tips on how you can maximize your
+      resume for this job application.
     </p>
 
     <form @submit.prevent="submit" class="space-y-6">
