@@ -20,9 +20,12 @@ defineProps({
       class="max-w-6xl mx-auto px-8 py-12 flex flex-col-reverse md:flex-row gap-8"
     >
       <div class="flex-1 space-y-12">
-        <UpcomingInterviews :upcomingInterviews="upcomingInterviews" />
+        <UpcomingInterviews
+          v-if="upcomingInterviews.length > 0"
+          :upcomingInterviews="upcomingInterviews"
+        />
 
-        <hr class="border-neutral-500" />
+        <hr v-if="upcomingInterviews.length > 0" class="border-neutral-500" />
 
         <RecentActivity :recentActivity="recentActivity" />
       </div>

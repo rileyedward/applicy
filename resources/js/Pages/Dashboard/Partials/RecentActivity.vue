@@ -1,4 +1,6 @@
 <script setup>
+import ActivityBanner from '@/Pages/Dashboard/Partials/ActivityBanner.vue';
+
 defineProps({
   recentActivity: Array,
 });
@@ -15,6 +17,14 @@ defineProps({
         </span>
         <span v-else> You have no recent activity. </span>
       </p>
+    </div>
+
+    <div class="space-y-4">
+      <ActivityBanner
+        v-for="activity in recentActivity"
+        :key="activity.id"
+        :activity="activity"
+      />
     </div>
   </div>
 </template>
