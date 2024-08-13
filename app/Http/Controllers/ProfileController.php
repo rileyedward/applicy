@@ -16,10 +16,14 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
+        $educationExperiences = $user->educationExperiences()->orderBy('end_date', 'desc')->get();
+        $professionalExperiences = $user->professionalExperiences()->orderBy('end_date', 'desc')->get();
+        $portfolioProjects = $user->portfolioProjects()->orderBy('created_at', 'desc')->get();
+
         return inertia('Profile/Index', [
-            'educationExperiences' => $user->educationExperiences,
-            'professionalExperiences' => $user->professionalExperiences,
-            'portfolioProjects' => $user->portfolioProjects,
+            'educationExperiences' => $educationExperiences,
+            'professionalExperiences' => $professionalExperiences,
+            'portfolioProjects' => $portfolioProjects,
         ]);
     }
 

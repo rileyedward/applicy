@@ -145,7 +145,7 @@ const deleteApplication = () => {
             id="salary_range"
             type="text"
             class="mt-1 block w-full bg-neutral-700 border-none"
-            placeholder="$100,000 - $120,000"
+            placeholder="$100/hr."
           />
           <InputError :message="form.errors.salary_range" class="mt-1" />
         </div>

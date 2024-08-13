@@ -173,13 +173,13 @@ const submit = () => {
 
           <div class="flex flex-col lg:flex-row gap-4">
             <div class="flex-1">
-              <InputLabel for="salary_range" value="Salary Range" />
+              <InputLabel for="salary_range" value="Salary" />
               <TextInput
                 v-model="form.salary_range"
                 id="salary_range"
                 type="text"
                 class="mt-1 block w-full bg-neutral-700 border-none"
-                placeholder="$100,000 - $120,000"
+                placeholder="$100/hr."
               />
               <InputError :message="form.errors.salary_range" class="mt-1" />
             </div>
