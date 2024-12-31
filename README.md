@@ -1,5 +1,7 @@
 # Applicy
 
+Streamline your job application journey.
+
 ## Overview
 
 ### What is Applicy?
