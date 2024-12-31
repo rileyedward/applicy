@@ -1,6 +1,20 @@
 # Applicy
 
+## Overview
+
+### What is Applicy?
+
 Applicy is a comprehensive online platform that simplifies your job application process. Create a personalized profile to seamlessly track all your job applications and monitor their progress in real time. With Applicy, you can easily organize your job search efforts, making it simpler to stay on top of your applications and secure your next opportunity.
+
+### Why Use Applicy?
+
+Job hunting is often overwhelming. Keeping track of applications, customizing resumes, and writing countless cover letters takes time and effort. Let Applicy handle the details, so you can focus on preparing for interviews and securing your dream job.
+
+### Key Features
+
+- **Application Tracker**: Keep track of the different job applications you have submitted as well as the status of each of them.
+- **Resumes**: Upload and store your resumes and have the AI assistant for recommendations on your Resume based on the job you're applying for.
+- **Cover Letters**: Upload and store your cover letters to have the AI assistant make different versions for the various jobs you're applying for.
 
 ## Getting Started
 
