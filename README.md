@@ -24,22 +24,22 @@ It's a Laravel 11 application with an Inertia and Vue frontend, run locally thro
 
 Ensure you have the following installed. You can verify each one by running the provided command in your terminal.
 
-1. **PHP** (8.2+) is required for the application. Check it by running:
+1. **Laravel Herd** serves the site at `applicy.test` and provides PHP and Composer. Check it by running:
+
+    ```bash
+    herd --version
+    ```
+
+2. **PHP** (8.2+) is required for the application. Herd installs it, and `herd.yml` pins the site to PHP 8.3. Check it by running:
 
     ```bash
     php --version
     ```
 
-2. **Composer** manages PHP dependencies. Check it by running:
+3. **Composer** manages PHP dependencies. Herd installs it too. Check it by running:
 
     ```bash
     composer --version
-    ```
-
-3. **Docker** runs the application and its MySQL database through Laravel Sail. Check it by running:
-
-    ```bash
-    docker --version
     ```
 
 4. **Node** and **NPM** manage frontend dependencies. Check them by running:
@@ -51,47 +51,43 @@ Ensure you have the following installed. You can verify each one by running the 
 
 ### Installation
 
-1. Duplicate the example environment file and configure it with your settings (see [Configuration](#configuration)):
+1. Set the site up from `herd.yml`. This links it as `applicy.test`, isolates PHP 8.3, and offers to copy `.env.example` to `.env` (say yes):
 
     ```bash
-    cp .env.example .env
+    herd init
     ```
 
-2. Install PHP and JavaScript dependencies:
+2. Configure `.env` with your settings (see [Configuration](#configuration)).
+
+3. Install PHP and JavaScript dependencies:
 
     ```bash
     composer install
     npm install
     ```
 
-3. Generate a new application key:
+4. Generate a new application key:
 
     ```bash
     php artisan key:generate
     ```
 
-4. Build and start the application with Sail:
+5. Apply database migrations and seed the database with test data. The app uses SQLite, and Laravel offers to create `database/database.sqlite` if it's missing:
 
     ```bash
-    ./vendor/bin/sail up -d
+    php artisan migrate --seed
     ```
 
-5. Apply database migrations:
-
-    ```bash
-    ./vendor/bin/sail artisan migrate
-    ```
-
-6. Seed the database with test data:
-
-    ```bash
-    ./vendor/bin/sail artisan db:seed
-    ```
-
-7. Compile assets and run the Vue frontend:
+6. Compile assets and run the Vue frontend:
 
     ```bash
     npm run dev
+    ```
+
+7. Open the site in your browser:
+
+    ```text
+    http://applicy.test
     ```
 
 ### Configuration
@@ -102,6 +98,55 @@ Set these in `.env` for the features that use them:
 |---|---|---|
 | `OPEN_AI_API_KEY` | OpenAI API key | The AI assistant for resumes and cover letters |
 | `STRIPE_KEY`, `STRIPE_SECRET`, `STRIPE_WEBHOOK_SECRET` | Stripe keys, used through Laravel Cashier | Billing |
+
+### Running with Sail
+
+The repository still includes Laravel Sail's `docker-compose.yml` if you'd rather run the app in Docker. You'll need **Docker** (check it with `docker --version`), and `.env` needs these values in place of the Herd defaults:
+
+```dotenv
+APP_URL=http://localhost
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
+
+1. Duplicate the example environment file, apply the values above, then install dependencies and generate a key:
+
+    ```bash
+    cp .env.example .env
+    composer install
+    npm install
+    php artisan key:generate
+    ```
+
+2. Build and start the application with Sail:
+
+    ```bash
+    ./vendor/bin/sail up -d
+    ```
+
+3. Apply database migrations:
+
+    ```bash
+    ./vendor/bin/sail artisan migrate
+    ```
+
+4. Seed the database with test data:
+
+    ```bash
+    ./vendor/bin/sail artisan db:seed
+    ```
+
+5. Compile assets and run the Vue frontend:
+
+    ```bash
+    npm run dev
+    ```
+
+The app is then served at `http://localhost`.
 
 ## Contributing
 

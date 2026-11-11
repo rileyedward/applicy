@@ -1,0 +1,5 @@
+name: applicy
+php: '8.3'
+secured: false
+aliases: []
+services: {}
